@@ -29,6 +29,8 @@ Route::get('/logout','Admin\SuperAdminController@logout');
 Route::get('all/categories','Admin\CategoryController@AllCategories')->name('all.categories');
 Route::get('add/category','Admin\CategoryController@AddCategory')->name('add.category');
 Route::post('category/store','Admin\CategoryController@CategoryStore')->name('admin.categories.store');
+Route::get('status/unactive/{id}','Admin\CategoryController@StatusUnActive')->name('status.unactive');
+Route::get('status/active/{id}','Admin\CategoryController@StatusActive')->name('status.active');
 Route::get('all/brands','Admin\BrandController@AllBrand')->name('all.brands');
 Route::get('add/brand','Admin\BrandController@AddBrand')->name('add.brand');
 Route::get('all/products','Admin\ProductController@AllProducts')->name('all.products');

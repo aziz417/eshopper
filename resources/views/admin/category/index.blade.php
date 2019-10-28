@@ -36,11 +36,11 @@
                 </td>
                 <td class="center">
                     @if($category->status == 1)
-                    <a class="btn btn-danger" href="#">
+                    <a class="btn btn-danger" href="{{Route('status.unactive',$category->id)}}">
                         <i class="halflings-icon white thumbs-down"></i>
                     </a>
                     @else
-                        <a class="btn btn-success" href="#">
+                        <a class="btn btn-success" href="{{Route('status.active',$category->id)}}">
                             <i class="halflings-icon white thumbs-up"></i>
                         </a>
                     @endif
