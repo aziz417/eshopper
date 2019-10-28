@@ -28,9 +28,9 @@ class AdminController extends Controller
         if($result){
             Session::put('admin_name',$result->admin_name);
             Session::put('admin_id',$result->admin_id);
-            return view('admin/pages.dashboard');
+            return view('admin.dashboard.index');
         }else{
-            Session::put('massage','Email or Password Invalide');
+            Session::put('massage','Email or Password Invaled');
             return back();
         }
     }

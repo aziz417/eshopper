@@ -1,5 +1,5 @@
-@extends('admin.layout')
-@section('layout_content')
+@extends('admin.layouts.master')
+@section('content')
     <ul class="breadcrumb">
         <li>
             <i class="icon-home"></i>
