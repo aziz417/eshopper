@@ -32,7 +32,7 @@
 
         </div>
     </div>
-    <input type="hidden" name="id" value="{{$category->id}}">
+    <input type="hidden" name="id" value="{{isset($category->id) ? $category->id:''}}">
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Update</button>
         <button type="reset" class="btn">Cancel</button>
