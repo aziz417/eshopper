@@ -19,7 +19,7 @@
                      $massage = Session::get('massage');
                      if($massage){
                          echo $massage;
-                         Session::Flush();
+                         Session::put(NULL);
                      }
                 ?>
              </span>

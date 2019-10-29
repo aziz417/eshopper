@@ -25,7 +25,7 @@ Route::post('/dashboard','Admin\AdminController@login')->name('admin.action');
 Route::get('/logout','Admin\SuperAdminController@logout');
 
 
-//// category, brand, product, controller here/////////////////////////////////////////
+//// categories, brands, products, controller here/////////////////////////////////////////
 Route::get('all/categories','Admin\CategoryController@AllCategories')->name('all.categories');
 Route::get('add/category','Admin\CategoryController@AddCategory')->name('add.category');
 Route::post('category/store','Admin\CategoryController@CategoryStore')->name('admin.categories.store');
@@ -34,8 +34,16 @@ Route::post('categories/update','Admin\CategoryController@CategoryUpdate')->name
 Route::get('category/delete/{id}','Admin\CategoryController@CategoryDelete')->name('category.delete');
 Route::get('status/unactive/{id}','Admin\CategoryController@StatusUnActive')->name('status.unactive');
 Route::get('status/active/{id}','Admin\CategoryController@StatusActive')->name('status.active');
-Route::get('all/brands','Admin\BrandController@AllBrand')->name('all.brands');
+
+
+Route::get('all/brands','Admin\BrandController@AllBrands')->name('all.brands');
 Route::get('add/brand','Admin\BrandController@AddBrand')->name('add.brand');
+Route::post('brand/store','Admin\BrandController@BrandStore')->name('admin.brands.store');
+Route::get('brand/edit/{id}','Admin\BrandController@BrandEdit')->name('brand.edit');
+Route::post('brand/update','Admin\BrandController@BrandUpdate')->name('brand.update');
+Route::get('brand/delete/{id}','Admin\BrandController@BrandDelete')->name('brand.delete');
+Route::get('status/unactive/{id}','Admin\BrandController@StatusUnActive')->name('status.unactive');
+Route::get('status/active/{id}','Admin\BrandController@StatusActive')->name('status.active');
 Route::get('all/products','Admin\ProductController@AllProducts')->name('all.products');
 Route::get('add/product','Admin\ProductController@AddProduct')->name('add.product');
 

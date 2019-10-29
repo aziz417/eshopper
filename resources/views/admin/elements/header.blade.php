@@ -9,6 +9,7 @@
     <title>Dashboard</title>
     <meta name="description" content="Metro Admin Template.">
     <meta name="author" content="Łukasz Holeczek">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <!-- end: Meta -->
 
