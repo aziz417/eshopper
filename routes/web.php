@@ -52,11 +52,12 @@ Route::get('brand/status/active/{id}','Admin\BrandController@StatusActive')->nam
 Route::get('all/products','Admin\ProductController@AllProducts')->name('all.products');
 Route::get('add/product','Admin\ProductController@AddProduct')->name('add.product');
 Route::post('product/store','Admin\ProductController@ProductStore')->name('product.store');
-//Route::get('product/edit/{id}','Admin\ProductController@ProductEdit')->name('product.edit');
-//Route::post('product/update','Admin\ProductController@ProductUpdate')->name('product.update');
-//Route::get('product/delete/{id}','Admin\ProductController@ProductDelete')->name('product.delete');
-//Route::get('status/unactive/{id}','Admin\ProductController@StatusUnActive')->name('status.unactive');
-//Route::get('status/active/{id}','Admin\ProductController@StatusActive')->name('status.active');
+Route::get('product/edit/{id}','Admin\ProductController@ProductEdit')->name('product.edit');
+Route::post('product/update','Admin\ProductController@ProductUpdate')->name('product.update');
+Route::get('product/delete/{id}','Admin\ProductController@ProductDelete')->name('product.delete');
+Route::get('product/status/unactive/{id}','Admin\ProductController@StatusUnActive')->name('product.status.unactive');
+Route::get('product/status/active/{id}','Admin\ProductController@StatusActive')->name('product.status.active');
+Route::get('product/view/{id}','Admin\ProductController@ProductView')->name('product.view');
 
 
 ////Extra control here example slider,menus,site name

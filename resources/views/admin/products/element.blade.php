@@ -1,8 +1,8 @@
-    <fieldset>
+<fieldset>
         <div class="control-group">
             <label class="control-label" for="date01">Product Name</label>
             <div class="controls">
-                <input type="text"  required class="input-xlarge" value="{{isset($product->Bname) ? $product->Bname:''}}"  name="name">
+                <input type="text"  required class="input-xlarge" value="{{isset($data['product']->Pname) ? $data['product']->Pname:''}}"  name="name">
             </div>
         </div>
         <div class="control-group">
@@ -14,7 +14,16 @@
                         if(isset($data)){
                         foreach ( $data['category'] as $category ){
                         ?>
-                        <option value="{{$category->Cid}}">{{$category->Cname}}</option>
+                        <option
+                            <?php
+                            if(isset($data['product']->category_id)){
+                                if($category->Cid == $data['product']->category_id){
+                                    echo "selected";
+                                }
+                            }
+                            ?>
+
+                            value="{{$category->Cid}}">{{$category->Cname}}</option>
                         <?php  }}?>
                 </select>
             </div>
@@ -28,7 +37,18 @@
                         if(isset($data)){
                         foreach ( $data['brands'] as $brand ){
                         ?>
-                        <option value="{{$brand->Bid}}">{{$brand->Bname}}</option>
+                        <option
+
+                            <?php
+                                if(isset($data['product']->brand_id)){
+                                    if($brand->Bid == $data['product']->brand_id){
+                                        echo "selected";
+                                    }
+                                 }
+                            ?>
+
+                            value="{{$brand->Bid}}">{{$brand->Bname}}</option>
+
                     <?php  }}?>
                 </select>
             </div>
@@ -42,37 +62,38 @@
         <div class="control-group hidden-phone">
             <label class="control-label"  for="textarea2">Description</label>
             <div class="controls">
-                <textarea required id="textarea2" name="description" rows="3">{{isset($product->Pdescription) ? $product->Pdescription:''}}</textarea>
+                <textarea required id="textarea2" name="description" rows="3">{{isset($data['product']->Pdescription) ? $data['product']->Pdescription:''}}</textarea>
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="date01">Price</label>
             <div class="controls">
-                <input required type="text" class="input-xlarge" value="{{isset($product->price) ? $product->price:''}}" name="price">
+                <input required type="text" class="input-xlarge" value="{{isset($data['product']->price) ? $data['product']->price:''}}" name="price">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="date01">Size</label>
             <div class="controls">
-                <input required type="text" class="input-xlarge" value="{{isset($product->Psize) ? $product->Psize:''}}"  name="size">
+                <input required type="text" class="input-xlarge" value="{{isset($data['product']->Psize) ? $data['product']->Psize:''}}"  name="size">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="date01">Color</label>
             <div class="controls">
-                <input required type="text" class="input-xlarge" value="{{isset($product->Pcolor) ? $product->Pcolor:''}}" name="color">
+                <input required type="text" class="input-xlarge" value="{{isset($data['product']->Pcolor) ? $data['product']->Pcolor:''}}" name="color">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="date01">Status</label>
             <div class="controls">
-                @if(isset($product->Pstatus))
-                    <input  class="input-file uniform_on" id="fileInput" name="status" type="checkbox" checked value="{{isset($product->Pstatus) ? $product->Pstatus:''}}">
+                @if(isset($data['product']->Pstatus))
+                    <input  class="input-file uniform_on" id="fileInput" name="status" type="checkbox" checked value="{{isset($data['product']->Pstatus) ? $data['product']->Pstatus:''}}">
                 @else
                     <input  class="input-file uniform_on" id="fileInput" name="status" type="checkbox" value="1">
                 @endif
             </div>
         </div>
+        <input type="hidden" name="product_id" value="{{isset($data['product']->product_id) ? $data['product']->product_id:''}}">
 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Update</button>

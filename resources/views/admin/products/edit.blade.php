@@ -1,4 +1,4 @@
-{{--@extends('admin.layouts.master')
+@extends('admin.layouts.master')
 @section('content')
     <!-- start: Content -->
     <ul class="breadcrumb">
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="box-content">
-                <form class="form-horizontal" action="{{Route('admin.product.store')}}" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" action="{{Route('product.update')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @include('admin.products.element')
                 </form>
@@ -32,4 +32,4 @@
             </div>
         </div><!--/span-->
     </div>
-@endsection--}}
+@endsection

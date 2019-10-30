@@ -42,4 +42,58 @@ class ProductController extends Controller
         return back()->with('massege', 'Product store successfully');
     }
 
+    public function StatusUnActive($Pid){
+        DB::table('tbl_products')->where('product_id',$Pid)
+            ->update(['Pstatus' => NULL ]);
+        Session::put('massage','Your Status Unactive');
+        return Redirect::back();
+    }
+
+    public function StatusActive($Pid){
+        DB::table('tbl_products')->where('product_id',$Pid)
+            ->update(['Pstatus' => 1 ]);
+        Session::put('massage','Your Status Active');
+        return Redirect::back();
+    }
+
+    public function ProductDelete($Pid){
+        DB::table('tbl_products')->where('product_id',$Pid)->delete();
+        Session::put('massage','Product delete successfully');
+        return Redirect::back();
+    }
+
+    public function ProductEdit($Pid){
+        $data = array();
+        $data['category'] = DB::table('tbl_category')->where('Cstatus',1)->get();
+        $data['brands'] = DB::table('tbl_brands')->where('Bstatus',1)->get();
+        $data['product'] = DB::table('tbl_products')->where('product_id',$Pid)->first();
+        return view('admin.products.edit',compact('data'));
+    }
+
+    public function ProductUpdate(Request $request){
+        $id = $request->product_id;
+        $data = array();
+        $data['product_id'] = $request->product_id;
+        $data['category_id'] = $request->category_id;
+        $data['brand_id'] = $request->brand_id;
+        $data['Pname'] = $request->name;
+        $data['Pdescription'] = $request->description;
+        $data['price'] = $request->price;
+        $data['Psize'] = $request->size;
+        $data['Pcolor'] = $request->color;
+        $data['Pstatus'] = $request->status;
+        DB::table('tbl_products')->where('product_id',$id)->update($data);
+        return Redirect::route('all.products')->with('massege', 'Product store successfully');
+    }
+
+    public function ProductView($Pid){
+       $product =  DB::table('tbl_products')->where('product_id',$Pid)
+            ->join('tbl_category','tbl_products.category_id','=','tbl_category.Cid')
+            ->join('tbl_brands','tbl_products.brand_id','=','tbl_brands.Bid')
+            ->get();
+       return view('admin.products.view',compact('product'));
+    }
+
+
+
 }

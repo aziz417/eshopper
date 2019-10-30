@@ -19,7 +19,7 @@
                      $massage = Session::get('massage');
                      if($massage){
                          echo $massage;
-                         Session::put(NULL);
+                         Session::forget('massage');
                      }
                      ?>
              </span>
@@ -55,22 +55,22 @@
                         </td>
                         <td class="center">
                             @if($product->Pstatus == 1)
-                                <a class="btn btn-danger" href="{{Route('status.unactive',$product->product_id)}}">
+                                <a class="btn btn-danger" href="{{Route('product.status.unactive',$product->product_id)}}">
                                     <i class="halflings-icon white thumbs-down"></i>
                                 </a>
                             @else
-                                <a class="btn btn-success" href="{{Route('status.active',$product->product_id)}}">
+                                <a class="btn btn-success" href="{{Route('product.status.active',$product->product_id)}}">
                                     <i class="halflings-icon white thumbs-up"></i>
                                 </a>
                             @endif
-                            <a class="btn btn-info" href="{{--{{Route('product.edit',$product->product_id)}}--}}">
+                            <a class="btn btn-info" href="{{Route('product.edit',$product->product_id)}}">
                                 <i class="halflings-icon white edit"></i>
                             </a>
-                            <a class="btn btn-danger" href="{{--{{Route('product.delete',$product->product_id)}}--}}" id="delete">
+                            <a class="btn btn-danger" href="{{Route('product.delete',$product->product_id)}}" id="delete">
                                 <i class="halflings-icon white trash"></i>
                             </a>
-                                <a class="btn btn-success" href="{{--{{Route('product.delete',$product->product_id)}}--}}" id="delete">
-                                    <i class="halflings-icon white eye-open"></i>
+                            <a class="btn btn-success" href="{{Route('product.view',$product->product_id)}}">
+                                <i class="halflings-icon white eye-open"></i>
                             </a>
                         </td>
                     </tr>
