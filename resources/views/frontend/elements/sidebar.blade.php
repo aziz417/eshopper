@@ -24,12 +24,12 @@
                 </div>
             </div>--}}
             <?php
-                $AllCategory = DB::table('tbl_category')->where('status',1)->get();
+                $AllCategory = DB::table('tbl_category')->where('Cstatus',1)->get();
                 foreach ($AllCategory as $category){?>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">{{$category->name}}</a></h4>
+                    <h4 class="panel-title"><a href="#">{{$category->Cname}}</a></h4>
                 </div>
             </div>
             <?php }?>
@@ -40,9 +40,9 @@
             <div class="brands-name">
                 <ul class="nav nav-pills nav-stacked">
                     <?php
-                    $AllBrands = DB::table('tbl_brands')->where('status',1)->get();
+                    $AllBrands = DB::table('tbl_brands')->where('Bstatus',1)->get();
                     foreach ($AllBrands as $brand){?>
-                    <li><a href="#">{{$brand->name}}</a></li>
+                    <li><a href="#"> <span class="pull-right">(50)</span>{{$brand->Bname}}</a></li>
                      <?php }?>
                 </ul>
             </div>

@@ -26,27 +26,37 @@ Route::get('/logout','Admin\SuperAdminController@logout');
 
 
 //// categories, brands, products, controller here/////////////////////////////////////////
+
+/// category
 Route::get('all/categories','Admin\CategoryController@AllCategories')->name('all.categories');
 Route::get('add/category','Admin\CategoryController@AddCategory')->name('add.category');
 Route::post('category/store','Admin\CategoryController@CategoryStore')->name('admin.categories.store');
 Route::get('category/edit/{id}','Admin\CategoryController@CategoryEdit')->name('category.edit');
-Route::post('categories/update','Admin\CategoryController@CategoryUpdate')->name('categories.update');
+Route::post('category/update','Admin\CategoryController@CategoryUpdate')->name('category.update');
 Route::get('category/delete/{id}','Admin\CategoryController@CategoryDelete')->name('category.delete');
-Route::get('status/unactive/{id}','Admin\CategoryController@StatusUnActive')->name('status.unactive');
-Route::get('status/active/{id}','Admin\CategoryController@StatusActive')->name('status.active');
+Route::get('category/status/unactive/{id}','Admin\CategoryController@StatusUnActive')->name('category.status.unactive');
+Route::get('category/status/active/{id}','Admin\CategoryController@StatusActive')->name('category.status.active');
 
-
+/// brand
 Route::get('all/brands','Admin\BrandController@AllBrands')->name('all.brands');
 Route::get('add/brand','Admin\BrandController@AddBrand')->name('add.brand');
 Route::post('brand/store','Admin\BrandController@BrandStore')->name('admin.brands.store');
 Route::get('brand/edit/{id}','Admin\BrandController@BrandEdit')->name('brand.edit');
 Route::post('brand/update','Admin\BrandController@BrandUpdate')->name('brand.update');
 Route::get('brand/delete/{id}','Admin\BrandController@BrandDelete')->name('brand.delete');
-Route::get('status/unactive/{id}','Admin\BrandController@StatusUnActive')->name('status.unactive');
-Route::get('status/active/{id}','Admin\BrandController@StatusActive')->name('status.active');
+Route::get('brand/status/unactive/{id}','Admin\BrandController@StatusUnActive')->name('brand.status.unactive');
+Route::get('brand/status/active/{id}','Admin\BrandController@StatusActive')->name('brand.status.active');
+
+
+/// product
 Route::get('all/products','Admin\ProductController@AllProducts')->name('all.products');
 Route::get('add/product','Admin\ProductController@AddProduct')->name('add.product');
-
+Route::post('product/store','Admin\ProductController@ProductStore')->name('product.store');
+//Route::get('product/edit/{id}','Admin\ProductController@ProductEdit')->name('product.edit');
+//Route::post('product/update','Admin\ProductController@ProductUpdate')->name('product.update');
+//Route::get('product/delete/{id}','Admin\ProductController@ProductDelete')->name('product.delete');
+//Route::get('status/unactive/{id}','Admin\ProductController@StatusUnActive')->name('status.unactive');
+//Route::get('status/active/{id}','Admin\ProductController@StatusActive')->name('status.active');
 
 
 ////Extra control here example slider,menus,site name

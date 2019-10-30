@@ -9,8 +9,8 @@
             <li>
                 <a href="#" class="dropmenu"><i class="icon-dashboard"></i><span class="hidden-tablet"> Product<span class="label label-important"> New </span></span></a>
                 <ul>
-                    <li><a class="submenu" href="{{Route('all.products')}}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Products</span></a></li>
-                    <li><a class="submenu" href="{{Route('add.product')}}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Product</span></a></li>
+                    <li><a class="submenu" href="{{ Route('all.products') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Products</span></a></li>
+                    <li><a class="submenu" href="{{ Route('add.product') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Product</span></a></li>
                 </ul>
             </li>
             <li><a href="{{Route('menu')}}"><i class="icon-list-alt"></i><span class="hidden-tablet"> Menus</span></a></li>

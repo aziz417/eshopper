@@ -2,7 +2,7 @@
 @section('content')
     <div class="box span12">
         <div class="box-header" data-original-title>
-            <h2><span class="break"></span>All Brands</h2>
+            <h2><span class="break"></span>All Products</h2>
 
             <div class="box-icon">
                 <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
@@ -19,48 +19,58 @@
                      $massage = Session::get('massage');
                      if($massage){
                          echo $massage;
-                         Session::forget('massage');
+                         Session::put(NULL);
                      }
                      ?>
              </span>
                 </div>
                 <tr>
                     <th>SL</th>
-                    <th>Brands Name</th>
-                    <th>Description</th>
-                    <th>Status</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Image</th>
+
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php $count=1?></php>
-                @foreach($AllBrands as $brands)
+                @foreach($AllProducts as $product)
                     <tr>
                         <td><?php echo $count++ ?></td>
-                        <td class="center">{{ $brands->Bname }}</td>
-                        <td class="center">{{ Str::limit($brands->Bdescription, 40) }}</td>
+                        <td class="center">{{ ucfirst($product->Pname) }}</td>
+                        <td class="center">{{ ucfirst($product->Cname) }}</td>
+                        <td class="center">{{ ucfirst($product->Bname) }}</td>
+                        <td class="center">{{ $product->Pstatus }}</td>
+                        <td class="center">Not found</td>
+                        {{--<td class="center">{{ Str::limit($product->description, 40) }}</td>--}}
                         <td class="center">
-                            @if($brands->Bstatus == 1)
+                            @if($product->Pstatus == 1)
                                 <span class="label label-success">Active</span>
                             @else
                                 <span class="label btn-danger">Unactive</span>
                             @endif
                         </td>
                         <td class="center">
-                            @if($brands->Bstatus == 1)
-                                <a class="btn btn-danger" href="{{Route('brand.status.unactive',$brands->Bid)}}">
+                            @if($product->Pstatus == 1)
+                                <a class="btn btn-danger" href="{{Route('status.unactive',$product->product_id)}}">
                                     <i class="halflings-icon white thumbs-down"></i>
                                 </a>
                             @else
-                                <a class="btn btn-success" href="{{Route('brand.status.active',$brands->Bid)}}">
+                                <a class="btn btn-success" href="{{Route('status.active',$product->product_id)}}">
                                     <i class="halflings-icon white thumbs-up"></i>
                                 </a>
                             @endif
-                            <a class="btn btn-info" href="{{Route('brand.edit',$brands->Bid)}}">
+                            <a class="btn btn-info" href="{{--{{Route('product.edit',$product->product_id)}}--}}">
                                 <i class="halflings-icon white edit"></i>
                             </a>
-                            <a class="btn btn-danger" href="{{Route('brand.delete',$brands->Bid)}}" id="delete">
+                            <a class="btn btn-danger" href="{{--{{Route('product.delete',$product->product_id)}}--}}" id="delete">
                                 <i class="halflings-icon white trash"></i>
+                            </a>
+                                <a class="btn btn-success" href="{{--{{Route('product.delete',$product->product_id)}}--}}" id="delete">
+                                    <i class="halflings-icon white eye-open"></i>
                             </a>
                         </td>
                     </tr>

@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+{{--@extends('admin.layouts.master')
 @section('content')
     <!-- start: Content -->
     <ul class="breadcrumb">
@@ -16,7 +16,7 @@
     <div class="row-fluid sortable">
         <div class="box span12">
             <div class="box-header" data-original-title>
-                <h2><i class="halflings-icon edit"></i><span class="break"></span>Brand Add</h2>
+                <h2><i class="halflings-icon edit"></i><span class="break"></span>Product Edit</h2>
                 <div class="box-icon">
                     <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
                     <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
@@ -24,12 +24,12 @@
                 </div>
             </div>
             <div class="box-content">
-                <form class="form-horizontal" action="{{route('admin.brands.store')}}" method="post">
-                    @csrf
-                    @include('admin.brands.elements')
-
+                <form class="form-horizontal" action="{{Route('admin.product.store')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    @include('admin.products.element')
                 </form>
 
             </div>
         </div><!--/span-->
-@endsection
+    </div>
+@endsection--}}

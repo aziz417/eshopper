@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="box-content">
-                <form class="form-horizontal" action="{{Route('categories.update')}}" method="post">
+                <form class="form-horizontal" action="{{Route('category.update')}}" method="post">
                     {{ csrf_field() }}
                     @include('admin.category.element')
                 </form>

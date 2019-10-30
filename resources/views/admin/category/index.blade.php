@@ -19,7 +19,7 @@
                      $massage = Session::get('massage');
                      if($massage){
                          echo $massage;
-                         Session::put(NULL);
+                         Session::forget('massage');
                      }
                 ?>
              </span>
@@ -37,29 +37,29 @@
             @foreach($AllCategory as $category)
             <tr>
                 <td><?php echo $count++ ?></td>
-                <td class="center">{{ $category->name }}</td>
-                <td class="center">{{ Str::limit($category->description, 40) }}</td>
+                <td class="center">{{ $category->Cname }}</td>
+                <td class="center">{{ Str::limit($category->Cdescription, 40) }}</td>
                 <td class="center">
-                    @if($category->status == 1)
+                    @if($category->Cstatus == 1)
                         <span class="label label-success">Active</span>
                     @else
                         <span class="label btn-danger">Unactive</span>
                     @endif
                 </td>
                 <td class="center">
-                    @if($category->status == 1)
-                    <a class="btn btn-danger" href="{{Route('status.unactive',$category->id)}}">
-                        <i class="halflings-icon white thumbs-down"></i>
-                    </a>
+                    @if($category->Cstatus == 1)
+                        <a class="btn btn-danger" href="{{Route('category.status.unactive',$category->Cid)}}">
+                            <i class="halflings-icon white thumbs-down"></i>
+                        </a>
                     @else
-                        <a class="btn btn-success" href="{{Route('status.active',$category->id)}}">
+                        <a class="btn btn-success" href="{{Route('category.status.active',$category->Cid)}}">
                             <i class="halflings-icon white thumbs-up"></i>
                         </a>
                     @endif
-                    <a class="btn btn-info" href="{{Route('category.edit',$category->id)}}">
+                    <a class="btn btn-info" href="{{Route('category.edit',$category->Cid)}}">
                         <i class="halflings-icon white edit"></i>
                     </a>
-                    <a class="btn btn-danger" href="{{Route('category.delete',$category->id)}}" id="delete">
+                    <a class="btn btn-danger" href="{{Route('category.delete',$category->Cid)}}" id="delete">
                         <i class="halflings-icon white trash"></i>
                     </a>
                 </td>
