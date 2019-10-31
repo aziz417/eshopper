@@ -13,11 +13,14 @@ session_start();
 
 class AdminController extends Controller
 {
-    public function admin(){
+    public function index(){
+        if(Session::get('admin_in')){
+            return redirect::to('/dashboard');
+        }
         return view('admin.login');
     }
 
-    public function login(Request $request){
+    public function dashboard(Request $request){
         $admin_email = $request->email;
         $admin_pass  = md5($request->password);
 
@@ -28,10 +31,11 @@ class AdminController extends Controller
         if($result){
             Session::put('admin_name',$result->admin_name);
             Session::put('admin_id',$result->admin_id);
-            return view('admin.dashboard.index');
+            return Redirect::to('/dashboard');
         }else{
             Session::put('massage','Email or Password Invaled');
-            return back();
+            return Redirect::to('/backend');
         }
     }
+
 }

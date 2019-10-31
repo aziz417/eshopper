@@ -18,11 +18,12 @@ Route::get('/','HomeController@index');
 
 
 
-
 //Admin controller here //////////////////////////////////////////
-Route::get('/admin/login','Admin\AdminController@admin');
-Route::post('/dashboard','Admin\AdminController@login')->name('admin.action');
 Route::get('/logout','Admin\SuperAdminController@logout');
+Route::get('/backend','Admin\AdminController@index');
+Route::get('/dashboard','Admin\SuperAdminController@index');
+Route::post('/admin-dashboard','Admin\AdminController@dashboard');
+
 
 
 //// categories, brands, products, controller here/////////////////////////////////////////

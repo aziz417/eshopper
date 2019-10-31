@@ -67,7 +67,7 @@
                 }
                 ?>
                 </p>
-                <form class="form-horizontal" action="{{Route('admin.action')}}" method="POST">
+                <form class="form-horizontal" action="{{url('admin-dashboard')}}" method="POST">
                     <fieldset>
                     {{csrf_field()}}
                         <div class="input-prepend" title="Email">
