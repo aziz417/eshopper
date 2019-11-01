@@ -21,6 +21,21 @@ Route::get('product/details/{id}','frontend\HomeController@productDetails')->nam
 Route::post('add/card/{id}','frontend\CartController@addToCart')->name('add.ToCart');
 Route::get('show/card','frontend\CartController@CartIndex')->name('cart.index');
 Route::get('cart/delete/{rowId}','frontend\CartController@CartDeleteSingle')->name('cart.delete.single');
+Route::post('cart/update','frontend\CartController@CartUpdate')->name('cart.update');
+
+////checkout controller here /.........................////////////////////////.
+Route::get('/checkout','frontend\CheckoutController@Checkout');
+
+
+
+
+
+/////customer login,singing controller here....................................
+Route::post('customer/singing','frontend\CustomerController@CustomerSinging')->name('customer.singing');
+Route::post('customer/login','frontend\CustomerController@Customerlogin')->name('customer.login');
+Route::get('customer/login','frontend\CustomerController@LoginIndex');
+Route::get('customer/logout','frontend\CustomerController@logout');
+
 
 
 //Admin controller here //////////////////////////////////////////
