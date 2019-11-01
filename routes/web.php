@@ -11,7 +11,10 @@
 |
 */
 //Frontend controller here ...........................................
-Route::get('/','HomeController@index');
+Route::get('/','frontend\HomeController@index');
+Route::get('products/category/{id}','frontend\HomeController@productByCategory')->name('product.byCategory');
+Route::get('products/brand/{id}','frontend\HomeController@productByBrand')->name('product.byBrand');
+Route::get('product/details/{id}','frontend\HomeController@productDetails')->name('product.details');
 
 
 

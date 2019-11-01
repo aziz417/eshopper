@@ -29,7 +29,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">{{$category->Cname}}</a></h4>
+                    <h4 class="panel-title"><a href="{{route('product.byCategory',$category->Cid)}}">{{$category->Cname}}</a></h4>
                 </div>
             </div>
             <?php }?>
@@ -42,7 +42,7 @@
                     <?php
                     $AllBrands = DB::table('tbl_brands')->where('Bstatus',1)->get();
                     foreach ($AllBrands as $brand){?>
-                    <li><a href="#"> <span class="pull-right">(50)</span>{{$brand->Bname}}</a></li>
+                    <li><a href="{{route('product.byBrand',$brand->Bid)}}"> <span class="pull-right">(50)</span>{{$brand->Bname}}</a></li>
                      <?php }?>
                 </ul>
             </div>
