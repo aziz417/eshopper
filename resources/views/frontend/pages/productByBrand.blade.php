@@ -10,7 +10,7 @@
                             <img src="{{URL::to('frontend/images/home/product1.jpg')}}" alt="" />
                             <h2>{{$product->price}}Tk</h2>
                             <p>{{ ucfirst($product->Pname)}}</p>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            <a href="{{route('product.details',$product->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                         </div>
                         <div class="product-overlay">
                             <div class="overlay-content">

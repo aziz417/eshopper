@@ -17,8 +17,10 @@ Route::get('products/brand/{id}','frontend\HomeController@productByBrand')->name
 Route::get('product/details/{id}','frontend\HomeController@productDetails')->name('product.details');
 
 
-
-
+//// Cart controller here............................................
+Route::post('add/card/{id}','frontend\CartController@addToCart')->name('add.ToCart');
+Route::get('show/card','frontend\CartController@CartIndex')->name('cart.index');
+Route::get('cart/delete/{rowId}','frontend\CartController@CartDeleteSingle')->name('cart.delete.single');
 
 
 //Admin controller here //////////////////////////////////////////

@@ -46,7 +46,7 @@
                 <img src="{{URL::to('frontend/images/product-details/rating.png')}}" alt="" /><br>
                 <span>
                     <span>{{$productDetails->price }} Tk</span>
-                    <form action="" method="post">
+                    <form action="{{route('add.ToCart',$productDetails->product_id)}}" method="post">
                         @csrf
                         <label>Quantity:</label>
                         <input type="text" name="quantity" value="1" />
