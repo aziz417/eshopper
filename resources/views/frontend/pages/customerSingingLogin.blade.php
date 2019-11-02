@@ -5,6 +5,10 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
                     <h2>Login to your account</h2>
+                    <?php
+                    $massage = Session::get('massage');
+                    echo $massage;
+                    ?>
                     <form action="{{route('customer.login')}}" method="post">
                         @csrf
                         <input type="email" required name="customerEmail" placeholder="Email Address"/>

@@ -8,13 +8,15 @@
                     <div class="bill-to">
                         <p>Bill To</p>
                         <div class="form-one">
-                            <form>
-                                <input type="email"name="cheackoutEmail" required placeholder="Email*">
-                                <input type="text" name="cheackoutPhone" required placeholder="Phone Number">
-                                <input type="text" name="cheackoutFname" required placeholder="First Name *">
-                                <input type="text" name="cheackoutLname" required placeholder="Last Name *">
-                                <input type="text" name="cheackoutAddress" required placeholder="Address *">
-                                <input type="text" name="cheackoutCity" required placeholder="City *">
+                            <h2>Shipping from</h2>
+                            <form action="{{route('shipping.store')}}" method="post">
+                                @csrf
+                                <input type="Email"name="shippingEmail" required placeholder="Email*">
+                                <input type="text" name="shippingPhone" required placeholder="Phone Number">
+                                <input type="text" name="shippingFname" required placeholder="First Name *">
+                                <input type="text" name="shippingLname" required placeholder="Last Name *">
+                                <input type="text" name="shippingAddress" required placeholder="Address *">
+                                <input type="text" name="shippingCity" required placeholder="City *">
                                 <button type="submit" class="btn-success"> Continue</button>
                             </form>
                         </div>

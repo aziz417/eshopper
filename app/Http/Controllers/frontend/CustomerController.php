@@ -17,10 +17,12 @@ class CustomerController extends Controller
 
     public function logout(){
         Session::put('customerId',Null);
-        return view('frontend.pages.customerSingingLogin');
+        Session::flush();
+        return redirect(route('/'));
     }
 
     public function CustomerSinging(Request $request){
+
         $data = array();
         $data['customerName'] = $request->customerName;
         $data['customerEmail'] = $request->customerEmail;
@@ -29,20 +31,26 @@ class CustomerController extends Controller
         $data['customerAddress'] = $request->customerAddress;
 
         $customer = DB::table('tbl_customers')->insertGetid($data);
+
         Session::put('customerId',$customer->id);
         Session::put('customerName',$customer->customerName);
+
         return view('frontend.pages.checkout');
     }
 
     public function Customerlogin(Request $request){
+
         $customerEmail = $request->customerEmail;
         $customerPass = $request->customerPass;
-        $tblData = DB::table('tbl_customers')->where('customerEmail',$customerEmail)->first();
+        $tblData = DB::table('tbl_customers')->where('customerEmail',$customerEmail)->where('customerPass',$customerPass)->first();
+
         if($customerEmail == $tblData->customerEmail and $customerPass == $tblData->customerPass){
             Session::put('customerId',$tblData->id);
             Session::put('customerName',$tblData->customerName);
 
             return view('frontend.pages.checkout');
+        }else{
+            return back()->with('massage','Email or Password Invalid');
         }
     }
 }

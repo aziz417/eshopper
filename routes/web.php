@@ -11,7 +11,7 @@
 |
 */
 //Frontend controller here ...........................................
-Route::get('/','frontend\HomeController@index');
+Route::get('/','frontend\HomeController@index')->name('/');
 Route::get('products/category/{id}','frontend\HomeController@productByCategory')->name('product.byCategory');
 Route::get('products/brand/{id}','frontend\HomeController@productByBrand')->name('product.byBrand');
 Route::get('product/details/{id}','frontend\HomeController@productDetails')->name('product.details');
@@ -25,6 +25,9 @@ Route::post('cart/update','frontend\CartController@CartUpdate')->name('cart.upda
 
 ////checkout controller here /.........................////////////////////////.
 Route::get('/checkout','frontend\CheckoutController@Checkout');
+
+////shipping controller here ..........................................................
+Route::post('shipping/store','frontend\ShippingController@SippingStore')->name('shipping.store');
 
 
 
