@@ -24,12 +24,16 @@ Route::get('cart/delete/{rowId}','frontend\CartController@CartDeleteSingle')->na
 Route::post('cart/update','frontend\CartController@CartUpdate')->name('cart.update');
 
 ////checkout controller here /.........................////////////////////////.
-Route::get('/checkout','frontend\CheckoutController@Checkout');
+Route::get('/checkLoginShipping','frontend\CheckoutController@checkLoginShipping');
 
 ////shipping controller here ..........................................................
+Route::get('shipping/check','frontend\ShippingController@ShippingCheck')->name('shipping.check');
 Route::post('shipping/store','frontend\ShippingController@SippingStore')->name('shipping.store');
 
 
+
+////payment............................................
+Route::post('payment','frontend\OrderController@Payment');
 
 
 
@@ -42,10 +46,14 @@ Route::get('customer/logout','frontend\CustomerController@logout');
 
 
 //Admin controller here //////////////////////////////////////////
-Route::get('/logout','Admin\SuperAdminController@logout');
+Route::get('admin/logout','Admin\SuperAdminController@logout');
 Route::get('/backend','Admin\AdminController@index');
 Route::get('/dashboard','Admin\SuperAdminController@index');
 Route::post('/admin-dashboard','Admin\AdminController@dashboard');
+
+//order manage controll ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Route::get('order/manage','Admin\OrderController@OrderManage')->name('/orderManage');
+Route::get('order/details/{orderId}','Admin\OrderController@OrderDetails')->name('order.details');
 
 
 

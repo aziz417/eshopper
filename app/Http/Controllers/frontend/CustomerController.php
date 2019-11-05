@@ -32,8 +32,8 @@ class CustomerController extends Controller
 
         $customer = DB::table('tbl_customers')->insertGetid($data);
 
-        Session::put('customerId',$customer->id);
-        Session::put('customerName',$customer->customerName);
+        Session::put('customerId',$customer);
+        Session::put('customerName',$request->customerName);
 
         return view('frontend.pages.checkout');
     }
@@ -43,14 +43,17 @@ class CustomerController extends Controller
         $customerEmail = $request->customerEmail;
         $customerPass = $request->customerPass;
         $tblData = DB::table('tbl_customers')->where('customerEmail',$customerEmail)->where('customerPass',$customerPass)->first();
+        if($tblData) {
+            if ($customerEmail == $tblData->customerEmail and $customerPass == $tblData->customerPass) {
+                Session::put('customerId', $tblData->id);
+                Session::put('customerName', $tblData->customerName);
 
-        if($customerEmail == $tblData->customerEmail and $customerPass == $tblData->customerPass){
-            Session::put('customerId',$tblData->id);
-            Session::put('customerName',$tblData->customerName);
-
-            return view('frontend.pages.checkout');
+                return view('frontend.pages.checkout');
+            } else {
+                return back()->with('massage', 'Email or Password Invalid');
+            }
         }else{
-            return back()->with('massage','Email or Password Invalid');
+            return back()->with('massage', 'Email or Password Invalid');
         }
     }
 }

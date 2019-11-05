@@ -12,7 +12,7 @@ class HomeController extends Controller
         $data = DB::table('tbl_products')->where('Pstatus',1)
             ->join('tbl_category','tbl_products.category_id','=','tbl_category.Cid')->where('Cstatus',1)
             ->join('tbl_brands','tbl_products.brand_id','=','tbl_brands.Bid')->where('Bstatus',1)
-            ->limit(6)->get();
+            ->limit(20)->get();
         return view('frontend.pages.home_content',compact('data'));
     }
 

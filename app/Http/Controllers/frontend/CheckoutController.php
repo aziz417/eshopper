@@ -11,9 +11,12 @@ session_start();
 
 class CheckoutController extends Controller
 {
-    public function Checkout(){
-        $customer = Session::get('customerId');
-        if($customer != NULL){
+    public function checkLoginShipping(){
+        $customerId = Session::get('customerId');
+        $shippingId = Session::get('shippingId');
+        if($customerId != NULL && $shippingId != NULL){
+            return view('frontend.pages.payment');
+        }elseif($customerId != NULL){
             return view('frontend.pages.checkout');
         }else{
             return view('frontend.pages.customerSingingLogin');

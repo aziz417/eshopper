@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblCheckout extends Migration
+class CreateTblPayment extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateTblCheckout extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_checkout', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('tbl_payment', function (Blueprint $table) {
+            $table->bigIncrements('paymentId');
+            $table->string('paymentMethod');
+            $table->string('paymentStatus');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateTblCheckout extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_checkout');
+        Schema::dropIfExists('tbl_payment');
     }
 }

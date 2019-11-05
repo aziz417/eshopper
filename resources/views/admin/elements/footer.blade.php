@@ -50,7 +50,7 @@
         bootbox.confirm("Are you want to delete!", function(confirmed){
             if(confirmed){
                 window.location.href = link;
-            };
+            }
         });
     });
 </script>

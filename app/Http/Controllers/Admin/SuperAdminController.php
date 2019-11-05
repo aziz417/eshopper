@@ -13,8 +13,13 @@ session_start();
 class SuperAdminController extends Controller
 {
     public function index(){
-        $this->AdminAuthCheck();
-        return view('admin.dashboard.index');
+        $admin_id = Session::get('admin_id');
+        if($admin_id){
+            return redirect(route('/orderManage'));
+        }else {
+            $this->AdminAuthCheck();
+            return redirect(route('/orderManage'));
+        }
     }
 
     public function logout(){
