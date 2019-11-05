@@ -101,4 +101,3 @@
             </div>
         </div><!--/span-->
 @endsection
-@include('admin.elements.footer')

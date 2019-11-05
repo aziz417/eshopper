@@ -2,7 +2,7 @@
         <div class="control-group">
             <label class="control-label" for="date01">Product Name</label>
             <div class="controls">
-                <input type="text"  required class="input-xlarge" value="{{isset($data['product']->Pname) ? $data['product']->Pname:''}}"  name="name">
+                <input type="text"  required class="input-xlarge" value="jk{{isset($data['product']->Pname) ? $data['product']->Pname:''}}"  name="name">
             </div>
         </div>
         <div class="control-group">
@@ -62,25 +62,25 @@
         <div class="control-group hidden-phone">
             <label class="control-label"  for="textarea2">Description</label>
             <div class="controls">
-                <textarea required id="textarea2" name="description" rows="3">{{isset($data['product']->Pdescription) ? $data['product']->Pdescription:''}}</textarea>
+                <textarea required id="textarea2" name="description" rows="3">hj{{isset($data['product']->Pdescription) ? $data['product']->Pdescription:''}}</textarea>
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="date01">Price</label>
             <div class="controls">
-                <input required type="text" class="input-xlarge" value="{{isset($data['product']->price) ? $data['product']->price:''}}" name="price">
+                <input required type="text" class="input-xlarge" value="10{{isset($data['product']->price) ? $data['product']->price:''}}" name="price">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="date01">Size</label>
             <div class="controls">
-                <input required type="text" class="input-xlarge" value="{{isset($data['product']->Psize) ? $data['product']->Psize:''}}"  name="size">
+                <input required type="text" class="input-xlarge" value="45{{isset($data['product']->Psize) ? $data['product']->Psize:''}}"  name="size">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="date01">Color</label>
             <div class="controls">
-                <input required type="text" class="input-xlarge" value="{{isset($data['product']->Pcolor) ? $data['product']->Pcolor:''}}" name="color">
+                <input required type="text" class="input-xlarge" value="yy{{isset($data['product']->Pcolor) ? $data['product']->Pcolor:''}}" name="color">
             </div>
         </div>
         <div class="control-group">

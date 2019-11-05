@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
+use Intervention\Image\Facades\Image;
 use PhpParser\Node\Stmt\Return_;
 use Session;
 use Illuminate\support\Facades\Redirect;
@@ -32,7 +33,27 @@ class ProductController extends Controller
 
     public function ProductStore(Request $request){
         $this->AdminAuthCheck();
-        $data = array();
+
+
+        $image = $request->file('image');
+
+        if ($image){
+
+            $real_image = $image;
+            $getExtension = $image->getClientOriginalExtension();
+            $randomNameGenarate = rand();
+            $setImageName = $randomNameGenarate .'.' .  $getExtension;
+
+            // admin/products_images/54564.png
+            $newImage = Image::make($real_image)->resize(500,400)
+                ->save( base_path('public/admin/products_images/'.$setImageName),'100');
+            $img=$newImage->fill('#b53717');
+            dd($img);
+
+            $data['Pimage'] = $setImageName;
+
+        }
+        $data['Pimage'] = '';
         $data['category_id'] = $request->category_id;
         $data['brand_id'] = $request->brand_id;
         $data['Pname'] = $request->name;

@@ -34,7 +34,7 @@
                         <td class="center">{{ $order->customerID }}</td>
                         <td class="center">{{ Str::limit($order->shippingId, 40) }}</td>
                         <td class="center">{{ Str::limit($order->paymentId, 40) }}</td>
-                        <td class="center">{{ Str::limit($order->orderTotal, 40) }}</td>
+                        <td class="center">{{ Str::limit($order->orderTotal, 40) }} Tk</td>
                         <td class="center">{{ Str::limit($order->orderStatus, 40) }}</td>
                         <td class="center">
                             <a class="btn btn-success" href="{{Route('order.details',$order->orderId)}}">

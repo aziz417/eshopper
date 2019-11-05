@@ -28,25 +28,21 @@ class OrderController extends Controller
         $orderId = DB::table('tbl_order')->insertGetid($odata);
 
 
-        $cartInfo = Cart::content();
-        foreach ($cartInfo as $cart){
-            $oodetails = array();
-            $oodetails['orderId'] = $orderId;
-            $oodetails['productId'] = $cart->id;
-            $oodetails['productName'] = $cart->name;
-            $oodetails['productPrice'] = $cart->price;
-            $oodetails['productSeles_qty'] = $cart->qty;
+        $cartItems = Cart::content();
 
-            $ooDetailsId = DB::table('tbl_order_details')->insertGetid($oodetails);
-            Session::put('ooDetails',$ooDetailsId);
+        foreach ($cartItems as $cart){
 
+            $order_details = array();
+            $order_details['orderId'] = $orderId;
+            $order_details['productId'] = $cart->id;
+            $order_details['productName'] = $cart->name;
+            $order_details['productPrice'] = $cart->price;
+            $order_details['productSeles_qty'] = $cart->qty;
 
-            if( $paymentId != NULL && $orderId != NULL ){
-                if( $ooDetailsId != NULL ){
-                    Cart::destroy();
-                    return view('frontend.pages.orderComplete');
-                }
-            }
+            $order_details_id = DB::table('tbl_order_details')->insertGetid($order_details);
         }
+
+        Cart::destroy();
+        return view('frontend.pages.orderComplete');
     }
 }
