@@ -95,6 +95,7 @@ Route::get('product/view/{id}','Admin\ProductController@ProductView')->name('pro
 ////Extra control here example slider,menus,site name
 Route::get('menus/','Admin\ExtraController@Menu')->name('menu');
 Route::get('slider/','Admin\ExtraController@Index')->name('slider');
+Route::get('slider/add','Admin\ExtraController@SliderAdd')->name('slider.add');
 Route::get('site.name/','Admin\ExtraController@SiteName')->name('site.name');
 
 

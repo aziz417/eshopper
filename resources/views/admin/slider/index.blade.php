@@ -3,7 +3,7 @@
     <div class="box span12">
         <div class="box-header" data-original-title>
             <h2><span class="break"></span>All Sliders</h2>
-            <span style="float: right"><a href="{{url('')}}" class="btn-success">Add Slider</a></span>
+            <span style="float: right"><a href="{{route('slider.add')}}" class="btn-success">Add Slider</a></span>
         </div>
         <div class="box-content">
             <table class="table">
