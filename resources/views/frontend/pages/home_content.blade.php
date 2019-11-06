@@ -3,11 +3,11 @@
     <div class="features_items"><!--features_items-->
         <h2 class="title text-center">Features Items</h2>
             @foreach($data as $product)
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{URL::to('frontend/images/home/product1.jpg')}}" alt="" />
+                        <img src="{{asset('images/products/'.$product->Pimage)}}" alt="" />
                         <h2>{{$product->price}}Tk</h2>
                         <p>{{ ucfirst($product->Pname)}}</p>
                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>

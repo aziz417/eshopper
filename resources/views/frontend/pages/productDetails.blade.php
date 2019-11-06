@@ -4,7 +4,7 @@
     <div class="product-details"><!--product-details-->
         <div class="col-sm-5">
             <div class="view-product">
-                <img src="{{URL::to('frontend/images/product-details/1.jpg')}}" alt="" />
+                <img src="{{asset('images/products/'.$productDetails->Pimage)}}" alt="" />
                 <h3>ZOOM</h3>
             </div>
             <div id="similar-product" class="carousel slide" data-ride="carousel">

@@ -17,7 +17,7 @@ class CartController extends Controller
         $data['name'] =$product->Pname;
         $data['weight'] =0;
         $data['price'] =$product->price;
-        //$data['options']['category'] =$product->Psize;
+        $data['options']['Pimage'] =$product->Pimage;
         Cart::add($data);
         return redirect(route('cart.index'));
     }

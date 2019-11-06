@@ -44,7 +44,7 @@
                         <td class="center">{{ ucfirst($product->Cname) }}</td>
                         <td class="center">{{ ucfirst($product->Bname) }}</td>
                         <td class="center">{{ $product->Pstatus }}</td>
-                        <td class="center">Not found</td>
+                        <td class="center"><img src="{{asset('images/products/'.$product->Pimage)}}" width="50" height="90"></td>
                         {{--<td class="center">{{ Str::limit($product->description, 40) }}</td>--}}
                         <td class="center">
                             @if($product->Pstatus == 1)

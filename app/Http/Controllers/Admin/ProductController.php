@@ -32,28 +32,17 @@ class ProductController extends Controller
     }
 
     public function ProductStore(Request $request){
-        $this->AdminAuthCheck();
-
 
         $image = $request->file('image');
-
         if ($image){
-
             $real_image = $image;
-            $getExtension = $image->getClientOriginalExtension();
-            $randomNameGenarate = rand();
-            $setImageName = $randomNameGenarate .'.' .  $getExtension;
-
-            // admin/products_images/54564.png
-            $newImage = Image::make($real_image)->resize(500,400)
-                ->save( base_path('public/admin/products_images/'.$setImageName),'100');
-            $img=$newImage->fill('#b53717');
-            dd($img);
-
-            $data['Pimage'] = $setImageName;
-
+            $imgNameWithExtention = "Fictionsoft".rand().'.'.$image->getClientOriginalExtension();
+            Image::make($real_image)->resize(400,450)
+                ->save( base_path('public/images/products/'.$imgNameWithExtention),'100');
+            $data['Pimage'] = $imgNameWithExtention;
         }
-        $data['Pimage'] = '';
+
+        $data['Pimage'] = $imgNameWithExtention;
         $data['category_id'] = $request->category_id;
         $data['brand_id'] = $request->brand_id;
         $data['Pname'] = $request->name;
@@ -62,7 +51,7 @@ class ProductController extends Controller
         $data['Psize'] = $request->size;
         $data['Pcolor'] = $request->color;
         $data['Pstatus'] = $request->status;
-        DB::table('tbl_products')->insert($data);
+        $data = DB::table('tbl_products')->insert($data);
         return back()->with('massege', 'Product store successfully');
     }
 
@@ -83,7 +72,11 @@ class ProductController extends Controller
     }
 
     public function ProductDelete($Pid){
-        $this->AdminAuthCheck();
+        $productImage = DB::table('tbl_products')->where('product_id',$Pid)->first();
+        if ($productImage->Pimage != ''){
+            file_exists('images/products/'.$productImage->Pimage);
+            unlink('images/products/'.$productImage->Pimage);
+        }
         DB::table('tbl_products')->where('product_id',$Pid)->delete();
         Session::put('massage','Product delete successfully');
         return Redirect::back();
@@ -99,9 +92,9 @@ class ProductController extends Controller
     }
 
     public function ProductUpdate(Request $request){
-        $this->AdminAuthCheck();
+
         $id = $request->product_id;
-        $data = array();
+        $data['Pimage'] = '';
         $data['product_id'] = $request->product_id;
         $data['category_id'] = $request->category_id;
         $data['brand_id'] = $request->brand_id;
@@ -111,6 +104,20 @@ class ProductController extends Controller
         $data['Psize'] = $request->size;
         $data['Pcolor'] = $request->color;
         $data['Pstatus'] = $request->status;
+
+        $newImage = $request->file('image');
+        $oldImage = $request->oldImage;
+        if($newImage){
+            if ($oldImage != ''){
+                file_exists('images/products/'.$oldImage);
+                unlink('images/products/'.$oldImage);
+            }
+            $real_image = $newImage;
+            $imgNameWithExtention = "Fictionsoft".rand().'.'.$newImage->getClientOriginalExtension();
+            Image::make($real_image)->resize(400,450)
+                ->save( base_path('public/images/products/'.$imgNameWithExtention),'100');
+            $data['Pimage'] = $imgNameWithExtention;
+        }
         DB::table('tbl_products')->where('product_id',$id)->update($data);
         return Redirect::route('all.products')->with('massege', 'Product store successfully');
     }

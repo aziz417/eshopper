@@ -25,7 +25,7 @@
                 @foreach($contents as $data )
                 <tr>
                     <td class="cart_product">
-                        <a href=""><img src="{{url('frontend/images/cart/three.png')}}" alt=""></a>
+                        <a href=""><img src="{{asset('images/products/'.$data->options->Pimage)}}" alt="" width="70" height="100"></a>
                     </td>
                     <td class="cart_description">
                         <h4><a href="">{{$data->name}}</a></h4>
