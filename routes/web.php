@@ -94,8 +94,21 @@ Route::get('product/view/{id}','Admin\ProductController@ProductView')->name('pro
 
 ////Extra control here example slider,menus,site name
 Route::get('menus/','Admin\ExtraController@Menu')->name('menu');
+
+
+////slider.............................................................
 Route::get('slider/','Admin\ExtraController@Index')->name('slider');
 Route::get('slider/add','Admin\ExtraController@SliderAdd')->name('slider.add');
+Route::post('slider/store','Admin\ExtraController@SliderStore')->name('slider.store');
+Route::get('slider/delete/{id}','Admin\ExtraController@SliderDelete')->name('slider.delete');
+Route::get('slider/edit/{id}','Admin\ExtraController@SliderEdit')->name('slider.edit');
+Route::post('slider/update','Admin\ExtraController@SliderUpdate')->name('slider.update');
+Route::get('slider/status/unactive/{id}','Admin\ExtraController@StatusUnActive')->name('slider.status.unactive');
+Route::get('slider/status/active/{id}','Admin\ExtraController@StatusActive')->name('slider.status.active');
+
+
+
+
 Route::get('site.name/','Admin\ExtraController@SiteName')->name('site.name');
 
 

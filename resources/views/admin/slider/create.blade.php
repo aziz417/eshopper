@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="box-content">
-                <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" action="{{route('slider.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @include('admin.slider.element')
                 </form>
