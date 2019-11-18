@@ -117,3 +117,7 @@ Route::get('site.name/','Admin\ExtraController@SiteName')->name('site.name');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
