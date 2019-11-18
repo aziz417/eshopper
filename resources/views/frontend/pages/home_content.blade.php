@@ -7,7 +7,7 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{asset('images/products/'.$product->Pimage)}}" alt="" />
+                        <img src="{{asset('images/products/'.$product->Pimage)}}" alt="" height="260px" />
                         <h2>{{$product->price}}Tk</h2>
                         <p>{{ ucfirst($product->Pname)}}</p>
                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>

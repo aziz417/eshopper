@@ -15,7 +15,7 @@
             </li>
             <li><a href="{{Route('menu')}}"><i class="icon-list-alt"></i><span class="hidden-tablet"> Menus</span></a></li>
             <li><a href="{{Route('slider')}}"><i class="icon-font"></i><span class="hidden-tablet"> Slider</span></a></li>
-            <li><a href="{{Route('site.name')}}"><i class="icon-picture"></i><span class="hidden-tablet"> Site Name</span></a></li>
+            <li><a href="{{Route('test.dashboard')}}"><i class="icon-picture"></i><span class="hidden-tablet"> Test Dashboard</span></a></li>
             <li><a href="{{URL::to('/admin/login')}}"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
         </ul>
     </div>

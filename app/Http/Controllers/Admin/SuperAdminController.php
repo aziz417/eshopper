@@ -24,7 +24,7 @@ class SuperAdminController extends Controller
 
     public function logout(){
         Session::Flush();
-        return Redirect('/backend');
+        return Redirect('/admin/login');
     }
 
     public function AdminAuthCheck(){

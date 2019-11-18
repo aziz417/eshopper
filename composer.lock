@@ -4,8 +4,63 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a0a04c428cd30b5ee3311ae42bc6eb0b",
+    "content-hash": "b565771f66c9a96e82018e78a3b46650",
     "packages": [
+        {
+            "name": "bitfumes/laravel-multiauth",
+            "version": "v2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bitfumes/laravel-multiauth.git",
+                "reference": "eb79e9c6abc49cd3ae844beb26b1bbf0db46958c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bitfumes/laravel-multiauth/zipball/eb79e9c6abc49cd3ae844beb26b1bbf0db46958c",
+                "reference": "eb79e9c6abc49cd3ae844beb26b1bbf0db46958c",
+                "shasum": ""
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.9@dev",
+                "illuminate/support": "^5.8|^6.0",
+                "mockery/mockery": "^1.0@dev",
+                "orchestra/database": "^4.0",
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bitfumes\\Multiauth\\MultiauthServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bitfumes\\Multiauth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "s-sarthak",
+                    "email": "sarthak@bitfumes.com"
+                }
+            ],
+            "description": "Laravel Multiauth package",
+            "keywords": [
+                "Laravel multiauth",
+                "Multi Auth",
+                "admin auth",
+                "bitfumes",
+                "multiauth"
+            ],
+            "time": "2019-09-19T17:23:49+00:00"
+        },
         {
             "name": "bumbummen99/shoppingcart",
             "version": "2.8.4",

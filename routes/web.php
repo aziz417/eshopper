@@ -11,6 +11,9 @@
 |
 */
 //Frontend controller here ...........................................
+use Illuminate\Support\Facades\Route;
+Route::get('admin/test/dashborad','Admin\ExtraController@showDashboard')->name('test.dashboard');
+
 Route::get('/','frontend\HomeController@index')->name('/');
 Route::get('products/category/{id}','frontend\HomeController@productByCategory')->name('product.byCategory');
 Route::get('products/brand/{id}','frontend\HomeController@productByBrand')->name('product.byBrand');
@@ -47,11 +50,11 @@ Route::get('customer/logout','frontend\CustomerController@logout');
 
 //Admin controller here //////////////////////////////////////////
 Route::get('admin/logout','Admin\SuperAdminController@logout');
-Route::get('/backend','Admin\AdminController@index');
+Route::get('/admin/login','Admin\AdminController@index');
 Route::get('/dashboard','Admin\SuperAdminController@index');
 Route::post('/admin-dashboard','Admin\AdminController@dashboard');
 
-//order manage controll ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+//order manage controller ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Route::get('order/manage','Admin\OrderController@OrderManage')->name('/orderManage');
 Route::get('order/details/{orderId}','Admin\OrderController@OrderDetails')->name('order.details');
 

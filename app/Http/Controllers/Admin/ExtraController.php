@@ -104,4 +104,8 @@ class ExtraController extends Controller
             return Redirect::to('/backend')->send();
         }
     }
+
+    public function showDashboard(){
+        return view('admin.layouts.masters');
+    }
 }
