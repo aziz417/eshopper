@@ -119,7 +119,6 @@ Route::get('site.name/','Admin\ExtraController@SiteName')->name('site.name');
 
 
 
-
 /////multy auth all route list here......................................
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
