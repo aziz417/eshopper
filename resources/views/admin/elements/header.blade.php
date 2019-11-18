@@ -19,7 +19,7 @@
     <!-- end: Mobile Specific -->
 
     <!-- start: CSS -->
-    <link id="bootstrap-style" href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link id="bootstrap-style" href="{{asset('admincss')}}" rel="stylesheet">
     <link href="{{asset('admin/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
     <link id="base-style" href="{{asset('admin/css/style.css')}}" rel="stylesheet">
     <link id="base-style-responsive" href="{{asset('admin/css/style-responsive.css')}}" rel="stylesheet">

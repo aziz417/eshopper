@@ -13,7 +13,7 @@
 
 <script src="{{asset('admin/js/jquery-1.9.1.min.js')}}"></script>
 <script src="{{asset('admin/js/jquery-migrate-1.0.0.min.js')}}"></script>
-<script src="{{asset('admin/js/jquery-ui-1.10.0.custom.min.js')}}"></script>
+<script src="{{asset('admincss')}}"></script>
 <script src="{{asset('admin/js/jquery.ui.touch-punch.js')}}"></script>
 <script src="{{asset('admin/js/modernizr.js')}}"></script>
 <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
@@ -32,7 +32,7 @@
 <script src="{{asset('admin/js/jquery.elfinder.min.js')}}"></script>
 <script src="{{asset('admin/js/jquery.raty.min.js')}}"></script>
 <script src="{{asset('admin/js/jquery.iphone.toggle.js')}}"></script>
-<script src="{{asset('admin/js/jquery.uploadify-3.1.min.js')}}"></script>
+<script src="{{asset('admincss')}}"></script>
 <script src="{{asset('admin/js/jquery.gritter.min.js')}}"></script>
 <script src="{{asset('admin/js/jquery.imagesloaded.js')}}"></script>
 <script src="{{asset('admin/js/jquery.masonry.min.js')}}"></script>

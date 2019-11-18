@@ -14,7 +14,7 @@ class DashboardController extends Controller
 {
     public function index(){
         $this->AdminAuthCheck();
-        return view('admin/pages.dashboard');
+        return view('admincss/pages.dashboard');
     }
     public function AdminAuthCheck(){
         $admin_id = Session::get('admin_id');
