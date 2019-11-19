@@ -118,7 +118,6 @@ Route::get('site.name/','Admin\ExtraController@SiteName')->name('site.name');
 
 
 
-
 /////multy auth all route list here......................................
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -129,7 +128,7 @@ Route::GET('admin/home','AdminController@index');
 Route::GET('admin','Admin\Auth\LoginController@showLoginForm')->name('admin.login');
 Route::post('admin','Admin\Auth\LoginController@login');
 Route::post('admin-password/email','Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-Route::get('admin-password/reset','Admin\Auth\ForgotPasswordController@sendLinkRequestForm')->name('admin.password.request');
+Route::get('admin-password/reset','Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
 Route::post('admin-password/reset','Admin\Auth\ResetPasswordController@reset');
 Route::get('admin-password/reset/{token}','Admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
 
