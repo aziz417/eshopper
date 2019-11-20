@@ -52,11 +52,13 @@ class Handler extends ExceptionHandler
     }
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        $guard = $exception->getCode()[0];
+
+        $guard = $exception->guards()[0];
         switch ($guard) {
             case 'admin':
                 $redirect = route('admin.login');
                 break;
+
             default:
                 $redirect = route('login');
                 break;
