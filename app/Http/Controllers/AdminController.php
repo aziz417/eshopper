@@ -23,6 +23,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.auth.home');
+        return redirect(route('admin.dashboard'));
     }
 }

@@ -106,6 +106,6 @@ class ExtraController extends Controller
     }
 
     public function showDashboard(){
-        return view('admin.layouts.masters');
+        return view('admin.adminProfile.profile');
     }
 }

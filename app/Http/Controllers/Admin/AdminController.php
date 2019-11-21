@@ -4,23 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
-use Session;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\support\Facades\Redirect;
 session_start();
 
 
 class AdminController extends Controller
 {
-    public function index(){
-        if(Session::get('admin_in')){
-            return redirect::to('/dashboard');
-        }
-        return view('admin.login');
+    public function dashboard(){
+        return view('admin.adminProfile.profile');
     }
 
-    public function dashboard(Request $request){
+   /* public function dashboard(Request $request){
         $admin_email = $request->email;
         $admin_pass  = md5($request->password);
 
@@ -36,6 +33,6 @@ class AdminController extends Controller
             Session::put('massage','Email or Password Invaled');
             return Redirect::to('/backend');
         }
-    }
+    }*/
 
 }

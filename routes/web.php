@@ -13,7 +13,7 @@
 //Frontend controller here ...........................................
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-Route::get('admin/test/dashborad','Admin\ExtraController@showDashboard')->name('test.dashboard');
+Route::get('admin/test/dashboard','Admin\ExtraController@showDashboard')->name('test.dashboard');
 
 Route::get('/','frontend\HomeController@index')->name('/');
 Route::get('products/category/{id}','frontend\HomeController@productByCategory')->name('product.byCategory');
@@ -50,10 +50,28 @@ Route::get('customer/logout','frontend\CustomerController@logout');
 
 
 //Admin controller here //////////////////////////////////////////
-Route::get('admin/logout','Admin\SuperAdminController@logout');
+Route::get('admin/dashboard','Admin\AdminController@dashboard')->name('admin.dashboard');
+/////multi auth all route list here......................................
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+//Fs route /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::GET('admin/home','AdminController@index');
+Route::GET('admin','Admin\Auth\LoginController@showLoginForm')->name('admin.login');
+Route::post('admin','Admin\Auth\LoginController@login');
+Route::get('admin/logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
+
+Route::get('admin-password/reset','Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+Route::post('admin-password/email','Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+Route::get('admin-password/reset/{token}','Admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
+Route::post('admin-password/reset','Admin\Auth\ResetPasswordController@reset')->name('admin.password.update');
+
+
+
+/*Route::get('admin/logout','Admin\SuperAdminController@logout');
 Route::get('/admin/login','Admin\AdminController@index');
 Route::get('/dashboard','Admin\SuperAdminController@index');
-Route::post('/admin-dashboard','Admin\AdminController@dashboard');
+Route::post('/admin-dashboard','Admin\AdminController@dashboard');*/
 
 //order manage controller ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Route::get('order/manage','Admin\OrderController@OrderManage')->name('/orderManage');
@@ -114,22 +132,4 @@ Route::get('slider/status/active/{id}','Admin\ExtraController@StatusActive')->na
 
 
 Route::get('site.name/','Admin\ExtraController@SiteName')->name('site.name');
-
-
-
-
-/////multy auth all route list here......................................
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-//Fs route /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-Route::GET('admin/home','AdminController@index');
-Route::GET('admin','Admin\Auth\LoginController@showLoginForm')->name('admin.login');
-Route::post('admin','Admin\Auth\LoginController@login');
-
-Route::get('admin-password/reset','Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-Route::post('admin-password/email','Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-Route::get('admin-password/reset/{token}','Admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
-Route::post('admin-password/reset','Admin\Auth\ResetPasswordController@reset')->name('admin.password.update');
 

@@ -52,7 +52,6 @@ class Handler extends ExceptionHandler
     }
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-
         $guard = $exception->guards()[0];
         switch ($guard) {
             case 'admin':

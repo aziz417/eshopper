@@ -66,7 +66,7 @@
                             <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
                         </a>
                     <li>
-                        <a href="login.html">
+                        <a href="{{ route('admin.logout') }}">
                             <i class="fa fa-sign-out"></i> Log out
                         </a>
                     </li>
