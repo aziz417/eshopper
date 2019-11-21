@@ -1,0 +1,24 @@
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.color-success {
+    color: #18A689;
+}
+.color-danger {
+    color: #EC4758;
+}
+.cus_mini_icon {
+    font-size: 20px;
+    padding: 0px 3px;
+}
+.ibox-tools {
+    margin-top: 35px;
+}
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: none!important;
+}
+
+
+

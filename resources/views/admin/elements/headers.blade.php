@@ -8,6 +8,7 @@
     <link href="{{asset('backend/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('backend/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('backend/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/css/fsStyle.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -35,10 +36,10 @@
                     </div>
                 </li>
                 <li class="active">
-                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                    <a href="{{route('admin.dashboard')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                 </li>
                 <li>
-                    <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span>  </a>
+                    <a href="{{route('all.brands')}}"><i class="fa fa-pie-chart"></i> <span class="nav-label">Brands</span>  </a>
                 </li>
                 <li>
                     <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>

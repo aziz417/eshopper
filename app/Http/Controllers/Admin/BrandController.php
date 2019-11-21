@@ -20,7 +20,6 @@ class BrandController extends Controller
 
     public function BrandStore(Request $request)
     {
-        $this->AdminAuthCheck();
         $data = array();
         $data['Bname'] = $request->name;
         $data['Bdescription'] = $request->description;
@@ -32,7 +31,6 @@ class BrandController extends Controller
     }
 
     public function AllBrands(){
-        $this->AdminAuthCheck();
         $AllBrands = DB::table('tbl_brands')->get();
         return view('admin.brands.index',compact('AllBrands'));
     }
@@ -44,7 +42,6 @@ class BrandController extends Controller
     }
 
     public function BrandUpdate(Request $request){
-        $this->AdminAuthCheck();
         $data = array();
         $data['Bid']          = $request->id;
         $data['Bname']        = $request->name;
@@ -59,14 +56,12 @@ class BrandController extends Controller
     }
 
     public function BrandDelete($Bid){
-        $this->AdminAuthCheck();
         DB::table('tbl_brands')->where('Bid',$Bid)->delete();
         Session::put('massage','Brand Deleted Successfully');
         return Redirect::back();
     }
 
     public function StatusUnActive($Bid){
-        $this->AdminAuthCheck();
         DB::table('tbl_brands')->where('Bid',$Bid)
             ->update(['Bstatus' => NULL ]);
         Session::put('massage','Your Status Unactive');
@@ -74,19 +69,11 @@ class BrandController extends Controller
     }
 
     public function StatusActive($Bid){
-        $this->AdminAuthCheck();
         DB::table('tbl_brands')->where('Bid',$Bid)
             ->update(['Bstatus' => 1 ]);
         Session::put('massage','Your Status Active');
         return Redirect::back();
     }
 
-    public function AdminAuthCheck(){
-        $admin_id = Session::get('admin_id');
-        if($admin_id){
-            return;
-        }else{
-            return Redirect::to('/backend')->send();
-        }
-    }
+
 }
