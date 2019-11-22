@@ -20,7 +20,7 @@ class OrderController extends Controller
 
 
     public function OrderDetails($orderId){
-        /*$orderDetailsInfo = DB::table('tbl_order')
+       /* $orderDetailsInfo = DB::table('tbl_order')
             ->join('tbl_order_details','tbl_order.orderId','=','tbl_order_details.orderId')
             ->join('tbl_products','tbl_order_details.productId','=','tbl_products.product_id')
             ->join('tbl_category','tbl_products.category_id','=','tbl_category.Cid')
@@ -34,13 +34,12 @@ class OrderController extends Controller
             ->select('tbl_order.*','tbl_order_details.*','tbl_products.*','tbl_category.*','tbl_brands.*','tbl_shipping.*',
                 'tbl_payment.*','tbl_customers.*')
             ->get();*/
-        $orderDetailsInfo = DB::table('tbl_order')
+          $orderDetailsInfo = DB::table('tbl_order')
             ->join('tbl_customers','tbl_order.customerID','=','tbl_customers.id')
             ->join('tbl_order_details','tbl_order.orderId','=','tbl_order_details.orderId')
             ->join('tbl_shipping','tbl_order.shippingId','=','tbl_shipping.shippingId')
             ->select('tbl_order.*','tbl_shipping.*','tbl_order_details.*','tbl_customers.*')
             ->get();
-
 
         return view('admin.orderManage.orderManageDetails',compact('orderDetailsInfo'));
     }

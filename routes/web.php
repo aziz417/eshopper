@@ -74,7 +74,7 @@ Route::get('/dashboard','Admin\SuperAdminController@index');
 Route::post('/admin-dashboard','Admin\AdminController@dashboard');*/
 
 //order manage controller ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Route::get('order/manage','Admin\OrderController@OrderManage')->name('/orderManage');
+Route::get('order/manage','Admin\OrderController@OrderManage')->name('order.manage');
 Route::get('order/details/{orderId}','Admin\OrderController@OrderDetails')->name('order.details');
 
 
@@ -111,7 +111,6 @@ Route::post('product/update','Admin\ProductController@ProductUpdate')->name('pro
 Route::get('product/delete/{id}','Admin\ProductController@ProductDelete')->name('product.delete');
 Route::get('product/status/unactive/{id}','Admin\ProductController@StatusUnActive')->name('product.status.unactive');
 Route::get('product/status/active/{id}','Admin\ProductController@StatusActive')->name('product.status.active');
-Route::get('product/view/{id}','Admin\ProductController@ProductView')->name('product.view');
 
 
 ////Extra control here example slider,menus,site name

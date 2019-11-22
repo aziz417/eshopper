@@ -48,7 +48,10 @@
                     <a href="{{ route('all.products') }}"><i class="fa fa-flask"></i> <span class="nav-label">Products</span></a>
                 </li>
                 <li>
-                    <a href="grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>
+                    <a href="{{ Route('order.manage') }}"><i class="fa fa-laptop"></i> <span class="nav-label">Orders</span></a>
+                </li>
+                <li>
+                    <a href="{{ Route('slider') }}"><i class="fa fa-laptop"></i> <span class="nav-label">Sliders</span></a>
                 </li>
             </ul>
 

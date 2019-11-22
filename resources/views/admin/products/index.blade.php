@@ -75,8 +75,8 @@
                                             <td class="center">{{ $product->Pname }}</td>
                                             <td class="center">{{$product->Bname }}</td>
                                             <td class="center">{{ $product->Cname }}</td>
-                                            <td class="center"><img src="{{asset('images/products/'.$product->Pimage)}}" width="50" height="90"></td>
-                                            <td class="center">{{ $product->price }}</td>
+                                            <td class="center"><img src="{{asset('images/products/'.$product->Pimage)}}" width="50" height="60"></td>
+                                            <td class="center">{{ $product->price }} Tk</td>
                                             <td class="center">
                                                 @if($product->Pstatus == 1)
                                                     <a class=" " href="{{Route('product.status.unactive',$product->product_id)}}">

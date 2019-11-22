@@ -120,12 +120,4 @@ class ProductController extends Controller
         DB::table('tbl_products')->where('product_id',$id)->update($data);
         return Redirect::route('all.products')->with('massege', 'Product store successfully');
     }
-
-    public function ProductView($Pid){
-       $product =  DB::table('tbl_products')->where('product_id',$Pid)
-            ->join('tbl_category','tbl_products.category_id','=','tbl_category.Cid')
-            ->join('tbl_brands','tbl_products.brand_id','=','tbl_brands.Bid')
-            ->get();
-       return view('admin.products.view',compact('product'));
-    }
 }
