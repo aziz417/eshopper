@@ -41,7 +41,6 @@ class ExtraController extends Controller
     }
 
     public function StatusUnActive($Sid){
-        $this->AdminAuthCheck();
         DB::table('tbl_slider')->where('id',$Sid)
             ->update(['status' => NULL ]);
         Session::put('massage','Your Status Unactive');
@@ -49,7 +48,6 @@ class ExtraController extends Controller
     }
 
     public function StatusActive($Sid){
-        $this->AdminAuthCheck();
         DB::table('tbl_slider')->where('id',$Sid)
             ->update(['status' => 1 ]);
         Session::put('massage','Your Status Active');
@@ -68,7 +66,6 @@ class ExtraController extends Controller
     }
 
     public function SliderEdit($Sid){
-        $this->AdminAuthCheck();
         $sliderItem = DB::table('tbl_slider')->where('id',$Sid)->first();
         return view('admin.slider.edit',compact('sliderItem'));
     }
@@ -96,14 +93,6 @@ class ExtraController extends Controller
         return Redirect::route('slider')->with('massege', 'Product store successfully');
     }
 
-    public function AdminAuthCheck(){
-        $admin_id = Session::get('admin_id');
-        if($admin_id){
-            return;
-        }else{
-            return Redirect::to('/backend')->send();
-        }
-    }
 
     public function showDashboard(){
         return view('admin.adminProfile.profile');
