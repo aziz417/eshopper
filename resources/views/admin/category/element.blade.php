@@ -2,7 +2,7 @@
 <div class="form-group">
     <label class="col-lg-2 control-label">Name<span class="required-star"> *</span></label>
     <div class="col-lg-10">
-        <input value="{{isset($category->Bname) ? $category->Bname:''}}" id="slug-source" required="required" name="name" type="text" class="form-control">
+        <input value="{{isset($category->Cname) ? $category->Cname:''}}" id="slug-source" required="required" name="name" type="text" class="form-control">
     </div>
 </div>
 
