@@ -1,40 +1,29 @@
 
-<fieldset>
-    <span class="alert-success">
-        <?php
-            $massage = Session::get('massage');
-            if($massage){
-                echo $massage;
-                Session::forget('massage');
-            }
-        ?>
-        </span>
-    <div class="control-group">
-        <label class="control-label" for="typeahead">Name</label>
-        <div class="controls">
-            <input type="text" class="input-xlarge" name="name" value="{{isset($category->Cname) ? $category->Cname:''}}" id="date01" required >
-        </div>
+<div class="form-group">
+    <label class="col-lg-2 control-label">Name<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <input value="{{isset($category->Bname) ? $category->Bname:''}}" id="slug-source" required="required" name="name" type="text" class="form-control">
     </div>
-    <div class="control-group hidden-phone">
-        <label class="control-label" for="textarea2">Description</label>
-        <div class="controls">
-            <textarea class="input-xlarge" name="description" id="textarea2" rows="5" required>{{isset($category->Cdescription) ? $category->Cdescription:''}}</textarea>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="fileInput">Status</label>
-        <div class="controls">
-            @if(isset($category->Cstatus))
-                <input class="input-file uniform_on" id="fileInput" name="status" type="checkbox" checked value="{{isset($category->Cstatus) ? $category->Cstatus:''}}">
-            @else
-                <input class="input-file uniform_on" id="fileInput" name="status" type="checkbox" value="1">
-            @endif
+</div>
 
+<div class="form-group"><label class="col-lg-2 control-label">Description</label>
+    <div class="col-lg-10">
+        <textarea name="description" id="textarea2" class="form-control" rows="5">{{isset($category->Cdescription) ? $category->Cdescription:''}}</textarea>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-lg-10">
+        <div class="icheckbox_square-green">
+            <input type="hidden" name="id" value="{{isset($category->Cid) ? $category->Cid:''}}">
+            <label class="col-lg-1 control-label" for="status">Status</label>
+            @if(isset($category->Cstatus))
+                <input class="i-checks fs-check-box" id="fileInput" name="status" type="checkbox" checked value="{{isset($category->Cstatus) ? $category->Cstatus:''}} ">
+            @else
+                <input class="i-checks fs-check-box" id="fileInput" name="status" type="checkbox" value="1">
+            @endif
         </div>
     </div>
-    <input type="hidden" name="id" value="{{isset($category->Cid) ? $category->Cid:''}}">
-    <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Update</button>
-        <button type="reset" class="btn">Cancel</button>
-    </div>
-</fieldset>
+</div>
+
+

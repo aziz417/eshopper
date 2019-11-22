@@ -1,40 +1,3 @@
-{{--
-@extends('admin.layouts.master')
-@section('content')
-    <!-- start: Content -->
-        <ul class="breadcrumb">
-            <li>
-                <i class="icon-home"></i>
-                <a href="index.html">Home</a>
-                <i class="icon-angle-right"></i>
-            </li>
-            <li>
-                <i class="icon-edit"></i>
-                <a href="#">Forms</a>
-            </li>
-        </ul>
-
-        <div class="row-fluid sortable">
-            <div class="box span12">
-                <div class="box-header" data-original-title>
-                    <h2><i class="halflings-icon edit"></i><span class="break"></span>Category Add</h2>
-                    <div class="box-icon">
-                        <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-                        <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-                        <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
-                    </div>
-                </div>
-                <div class="box-content">
-                    <form class="form-horizontal" action="{{Route('admin.categories.store')}}" method="post">
-                        {{ csrf_field() }}
-                        @include('admin.category.element')
-                    </form>
-
-                </div>
-            </div><!--/span-->
-        </div>
-@endsection
---}}
 
 @extends('admin.layouts.master')
 @section('mainContent')
@@ -67,9 +30,9 @@
                     <h5>Create category</h5>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal" action="{{Route('admin.brands.store')}}" method="post">
+                    <form class="form-horizontal" action="{{ Route('categories.store') }}" method="post">
                         {{ csrf_field() }}
-                        @include('admin.category.elements')
+                        @include('admin.category.element')
                         <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">
                                 <a href="{{route('all.categories')}}" class="btn btn-sm btn-warning t m-t-n-xs"><strong>Cancel</strong></a>

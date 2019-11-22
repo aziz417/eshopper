@@ -84,7 +84,7 @@ Route::get('order/details/{orderId}','Admin\OrderController@OrderDetails')->name
 /// category
 Route::get('all/categories','Admin\CategoryController@AllCategories')->name('all.categories');
 Route::get('add/category','Admin\CategoryController@AddCategory')->name('add.category');
-Route::post('category/store','Admin\CategoryController@CategoryStore')->name('admin.categories.store');
+Route::post('category/store','Admin\CategoryController@CategoryStore')->name('categories.store');
 Route::get('category/edit/{id}','Admin\CategoryController@CategoryEdit')->name('category.edit');
 Route::post('category/update','Admin\CategoryController@CategoryUpdate')->name('category.update');
 Route::get('category/delete/{id}','Admin\CategoryController@CategoryDelete')->name('category.delete');

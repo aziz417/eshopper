@@ -36,7 +36,7 @@
                         <div class="col-lg-offset-2 col-lg-10">
                             <a href="{{route('all.brands')}}" class="btn btn-sm btn-warning t m-t-n-xs"><strong>Cancel</strong></a>
                             <button class="btn btn-sm btn-primary m-t-n-xs" type="submit">
-                                <strong>Submit</strong></button>
+                                <strong>Update</strong></button>
                         </div>
                     </div>
                     <br>

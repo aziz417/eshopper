@@ -27,7 +27,7 @@
             <div class="col-lg-12">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>Basic Data Tables example with responsive plugin</h5>
+                        <h5>All Categories</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -82,9 +82,9 @@
                                                 @endif
                                             </td>
                                             <td class="center">
-                                                <a title="Edit" href="{{Route('category.edit',$category->Cid)}}" class="cus_mini_icon color-success">
+                                                <a title="Edit" href="{{ Route('category.edit',$category->Cid) }}" class="cus_mini_icon color-success">
                                                     <i class="fa fa-pencil-square-o "></i></a>
-                                                <a title="Delete" href="{{Route('category.delete',$category->Cid)}}" data-toggle="modal" data-target="#myModal6" type="button" class="cus_mini_icon color-danger">
+                                                <a title="Delete" href="{{ Route('category.delete',$category->Cid) }}" data-toggle="modal" data-target="#myModal6" type="button" class="cus_mini_icon color-danger">
                                                     <i class="fa fa-trash "></i></a>
                                             </td>
                                         </tr>
