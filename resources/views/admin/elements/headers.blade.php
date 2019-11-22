@@ -36,13 +36,13 @@
                     </div>
                 </li>
                 <li class="active">
-                    <a href="{{route('admin.dashboard')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                    <a href="{{ route('admin.dashboard') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                 </li>
                 <li>
-                    <a href="{{route('all.brands')}}"><i class="fa fa-pie-chart"></i> <span class="nav-label">Brands</span>  </a>
+                    <a href="{{ route('all.brands') }}"><i class="fa fa-pie-chart"></i> <span class="nav-label">Brands</span>  </a>
                 </li>
                 <li>
-                    <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+                    <a href="{{ route('all.categories') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Categories</span></a>
                 </li>
                 <li>
                     <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span></a>
