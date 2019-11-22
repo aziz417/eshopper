@@ -19,6 +19,20 @@
 [type=reset], [type=submit], button, html [type=button] {
     -webkit-appearance: none!important;
 }
+.form-horizontal .form-group {
+    margin-right: 0;
+    margin-left: 0;
+}
+.control-label {
+    padding-top: 0px!important;
+}
+.required-star {
+    color: red;
+}
+.fs-check-box {
+    width: 30px;
+    height: 22px;
+}
 
 
 

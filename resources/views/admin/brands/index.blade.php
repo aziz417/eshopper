@@ -17,7 +17,7 @@
         </div>
         <div class="col-lg-2">
             <div class="ibox-tools">
-                <a href="http://glossybazar.com/demo/eshopper/admin/brands/create" class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit">
+                <a href="{{ route('add.brand') }}" class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit">
                 <i class="fa fa-plus"></i> <strong>Create</strong></a>
             </div>
         </div>
@@ -87,7 +87,6 @@
                                                         <i class="fa fa-pencil-square-o "></i></a>
                                                     <a title="Delete" href="{{Route('brand.delete',$brands->Bid)}}" data-toggle="modal" data-target="#myModal6" type="button" class="cus_mini_icon color-danger">
                                                         <i class="fa fa-trash "></i></a>
-
                                             </td>
                                         </tr>
                                     @endforeach

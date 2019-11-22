@@ -36,12 +36,12 @@ class BrandController extends Controller
     }
 
     public function BrandEdit($Bid){
-        $this->AdminAuthCheck();
         $brand = DB::table('tbl_brands')->where('Bid',$Bid)->first();
         return view('admin.brands.edit',compact('brand'));
     }
 
     public function BrandUpdate(Request $request){
+
         $data = array();
         $data['Bid']          = $request->id;
         $data['Bname']        = $request->name;

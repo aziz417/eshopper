@@ -91,18 +91,18 @@ Route::get('category/delete/{id}','Admin\CategoryController@CategoryDelete')->na
 Route::get('category/status/unactive/{id}','Admin\CategoryController@StatusUnActive')->name('category.status.unactive');
 Route::get('category/status/active/{id}','Admin\CategoryController@StatusActive')->name('category.status.active');
 
-/// brand
+///// brand
 Route::get('all/brands','Admin\BrandController@AllBrands')->name('all.brands');
 Route::get('add/brand','Admin\BrandController@AddBrand')->name('add.brand');
 Route::post('brand/store','Admin\BrandController@BrandStore')->name('admin.brands.store');
 Route::get('brand/edit/{id}','Admin\BrandController@BrandEdit')->name('brand.edit');
-Route::post('brand/update','Admin\BrandController@BrandUpdate')->name('brand.update');
+Route::post('brand/update','Admin\BrandController@BrandUpdate')->name('brand.updated');
 Route::get('brand/delete/{id}','Admin\BrandController@BrandDelete')->name('brand.delete');
 Route::get('brand/status/unactive/{id}','Admin\BrandController@StatusUnActive')->name('brand.status.unactive');
 Route::get('brand/status/active/{id}','Admin\BrandController@StatusActive')->name('brand.status.active');
 
 
-/// product
+///// product
 Route::get('all/products','Admin\ProductController@AllProducts')->name('all.products');
 Route::get('add/product','Admin\ProductController@AddProduct')->name('add.product');
 Route::post('product/store','Admin\ProductController@ProductStore')->name('product.store');
