@@ -1,44 +1,35 @@
 
-<fieldset>
-    <span class="alert-success">
-        <?php
-        $massage = Session::get('massage');
-        if($massage){
-            echo $massage;
-            Session::forget('massage');
-        }
-        ?>
-        </span>
-    <div class="control-group">
-        <label class="control-label" for="typeahead">Name</label>
-        <div class="controls">
-            <input type="text" class="input-xlarge" name="name" value="{{isset($sliderItem->name) ? $sliderItem->name:''}}" id="date01" >
-        </div>
+<div class="form-group">
+    <label class="col-lg-2 control-label">Name<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <input value="{{isset($sliderItem->name) ? $sliderItem->name:''}}" id="slug-source" required="required" name="name" type="text" class="form-control">
     </div>
-    <div class="control-group">
-        <label class="control-label" for="fileInput">Image</label>
-        <div class="controls">
-            <input name="oldImage" value="{{isset($sliderItem->image) ? $sliderItem->image:''}}" type="hidden">
-            <input  class="input-file uniform_on" id="fileInput" required name="image" type="file"><br><br>
-            @if(!empty($sliderItem->image))
-                <img src="{{asset('images/products/'.$sliderItem->image)}}" width="230">
-            @endif
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="fileInput">Status</label>
-        <div class="controls">
-            @if(isset($sliderItem->status))
-                <input class="input-file uniform_on" id="fileInput" name="status" type="checkbox" checked value="{{isset($sliderItem->Cstatus) ? $sliderItem->Cstatus:''}}">
-            @else
-                <input class="input-file uniform_on" id="fileInput" name="status" type="checkbox" value="1">
-            @endif
+</div>
 
+<div class="form-group">
+    <label class="col-lg-2 control-label">Image<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <input name="oldImage" value="{{isset($sliderItem->image) ? $sliderItem->image:''}}" type="hidden">
+        <input  class="input-file uniform_on" id="fileInput" required name="image" type="file"><br><br>
+        @if(!empty($sliderItem->image))
+            <img src="{{asset('images/products/'.$sliderItem->image)}}" width="230">
+        @endif
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-lg-10">
+        <div class="icheckbox_square-green">
+            <input type="hidden" name="id" value="{{isset($sliderItem->status) ? $sliderItem->status:''}}">
+            <label class="col-lg-1 control-label" for="status">Status</label>
+            @if(isset($sliderItem->status))
+                <input class="i-checks fs-check-box" id="fileInput" name="status" type="checkbox" checked value="{{isset($sliderItem->status) ? $sliderItem->status:''}} ">
+            @else
+                <input class="i-checks" id="fileInput" name="status" type="checkbox" value="1">
+            @endif
         </div>
     </div>
-    <input type="hidden" name="sliderId" value="{{isset($sliderItem->id) ? $sliderItem->id:''}}">
-    <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Update</button>
-        <button type="reset" class="btn">Cancel</button>
-    </div>
-</fieldset>
+</div>
+
+
+
