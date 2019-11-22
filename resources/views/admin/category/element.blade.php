@@ -20,7 +20,7 @@
             @if(isset($category->Cstatus))
                 <input class="i-checks fs-check-box" id="fileInput" name="status" type="checkbox" checked value="{{isset($category->Cstatus) ? $category->Cstatus:''}} ">
             @else
-                <input class="i-checks fs-check-box" id="fileInput" name="status" type="checkbox" value="1">
+                <input class="i-checks" id="fileInput" name="status" type="checkbox" value="1">
             @endif
         </div>
     </div>

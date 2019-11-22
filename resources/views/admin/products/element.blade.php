@@ -1,107 +1,109 @@
-<fieldset>
-        <div class="control-group">
-            <label class="control-label" for="date01">Product Name</label>
-            <div class="controls">
-                <input type="text"  required class="input-xlarge" value="{{isset($data['product']->Pname) ? $data['product']->Pname:''}}"  name="name">
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="date01">Categories</label>
-            <div class="controls">
-                <select required name="category_id">
-                    <option selected>Select Category</option>
-                    <?php
-                        if(isset($data)){
-                        foreach ( $data['category'] as $category ){
-                        ?>
-                        <option
-                            <?php
-                            if(isset($data['product']->category_id)){
-                                if($category->Cid == $data['product']->category_id){
-                                    echo "selected";
-                                }
-                            }
-                            ?>
 
-                            value="{{$category->Cid}}">{{$category->Cname}}</option>
-                        <?php  }}?>
-                </select>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="date01">Brands</label>
-            <div class="controls">
-                <select required name="brand_id">
-                    <option selected>Select Brand</option>
-                    <?php
-                        if(isset($data)){
-                        foreach ( $data['brands'] as $brand ){
-                        ?>
-                        <option
+<div class="form-group">
+    <label class="col-lg-2 control-label">Name<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <input value="{{isset($data['product']->Pname) ? $data['product']->Pname:''}}" id="slug-source" required="required" name="name" type="text" class="form-control">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-2 control-label">Categories<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <select  class="form-control" required name="category_id">
+            <option selected>Select Category</option>
+            <?php
+            if(isset($data)){
+            foreach ( $data['category'] as $category ){
+            ?>
+            <option
+                <?php
+                if(isset($data['product']->category_id)){
+                    if($category->Cid == $data['product']->category_id){
+                        echo "selected";
+                    }
+                }
+                ?>
 
-                            <?php
-                                if(isset($data['product']->brand_id)){
-                                    if($brand->Bid == $data['product']->brand_id){
-                                        echo "selected";
-                                    }
-                                 }
-                            ?>
+                value="{{$category->Cid}}">{{$category->Cname}}</option>
+            <?php  }}?>
+        </select>
+    </div>
+</div>
 
-                            value="{{$brand->Bid}}">{{$brand->Bname}}</option>
+<div class="form-group">
+    <label class="col-lg-2 control-label">Brands<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <select class="form-control" required name="brand_id">
+            <option selected>Select Brand</option>
+            <?php
+            if(isset($data)){
+            foreach ( $data['brands'] as $brand ){
+            ?>
+            <option
+                <?php
+                if(isset($data['product']->brand_id)){
+                    if($brand->Bid == $data['product']->brand_id){
+                        echo "selected";
+                    }
+                }
+                ?>
+                value="{{$brand->Bid}}">{{$brand->Bname}}</option>
+            <?php  }}?>
+        </select>
+    </div>
+</div>
 
-                    <?php  }}?>
-                </select>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="fileInput">Image</label>
-            <div class="controls">
-                <input  class="input-file uniform_on" id="fileInput" name="image" type="file"><br><br>
-                @if(!empty($data['product']->Pimage))
-                <img src="{{asset('images/products/'.$data['product']->Pimage)}}" width="150" height="300">
-                @endif
-            </div>
-        </div>
-        <div class="control-group hidden-phone">
-            <label class="control-label"  for="textarea2">Description</label>
-            <div class="controls">
-                <textarea required id="textarea2" name="description" rows="3">{{isset($data['product']->Pdescription) ? $data['product']->Pdescription:''}}</textarea>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="date01">Price</label>
-            <div class="controls">
-                <input required type="text" class="input-xlarge" value="{{isset($data['product']->price) ? $data['product']->price:''}}" name="price">
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="date01">Size</label>
-            <div class="controls">
-                <input required type="text" class="input-xlarge" value="{{isset($data['product']->Psize) ? $data['product']->Psize:''}}"  name="size">
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="date01">Color</label>
-            <div class="controls">
-                <input required type="text" class="input-xlarge" value="{{isset($data['product']->Pcolor) ? $data['product']->Pcolor:''}}" name="color">
-                <input type="hidden" value="{{isset($data['product']->Pimage) ? $data['product']->Pimage:''}}" name="oldImage">
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="date01">Status</label>
-            <div class="controls">
-                @if(isset($data['product']->Pstatus))
-                    <input  class="input-file uniform_on" id="fileInput" name="status" type="checkbox" checked value="{{isset($data['product']->Pstatus) ? $data['product']->Pstatus:''}}">
-                @else
-                    <input  class="input-file uniform_on" id="fileInput" name="status" type="checkbox" value="1">
-                @endif
-            </div>
-        </div>
-        <input type="hidden" name="product_id" value="{{isset($data['product']->product_id) ? $data['product']->product_id:''}}">
+<div class="form-group"><label class="col-lg-2 control-label">Image</label>
+    <div class="col-lg-10">
+        <input  class="form-control" id="fileInput" name="image" type="file"><br><br>
+        @if(!empty($data['product']->Pimage))
+            <img src="{{asset('images/products/'.$data['product']->Pimage)}}" width="150" height="300">
+        @endif
+    </div>
+</div>
 
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Update</button>
-            <button type="reset" class="btn">Cancel</button>
+<div class="form-group"><label class="col-lg-2 control-label">Description</label>
+    <div class="col-lg-10">
+        <textarea name="description" id="textarea2" class="form-control" rows="5">{{isset($data['product']->Pdescription) ? $data['product']->Pdescription:''}}</textarea>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-lg-2 control-label">Price<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <input value="{{isset($data['product']->price) ? $data['product']->price:''}}" id="slug-source" required="required" name="price" type="text" class="form-control">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-lg-2 control-label" for="date01">Size<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <input required type="text" class="form-control" value="{{isset($data['product']->Psize) ? $data['product']->Psize:''}}"  name="size">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-lg-2 control-label" for="date01">Color<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <input required type="text" class="form-control" value="{{isset($data['product']->Pcolor) ? $data['product']->Pcolor:''}}"  name="color">
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-lg-10">
+        <div class="icheckbox_square-green">
+            <input type="hidden" name="product_id" value="{{isset($data['product']->product_id) ? $data['product']->product_id:''}}">
+            <label class="col-lg-1 control-label" for="status">Status</label>
+            @if(isset($data['product']->Pstatus))
+                <input class="i-checks fs-check-box" id="fileInput" name="status" type="checkbox" checked value="{{isset($data['product']->Pstatus) ? $data['product']->Pstatus:''}} ">
+            @else
+                <input class="i-checks" id="fileInput" name="status" type="checkbox" value="1">
+            @endif
         </div>
-    </fieldset>
+    </div>
+</div>
+
+
+
+
 

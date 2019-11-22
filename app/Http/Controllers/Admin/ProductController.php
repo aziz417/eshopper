@@ -32,8 +32,10 @@ class ProductController extends Controller
     public function ProductStore(Request $request){
 
         $image = $request->file('image');
+
         if ($image){
             $real_image = $image;
+
             $imgNameWithExtention = "Fictionsoft".rand().'.'.$image->getClientOriginalExtension();
             Image::make($real_image)->resize(400,450)
                 ->save( base_path('public/images/products/'.$imgNameWithExtention),'100');
@@ -49,7 +51,8 @@ class ProductController extends Controller
         $data['Psize'] = $request->size;
         $data['Pcolor'] = $request->color;
         $data['Pstatus'] = $request->status;
-        $data = DB::table('tbl_products')->insert($data);
+
+         DB::table('tbl_products')->insert($data);
         return back()->with('massege', 'Product store successfully');
     }
 
@@ -113,6 +116,7 @@ class ProductController extends Controller
                 ->save( base_path('public/images/products/'.$imgNameWithExtention),'100');
             $data['Pimage'] = $imgNameWithExtention;
         }
+
         DB::table('tbl_products')->where('product_id',$id)->update($data);
         return Redirect::route('all.products')->with('massege', 'Product store successfully');
     }
