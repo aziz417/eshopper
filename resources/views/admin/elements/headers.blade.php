@@ -45,7 +45,7 @@
                     <a href="{{ route('all.categories') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Categories</span></a>
                 </li>
                 <li>
-                    <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span></a>
+                    <a href="{{ route('all.products') }}"><i class="fa fa-flask"></i> <span class="nav-label">Products</span></a>
                 </li>
                 <li>
                     <a href="grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>

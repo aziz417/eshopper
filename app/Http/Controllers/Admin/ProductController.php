@@ -15,7 +15,6 @@ session_start();
 class ProductController extends Controller
 {
     public function AllProducts(){
-        $this->AdminAuthCheck();
         $AllProducts = DB::table('tbl_products')
             ->join('tbl_category','tbl_products.category_id', '=', 'tbl_category.Cid')
             ->join('tbl_brands','tbl_products.brand_id', '=', 'tbl_brands.Bid')
@@ -24,7 +23,6 @@ class ProductController extends Controller
     }
 
     public function AddProduct(){
-        $this->AdminAuthCheck();
         $data = array();
         $data['category'] = DB::table('tbl_category')->where('Cstatus',1)->get();
         $data['brands'] = DB::table('tbl_brands')->where('Bstatus',1)->get();
@@ -56,7 +54,6 @@ class ProductController extends Controller
     }
 
     public function StatusUnActive($Pid){
-        $this->AdminAuthCheck();
         DB::table('tbl_products')->where('product_id',$Pid)
             ->update(['Pstatus' => NULL ]);
         Session::put('massage','Your Status Unactive');
@@ -64,7 +61,6 @@ class ProductController extends Controller
     }
 
     public function StatusActive($Pid){
-        $this->AdminAuthCheck();
         DB::table('tbl_products')->where('product_id',$Pid)
             ->update(['Pstatus' => 1 ]);
         Session::put('massage','Your Status Active');
@@ -83,7 +79,6 @@ class ProductController extends Controller
     }
 
     public function ProductEdit($Pid){
-        $this->AdminAuthCheck();
         $data = array();
         $data['category'] = DB::table('tbl_category')->where('Cstatus',1)->get();
         $data['brands'] = DB::table('tbl_brands')->where('Bstatus',1)->get();
@@ -123,21 +118,10 @@ class ProductController extends Controller
     }
 
     public function ProductView($Pid){
-        $this->AdminAuthCheck();
        $product =  DB::table('tbl_products')->where('product_id',$Pid)
             ->join('tbl_category','tbl_products.category_id','=','tbl_category.Cid')
             ->join('tbl_brands','tbl_products.brand_id','=','tbl_brands.Bid')
             ->get();
        return view('admin.products.view',compact('product'));
     }
-
-    public function AdminAuthCheck(){
-    $admin_id = Session::get('admin_id');
-    if($admin_id){
-        return;
-    }else{
-        return Redirect::to('/backend')->send();
-    }
-}
-
 }
