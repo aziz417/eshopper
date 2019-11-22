@@ -83,10 +83,10 @@
                                                 @endif
                                             </td>
                                             <td class="center">
-                                                    <a title="Edit" href="{{Route('brand.edit',$brands->Bid)}}" class="cus_mini_icon color-success">
-                                                        <i class="fa fa-pencil-square-o "></i></a>
-                                                    <a title="Delete" href="{{Route('brand.delete',$brands->Bid)}}" data-toggle="modal" data-target="#myModal6" type="button" class="cus_mini_icon color-danger">
-                                                        <i class="fa fa-trash "></i></a>
+                                                <a title="Edit" href="{{Route('brand.edit',$brands->Bid)}}" class="cus_mini_icon color-success">
+                                                    <i class="fa fa-pencil-square-o "></i></a>
+                                                <a title="Delete" href="{{Route('brand.delete',$brands->Bid)}}" data-toggle="modal" data-target="#myModal6" type="button" class="cus_mini_icon color-danger">
+                                                    <i class="fa fa-trash "></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
