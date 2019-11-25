@@ -27,6 +27,13 @@ Route::get('show/card','frontend\CartController@CartIndex')->name('cart.index');
 Route::get('cart/delete/{rowId}','frontend\CartController@CartDeleteSingle')->name('cart.delete.single');
 Route::post('cart/update','frontend\CartController@CartUpdate')->name('cart.update');
 
+//wishlist controller here ///////////////////////////////////////////////////////
+Route::get('show/wishlist','frontend\WishlistController@index')->name('show.wishlist');
+Route::get('add/wishlist/{Pid}','frontend\WishlistController@addWishlist')->name('add.wishlist');
+Route::get('move/ToWishList/{Pid}','frontend\WishlistController@moveToWishList')->name('move.ToWishList');
+
+
+
 ////checkout controller here /.........................////////////////////////.
 Route::get('/checkLoginShipping','frontend\CheckoutController@checkLoginShipping');
 

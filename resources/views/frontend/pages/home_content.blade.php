@@ -22,7 +22,7 @@
                 </div>
                 <div class="choose">
                     <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        <li><a href="{{ route('add.wishlist',$product->product_id) }}"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
                         <li><a href="{{route('product.details',$product->product_id)}}"><i class="fa fa-plus-square"></i>Details</a></li>
                     </ul>
                 </div>

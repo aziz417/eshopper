@@ -25,7 +25,7 @@
                 </div>
                 <div class="ibox-content">
                     <form class="form-horizontal" action="{{ Route('slider.update') }}" method="post" enctype="multipart/form-data">
-                        @csrf
+                        {{ csrf_field() }}
                         @include('admin.slider.element')
                         <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">

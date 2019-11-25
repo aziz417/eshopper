@@ -35,7 +35,7 @@
                         @include('admin.slider.element')
                         <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">
-                                <a href="{{route('all.categories')}}" class="btn btn-sm btn-warning t m-t-n-xs"><strong>Cancel</strong></a>
+                                <a href="{{ route('slider') }}" class="btn btn-sm btn-warning t m-t-n-xs"><strong>Cancel</strong></a>
                                 <button class="btn btn-sm btn-primary m-t-n-xs" type="submit">
                                     <strong>Submit</strong></button>
                             </div>

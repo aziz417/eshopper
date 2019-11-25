@@ -8,12 +8,13 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use DB;
 
 
+
 class CartController extends Controller
 {
     public function addToCart(Request $request,$Pid){
         $product = DB::table('tbl_products')->where('product_id',$Pid)->first();
         $data['qty'] = $request->quantity;
-        $data['id'] = $request->product_id;
+        $data['id'] = $Pid;
         $data['name'] =$product->Pname;
         $data['weight'] =0;
         $data['price'] =$product->price;
@@ -23,8 +24,8 @@ class CartController extends Controller
     }
 
     public function CartIndex(){
-        $category = DB::table('tbl_category')->where('Cstatus',1)->get();
-        return view('frontend.pages.cartIndex',compact('category'));
+        //$category = DB::table('tbl_category')->where('Cstatus',1)->get();
+        return view('frontend.pages.cartIndex'/*,compact('category')*/);
     }
 
     public function CartDeleteSingle($rowId){

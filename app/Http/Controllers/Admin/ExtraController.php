@@ -80,15 +80,20 @@ class ExtraController extends Controller
         $oldImage = $request->oldImage;
         if($newImage){
             if ($oldImage != ''){
+
                 file_exists('images/products/'.$oldImage);
                 unlink('images/products/'.$oldImage);
+
             }
+
             $real_image = $newImage;
             $imgNameWithExtention = "Fictionsoft".rand().'.'.$newImage->getClientOriginalExtension();
             Image::make($real_image)->resize(400,450)
                 ->save( base_path('public/images/products/'.$imgNameWithExtention),'100');
             $data['image'] = $imgNameWithExtention;
+
         }
+
         DB::table('tbl_slider')->where('id',$Sid)->update($data);
         return Redirect::route('slider')->with('massege', 'Product store successfully');
     }

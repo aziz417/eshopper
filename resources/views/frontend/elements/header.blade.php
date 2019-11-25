@@ -87,8 +87,8 @@
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-                            <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                            <li><a href="{{url::to('shipping/check')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                            <li><a href="{{ route('show.wishlist') }}"><i class="fa fa-star"></i> Wishlist</a></li>
+                            <li><a href="{{ url::to('shipping/check') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="{{route('cart.index')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <?php
                             $customerId = Session::get('customerId');
