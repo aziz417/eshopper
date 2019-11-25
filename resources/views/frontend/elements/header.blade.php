@@ -13,6 +13,9 @@
     <link href="{{asset('frontend/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/css/main.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/css/responsive.css')}}" rel="stylesheet">
+
+  {{--  fs Style --}}
+    <link href="{{asset('frontend/css/fsStyle.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -87,9 +90,17 @@
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-                            <li><a href="{{ route('show.wishlist') }}"><i class="fa fa-star"></i> Wishlist</a></li>
+                            <li>
+                                 <a  href="{{ route('show.wishlist') }}"><i class="fa fa-star"></i> Wishlist
+                                     <?php $count = Cart::instance('wishlist')->count();
+                                     if($count > 0 ){?><span  class="counter">{{ $count }}</span><?php }?>
+                                 </a>
+                            </li>
                             <li><a href="{{ url::to('shipping/check') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="{{route('cart.index')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="{{route('cart.index')}}"><i class="fa fa-shopping-cart"></i> Cart
+                                    <?php $count = Cart::count();
+                                    if($count > 0 ){?><span  class="counter">{{ $count }}</span><?php }?>
+                                </a></li>
                             <?php
                             $customerId = Session::get('customerId');
                             if($customerId != NULL){
