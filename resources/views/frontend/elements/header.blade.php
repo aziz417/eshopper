@@ -60,7 +60,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+                        <a href="index.html"><img src="{{url('frontend/images/home/logo.png')}}" alt="" /></a>
                     </div>
                     <div class="btn-group pull-right">
                         <div class="btn-group">
@@ -91,7 +91,7 @@
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                             <li>
-                                 <a  href="{{ route('show.wishlist') }}"><i class="fa fa-star"></i> Wishlist
+                                <a  href="{{ route('show.wishlist') }}"><i class="fa fa-star"></i> Wishlist
                                      <?php $count = Cart::instance('wishlist')->count();
                                      if($count > 0 ){?><span  class="counter">{{ $count }}</span><?php }?>
                                  </a>
