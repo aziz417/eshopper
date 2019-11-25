@@ -23,9 +23,10 @@ class WishlistController extends Controller
         $data['options']['Pimage'] = $product->Pimage;
         Cart::instance('wishlist')->add($data);
 
-       // dd(Cart::instance('wishlist')->content());
         return redirect(route('show.wishlist'));
     }
+
+
 
     public function moveToWishList($productId){
         $product = DB::table('tbl_products')->where('product_id',$productId)->first();
