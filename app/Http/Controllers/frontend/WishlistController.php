@@ -26,7 +26,10 @@ class WishlistController extends Controller
         return redirect(route('show.wishlist'));
     }
 
-
+    public function WishListDeleteSingle($rowId){
+        Cart::instance('wishlist')->update($rowId,0);
+        return redirect(route('show.wishlist'));
+    }
 
     public function moveToWishList($productId){
         $product = DB::table('tbl_products')->where('product_id',$productId)->first();

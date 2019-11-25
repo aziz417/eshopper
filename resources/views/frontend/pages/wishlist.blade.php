@@ -26,17 +26,19 @@
                             <a href=""><img src="{{asset('images/products/'.$data->options->Pimage)}}" alt="" width="70" height="100"></a>
                         </td>
                         <td class="cart_description">
-                            <h4><a href="">{{$data->name}}</a></h4>
+                            <h4>{{$data->name}}</h4>
                         </td>
-                        <td class="cart_price">
-                            <p>{{$data->price}}</p>
+                        <td class="cart_description">
+                            <h4>{{$data->price}}</h4>
                         </td>
 
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href="{{ route('cart.delete.single',$data->rowId) }}"><i class="fa fa-times"></i></a>
+                        <td class="cart_delete cart_description">
+                            <a class="cart_quantity_delete" href="{{ route('wishList.delete.single',$data->rowId) }}"><i class="fa fa-times"></i></a>
                         </td>
-                        <td class="cart_delete">
-                            <a href="{{ route('move.ToWishList',$data->id) }}" class="btn btn-fefault cart"><i class="fa fa-shopping-cart"></i>Move to cart</a>
+                        <td class="">
+                            <a href="{{ route('move.ToWishList',$data->id) }}">
+                                <button class="btn btn-fefault cart">Move to cart</button>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

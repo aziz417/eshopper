@@ -31,6 +31,7 @@ Route::post('cart/update','frontend\CartController@CartUpdate')->name('cart.upda
 Route::get('show/wishlist','frontend\WishlistController@index')->name('show.wishlist');
 Route::get('add/wishlist/{Pid}','frontend\WishlistController@addWishlist')->name('add.wishlist');
 Route::get('move/ToWishList/{Pid}','frontend\WishlistController@moveToWishList')->name('move.ToWishList');
+Route::get('wishList/delete/{rowId}','frontend\WishlistController@WishListDeleteSingle')->name('wishList.delete.single');
 
 
 
