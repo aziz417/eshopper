@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Redirect;
 
+
 class CategoryController extends Controller
 {
     /**
@@ -72,7 +73,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = DB::table('tbl_category')->where('Cid',$id)->first();
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
@@ -84,7 +86,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = array();
+        $data['Cid']          = $request->id;
+        $data['Cname']        = $request->name;
+        $data['Cdescription'] = $request->description;
+        $data['Cstatus']      = $request->status;
+
+        DB::table('tbl_category')->where('Cid',$id)->update($data);
+
+        return Redirect::route('category.index');
     }
 
     /**
@@ -97,6 +107,20 @@ class CategoryController extends Controller
     {
         DB::table('tbl_category')->where('Cid',$id)->delete();
         Session::put('massage','Category Deleted Successfully');
+        return Redirect::back();
+    }
+
+    public function StatusUnActive($Cid){
+        DB::table('tbl_category')->where('Cid',$Cid)
+            ->update(['Cstatus' => NULL ]);
+        Session::put('massage','Your status change');
+        return Redirect::back();
+    }
+
+    public function StatusActive($Cid){
+        DB::table('tbl_category')->where('Cid',$Cid)
+            ->update(['Cstatus' => 1 ]);
+        Session::put('massage','Your status change');
         return Redirect::back();
     }
 }
