@@ -84,13 +84,9 @@ Route::get('order/details/{orderId}','Admin\OrderController@OrderDetails')->name
 
 //// categories, brands, products, controller here/////////////////////////////////////////
 
-/// category
-Route::get('all/categories','Admin\CategoryController@AllCategories')->name('all.categories');
-Route::get('add/category','Admin\CategoryController@AddCategory')->name('add.category');
-Route::post('category/store','Admin\CategoryController@CategoryStore')->name('categories.store');
-Route::get('category/edit/{id}','Admin\CategoryController@CategoryEdit')->name('category.edit');
-Route::post('category/update','Admin\CategoryController@CategoryUpdate')->name('category.update');
-Route::get('category/delete/{id}','Admin\CategoryController@CategoryDelete')->name('category.delete');
+/// category route resource here
+Route::resource('category','Admin\CategoryController');
+//category status here
 Route::get('category/status/unactive/{id}','Admin\CategoryController@StatusUnActive')->name('category.status.unactive');
 Route::get('category/status/active/{id}','Admin\CategoryController@StatusActive')->name('category.status.active');
 
@@ -134,5 +130,5 @@ Route::get('slider/status/active/{id}','Admin\ExtraController@StatusActive')->na
 
 
 Route::get('site.name/','Admin\ExtraController@SiteName')->name('site.name');
-Route::resource('category','Admin\CategoryController');
+
 

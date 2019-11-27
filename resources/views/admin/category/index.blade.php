@@ -82,10 +82,22 @@
                                                 @endif
                                             </td>
                                             <td class="center">
-                                                <a title="Edit" href="{{ Route('category.edit',$category->Cid) }}" class="cus_mini_icon color-success">
-                                                    <i class="fa fa-pencil-square-o "></i></a>
-                                                <a title="Delete" href="{{ Route('category.delete',$category->Cid) }}" data-toggle="modal" data-target="#myModal6" type="button" class="cus_mini_icon color-danger">
-                                                    <i class="fa fa-trash "></i></a>
+                                                <div class="fsEdit">
+                                                    <a title="Edit" href="{{ Route('category.edit',$category->Cid) }}" class="cus_mini_icon color-success">
+                                                        <i class="fa fa-pencil-square-o "></i></a>
+
+                                                </div>
+                                                <div class="fsDelete">
+                                                    <form action="{{ route('category.destroy',$category->Cid) }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="cus_mini_icon color-danger fsDltButton"><i class="fa fa-trash "></i></button>
+                                                    </form>
+                                                </div>
+
+
+
+
                                             </td>
                                         </tr>
                                     @endforeach
