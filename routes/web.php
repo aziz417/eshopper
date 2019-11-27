@@ -76,11 +76,6 @@ Route::post('admin-password/reset','Admin\Auth\ResetPasswordController@reset')->
 
 
 
-/*Route::get('admin/logout','Admin\SuperAdminController@logout');
-Route::get('/admin/login','Admin\AdminController@index');
-Route::get('/dashboard','Admin\SuperAdminController@index');
-Route::post('/admin-dashboard','Admin\AdminController@dashboard');*/
-
 //order manage controller ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Route::get('order/manage','Admin\OrderController@OrderManage')->name('order.manage');
 Route::get('order/details/{orderId}','Admin\OrderController@OrderDetails')->name('order.details');
@@ -139,4 +134,5 @@ Route::get('slider/status/active/{id}','Admin\ExtraController@StatusActive')->na
 
 
 Route::get('site.name/','Admin\ExtraController@SiteName')->name('site.name');
+Route::resource('category','Admin\CategoryController');
 

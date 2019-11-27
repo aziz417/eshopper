@@ -42,7 +42,7 @@
                     <a href="{{ route('all.brands') }}"><i class="fa fa-pie-chart"></i> <span class="nav-label">Brands</span>  </a>
                 </li>
                 <li>
-                    <a href="{{ route('all.categories') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Categories</span></a>
+                    <a href="{{ route('category.index') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Categories</span></a>
                 </li>
                 <li>
                     <a href="{{ route('all.products') }}"><i class="fa fa-flask"></i> <span class="nav-label">Products</span></a>
