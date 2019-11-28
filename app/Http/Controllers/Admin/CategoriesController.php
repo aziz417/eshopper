@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
 session_start();
+use DB;
 
-
-class CategoryController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $AllCategory = DB::table('tbl_category')->get();
+        $AllCategory = DB::table('categories')->get();
         return view('admin.category.index',compact('AllCategory'));
     }
 
@@ -41,7 +41,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = array();
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+        ]);
+
+
+        $category = new Category;
+        $category->Cname        = $request->name;
+        $category->Cdescription = $request->description;
+        $category->Cstatus      = $request->status;
+
+        $category->save();
+        return redirect(route('category.index'));
+
+
+        /*$data = array();
         $data['Cname'] = $request->name;
         $data['Cdescription'] = $request->description;
         $data['Cstatus'] = $request->status;
@@ -53,7 +68,7 @@ class CategoryController extends Controller
         }else{
             Session::put('massage','Category Store Unsuccessfully');
             return Redirect()->back();
-        }
+        }*/
     }
 
     /**
@@ -75,7 +90,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = DB::table('tbl_category')->where('Cid',$id)->first();
+        $category = DB::table('categories')->where('Cid',$id)->first();
         return view('admin.category.edit',compact('category'));
     }
 
@@ -94,7 +109,7 @@ class CategoryController extends Controller
         $data['Cdescription'] = $request->description;
         $data['Cstatus']      = $request->status;
 
-        DB::table('tbl_category')->where('Cid',$id)->update($data);
+        DB::table('categories')->where('Cid',$id)->update($data);
 
         return Redirect::route('category.index');
     }
@@ -107,20 +122,20 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('tbl_category')->where('Cid',$id)->delete();
+        DB::table('categories')->where('Cid',$id)->delete();
         Session::put('massage','Category Deleted Successfully');
         return Redirect::back();
     }
 
     public function StatusUnActive($Cid){
-        DB::table('tbl_category')->where('Cid',$Cid)
+        DB::table('categories')->where('Cid',$Cid)
             ->update(['Cstatus' => NULL ]);
         Session::put('massage','Your status change');
         return Redirect::back();
     }
 
     public function StatusActive($Cid){
-        DB::table('tbl_category')->where('Cid',$Cid)
+        DB::table('categories')->where('Cid',$Cid)
             ->update(['Cstatus' => 1 ]);
         Session::put('massage','Your status change');
         return Redirect::back();

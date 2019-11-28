@@ -85,10 +85,10 @@ Route::get('order/details/{orderId}','Admin\OrderController@OrderDetails')->name
 //// categories, brands, products, controller here/////////////////////////////////////////
 
 /// category route resource here
-Route::resource('category','Admin\CategoryController');
+Route::resource('category','Admin\CategoriesController');
 //category status here
-Route::get('category/status/unactive/{id}','Admin\CategoryController@StatusUnActive')->name('category.status.unactive');
-Route::get('category/status/active/{id}','Admin\CategoryController@StatusActive')->name('category.status.active');
+Route::get('category/status/unactive/{id}','Admin\CategoriesController@StatusUnActive')->name('category.status.unactive');
+Route::get('category/status/active/{id}','Admin\CategoriesController@StatusActive')->name('category.status.active');
 
 ///// brand
 Route::get('all/brands','Admin\BrandController@AllBrands')->name('all.brands');

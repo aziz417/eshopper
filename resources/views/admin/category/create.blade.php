@@ -18,7 +18,7 @@
         </div>
         <div class="col-lg-2">
             <div class="ibox-tools">
-                <a href="{{ route('add.category') }}" class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit">
+                <a href="{{ route('category.create') }}" class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit">
                     <i class="fa fa-plus"></i> <strong>Create</strong></a>
             </div>
         </div>
@@ -30,12 +30,12 @@
                     <h5>Create category</h5>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal" action="{{ Route('categories.store') }}" method="post">
+                    <form class="form-horizontal" action="{{ Route('category.store') }}" method="post">
                         {{ csrf_field() }}
                         @include('admin.category.element')
                         <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">
-                                <a href="{{route('all.categories')}}" class="btn btn-sm btn-warning t m-t-n-xs"><strong>Cancel</strong></a>
+                                <a href="{{route('category.index')}}" class="btn btn-sm btn-warning t m-t-n-xs"><strong>Cancel</strong></a>
                                 <button class="btn btn-sm btn-primary m-t-n-xs" type="submit">
                                     <strong>Submit</strong></button>
                             </div>

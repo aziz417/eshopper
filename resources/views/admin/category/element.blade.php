@@ -2,13 +2,23 @@
 <div class="form-group">
     <label class="col-lg-2 control-label">Name<span class="required-star"> *</span></label>
     <div class="col-lg-10">
-        <input value="{{isset($category->Cname) ? $category->Cname:''}}" id="slug-source" required="required" name="name" type="text" class="form-control">
+        <input value="{{isset($category->Cname) ? $category->Cname:''}}" id="slug-source"  name="name" type="text" class="form-control">
+        @error('name')
+            <span class="text-danger" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
 </div>
 
 <div class="form-group"><label class="col-lg-2 control-label">Description</label>
     <div class="col-lg-10">
         <textarea name="description" id="textarea2" class="form-control" rows="5">{{isset($category->Cdescription) ? $category->Cdescription:''}}</textarea>
+        @error('description')
+        <span class="text-danger" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
 </div>
 
