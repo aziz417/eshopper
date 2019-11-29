@@ -68,27 +68,27 @@
                                     @foreach($AllCategory as $category)
                                         <tr class="gradeA odd" role="row">
                                             <td><?php echo $count++ ?></td>
-                                            <td class="center">{{ $category->Cname }}</td>
-                                            <td class="center">{{ Str::limit($category->Cdescription, 40) }}</td>
+                                            <td class="center">{{ $category->name }}</td>
+                                            <td class="center">{{ Str::limit($category->description, 40) }}</td>
                                             <td class="center">
-                                                @if($category->Cstatus == 1)
-                                                    <a class=" " href="{{Route('category.status.unactive',$category->Cid)}}">
+                                                @if($category->status == 1)
+                                                    <a class=" " href="{{Route('category.status.unactive',$category->id)}}">
                                                         <span class="btn-xs btn-primary btn-rounded ">Active</span>
                                                     </a>
                                                 @else
-                                                    <a class=" " href="{{Route('category.status.active',$category->Cid)}}">
+                                                    <a class=" " href="{{Route('category.status.active',$category->id)}}">
                                                         <span class=" btn-xs btn-danger btn-rounded " >Unactive</span>
                                                     </a>
                                                 @endif
                                             </td>
                                             <td class="center">
                                                 <div class="fsEdit">
-                                                    <a title="Edit" href="{{ Route('category.edit',$category->Cid) }}" class="cus_mini_icon color-success">
+                                                    <a title="Edit" href="{{ Route('category.edit',$category->id) }}" class="cus_mini_icon color-success">
                                                         <i class="fa fa-pencil-square-o "></i></a>
 
                                                 </div>
                                                 <div class="fsDelete">
-                                                    <form action="{{ route('category.destroy',$category->Cid) }}" method="post">
+                                                    <form action="{{ route('category.destroy',$category->id) }}" method="post">
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit" class="cus_mini_icon color-danger fsDltButton"><i class="fa fa-trash "></i></button>

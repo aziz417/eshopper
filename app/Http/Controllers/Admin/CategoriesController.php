@@ -48,9 +48,9 @@ class CategoriesController extends Controller
 
 
         $category = new Category;
-        $category->Cname        = $request->name;
-        $category->Cdescription = $request->description;
-        $category->Cstatus      = $request->status;
+        $category->name        = $request->name;
+        $category->description = $request->description;
+        $category->status      = $request->status;
 
         $category->save();
         return redirect(route('category.index'));
@@ -90,7 +90,7 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = DB::table('categories')->where('Cid',$id)->first();
+        $category = DB::table('categories')->where('id',$id)->first();
         return view('admin.category.edit',compact('category'));
     }
 
@@ -104,12 +104,12 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $data = array();
-        $data['Cid']          = $request->id;
-        $data['Cname']        = $request->name;
-        $data['Cdescription'] = $request->description;
-        $data['Cstatus']      = $request->status;
+        $data['id']          = $request->id;
+        $data['name']        = $request->name;
+        $data['description'] = $request->description;
+        $data['status']      = $request->status;
 
-        DB::table('categories')->where('Cid',$id)->update($data);
+        DB::table('categories')->where('id',$id)->update($data);
 
         return Redirect::route('category.index');
     }
@@ -122,21 +122,21 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('categories')->where('Cid',$id)->delete();
+        DB::table('categories')->where('id',$id)->delete();
         Session::put('massage','Category Deleted Successfully');
         return Redirect::back();
     }
 
-    public function StatusUnActive($Cid){
-        DB::table('categories')->where('Cid',$Cid)
-            ->update(['Cstatus' => NULL ]);
+    public function StatusUnActive($id){
+        DB::table('categories')->where('id',$id)
+            ->update(['status' => NULL ]);
         Session::put('massage','Your status change');
         return Redirect::back();
     }
 
-    public function StatusActive($Cid){
-        DB::table('categories')->where('Cid',$Cid)
-            ->update(['Cstatus' => 1 ]);
+    public function StatusActive($id){
+        DB::table('categories')->where('id',$id)
+            ->update(['status' => 1 ]);
         Session::put('massage','Your status change');
         return Redirect::back();
     }
