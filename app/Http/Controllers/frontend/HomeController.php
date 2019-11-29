@@ -10,24 +10,24 @@ class HomeController extends Controller
 {
     public function index(){
         $data = DB::table('tbl_products')->where('Pstatus',1)
-            ->join('categories','tbl_products.category_id','=','categories.Cid')->where('Cstatus',1)
+            ->join('categories','tbl_products.category_id','=','categories.id')->where('status',1)
             ->join('tbl_brands','tbl_products.brand_id','=','tbl_brands.Bid')->where('Bstatus',1)
             ->limit(20)->get();
         return view('frontend.pages.home_content',compact('data'));
     }
 
-    public function productByCategory($Cid){
+    public function productByCategory($id){
         $productByCategory = DB::table('tbl_products')->where('Pstatus',1)
-            ->join('categories','tbl_products.category_id','=','categories.Cid')->where('Cstatus',1)
+            ->join('categories','tbl_products.category_id','=','categories.id')->where('status',1)
             ->join('tbl_brands','tbl_products.brand_id','=','tbl_brands.Bid')->where('Bstatus',1)
-            ->limit(20)->where('categories.Cid',$Cid)
+            ->limit(20)->where('categories.id',$id)
             ->orderBy('tbl_products.product_id','DESC')->get();
         return view('frontend.pages.productByCategory',compact('productByCategory'));
     }
 
     public function productByBrand($Bid){
         $productByBrand = DB::table('tbl_products')->where('Pstatus',1)
-            ->join('categories','tbl_products.category_id','=','categories.Cid')->where('Cstatus',1)
+            ->join('categories','tbl_products.category_id','=','categories.id')->where('status',1)
             ->join('tbl_brands','tbl_products.brand_id','=','tbl_brands.Bid')->where('Bstatus',1)
             ->limit(20)->where('tbl_brands.Bid',$Bid)
             ->orderBy('tbl_products.product_id','DESC')->get();
@@ -36,7 +36,7 @@ class HomeController extends Controller
 
     public function productDetails($Pid){
         $productDetails = DB::table('tbl_products')->where('product_id',$Pid)
-            ->join('categories','tbl_products.category_id','=','categories.Cid')
+            ->join('categories','tbl_products.category_id','=','categories.id')
             ->join('tbl_brands','tbl_products.brand_id','=','tbl_brands.Bid')
             ->first();
         return view('frontend.pages.productDetails',compact('productDetails'));

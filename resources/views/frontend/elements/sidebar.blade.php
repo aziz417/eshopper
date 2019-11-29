@@ -24,12 +24,12 @@
                 </div>
             </div>--}}
             <?php
-                $AllCategory = DB::table('categories')->where('Cstatus',1)->get();
+                $AllCategory = DB::table('categories')->where('status',1)->get();
                 foreach ($AllCategory as $category){?>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a href="{{route('product.byCategory',$category->Cid)}}">{{$category->Cname}}</a></h4>
+                    <h4 class="panel-title"><a href="{{route('product.byCategory',$category->id)}}">{{$category->name}}</a></h4>
                 </div>
             </div>
             <?php }?>
