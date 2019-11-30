@@ -30,7 +30,7 @@
                         <h5>Edit Category</h5>
                     </div>
                     <div class="ibox-content">
-                        <form class="form-horizontal" action="{{ Route('category.update',$category->id) }}" method="post">
+                        <form class="form-horizontal" action="{{ Route('category.update',$category->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             @include('admin.category.element')

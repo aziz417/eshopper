@@ -12,6 +12,25 @@
     </div>
 </div>
 
+<div class="form-group">
+    <label class="col-lg-2 control-label">Slug<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <input value="{{isset($category->slug) ? $category->slug:old('slug')}}"
+               id="slug-source"   name="slug" type="text" class="form-control">
+    </div>
+</div>
+
+<div class="form-group"><label class="col-lg-2 control-label">Image</label>
+    <div class="col-lg-10">
+        <input  class="form-control" id="fileInput" name="img" type="file"><br>
+        <input  class="form-control" id="fileInput" value="{{ isset($category->image) ? $category->image:'' }}" name="oldImg" type="hidden"><br>
+        @if(!empty($category->image))
+            <img src="{{asset('backend/uploads_images/category/'.$category->image) }}" width="80" height="100">
+        @endif
+    </div>
+</div><br>
+
+
 <div class="form-group"><label class="col-lg-2 control-label">Description</label>
     <div class="col-lg-10">
         <textarea name="description" id="textarea2" class="form-control" rows="5">{{isset($category->description) ? $category->description:old('description')}} </textarea>

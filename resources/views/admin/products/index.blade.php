@@ -74,7 +74,7 @@
                                             <td><?php echo $count++ ?></td>
                                             <td class="center">{{ $product->Pname }}</td>
                                             <td class="center">{{$product->Bname }}</td>
-                                            <td class="center">{{ $product->Cname }}</td>
+                                            <td class="center">{{ $product->name }}</td>
                                             <td class="center"><img src="{{asset('images/products/'.$product->Pimage)}}" width="50" height="60"></td>
                                             <td class="center">{{ $product->price }} Tk</td>
                                             <td class="center">

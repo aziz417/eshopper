@@ -23,10 +23,17 @@ class categoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'bail|unique:categories|required|min:3|max:50',
-            'description' => 'bail|required|min:5|max:500',
-        ];
+        if ($this->method() == 'POST'){
+            return [
+                'name' => 'required|unique:categories',
+                'slug' => 'required|unique:categories',
+            ];
+        }elseif ($this->method() == 'PUT' or $this->method() == 'PATCH'){
+            return [
+                'name' => 'required|unique:categories,name,'. $this->category->id,
+                'slug' => 'required|unique:categories,slug,'. $this->category->id,
+            ];
+        }
     }
 
 
@@ -37,5 +44,4 @@ class categoryRequest extends FormRequest
             'name.min' => 'The name must be at least 3 characters.',
         ];
     }
-
 }

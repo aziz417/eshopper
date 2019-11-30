@@ -17,13 +17,13 @@
             <option
                 <?php
                 if(isset($data['product']->category_id)){
-                    if($category->Cid == $data['product']->category_id){
+                    if($category->id == $data['product']->category_id){
                         echo "selected";
                     }
                 }
                 ?>
 
-                value="{{$category->Cid}}">{{$category->Cname}}</option>
+                value="{{$category->id}}">{{$category->name}}</option>
             <?php  }}?>
         </select>
     </div>
@@ -102,8 +102,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-

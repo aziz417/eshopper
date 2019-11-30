@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\backend\categoryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Intervention\Image\Facades\Image;
 use Session;
 session_start();
 use DB;
@@ -43,31 +44,21 @@ class CategoriesController extends Controller
     public function store(categoryRequest $request)
     {
        // $validated = $request->validated();
+        $image = $request->file('img');
 
+        if ($image){
+            $real_image = $image;
+            $imgNameWithExtention = "Fictionsoft".rand().time().
+                '.'.$image->getClientOriginalExtension();
+                Image::make($real_image)->resize(400,450)
+                ->save( base_path('public/backend/uploads_images/category/'
+                .$imgNameWithExtention),'100');
+            $request['image'] = $imgNameWithExtention;
+        }
 
-        $category = new Category;
-
-        $category->name        = $request->name;
-        $category->description = $request->description;
-        $category->status      = $request->status;
-
+        $category = new Category($request->all());
         $category->save();
         return redirect(route('category.index'));
-
-
-        /*$data = array();
-        $data['Cname'] = $request->name;
-        $data['Cdescription'] = $request->description;
-        $data['Cstatus'] = $request->status;
-
-        $result = DB::table('tbl_category')->insert($data);
-        if($result){
-            Session::put('massage','Category Store Successfully');
-            return Redirect()->back();
-        }else{
-            Session::put('massage','Category Store Unsuccessfully');
-            return Redirect()->back();
-        }*/
     }
 
     /**
@@ -98,32 +89,49 @@ class CategoriesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(categoryRequest $request, Category $category)
     {
-        $data = array();
-        $data['id']          = $request->id;
-        $data['name']        = $request->name;
-        $data['description'] = $request->description;
-        $data['status']      = $request->status;
+        $image = $request->file('img');
+        $oldImage = $request->oldImg;
 
-        DB::table('categories')->where('id',$id)->update($data);
+        if ($image){
+            if($oldImage != ''){
+                file_exists('backend/uploads_images/category/'.$oldImage);
+                unlink('backend/uploads_images/category/'.$oldImage);
+            }
 
-        return Redirect::route('category.index');
+            $real_image = $image;
+            $imgNameWithExtention = "Fictionsoft".rand().time().'.'.$image->getClientOriginalExtension();
+            Image::make($real_image)->resize(400,450)
+                ->save( base_path('public/backend/uploads_images/category/'
+                .$imgNameWithExtention),'100');
+            $request['image'] = $imgNameWithExtention;
+        }
+
+        $update = $category->update($request->all());
+
+        if($update){
+            return Redirect::route('category.index');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        DB::table('categories')->where('id',$id)->delete();
-        Session::put('massage','Category Deleted Successfully');
-        return Redirect::back();
+        if($category->delete()){
+            if($category->image !== ''){
+                file_exists('backend/uploads_images/category/'.$category->image);
+                unlink('backend/uploads_images/category/'.$category->image);
+            }
+        }
+        return Redirect::back()->with('message','Category delete Success!');
     }
 
     public function StatusUnActive($id){

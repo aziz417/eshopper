@@ -15,6 +15,7 @@
                 </li>
             </ol>
         </div>
+
         <div class="col-lg-2">
             <div class="ibox-tools">
                 <a href="{{ route('category.create') }}" class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit">
@@ -28,6 +29,11 @@
                 <div class="ibox ">
                     <div class="ibox-title">
                         <h5>All Categories</h5>
+                        @if(session('message'))
+                            <span class="text-success float-right" role="alert">
+                                <strong>{{session('message')}}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="ibox-content">
                         <div class="table-responsive">
@@ -56,11 +62,13 @@
                                 <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
                                     <thead>
                                     <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 166px;">SI No</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Name</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Description</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 187px;">Status</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="2" aria-label="Engine version: activate to sort column ascending" style="width: 141px;">Action</th>
+                                        <th class="sorting_asc" style="width: 60px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 166px;">SI No</th>
+                                        <th class="sorting" style="width: 130px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Name</th>
+                                        <th class="sorting" style="width: 170px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Image</th>
+                                        <th class="sorting" style="width: 100px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Slug</th>
+                                        <th class="sorting" style="width: 290px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Description</th>
+                                        <th class="sorting" style="width: 105px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 187px;">Status</th>
+                                        <th class="sorting" style="width: 110px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 141px;">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -69,6 +77,10 @@
                                         <tr class="gradeA odd" role="row">
                                             <td><?php echo $count++ ?></td>
                                             <td class="center">{{ $category->name }}</td>
+                                            <td class="center">
+                                                <img src="{{asset('backend/uploads_images/category/'.$category->image) }}" width="80" height="100">
+                                            </td>
+                                            <td class="center">{{ $category->slug }}</td>
                                             <td class="center">{{ Str::limit($category->description, 40) }}</td>
                                             <td class="center">
                                                 @if($category->status == 1)
@@ -107,9 +119,11 @@
                                     <tr>
                                         <th rowspan="1" colspan="1">SI No</th>
                                         <th rowspan="1" colspan="1">Name</th>
+                                        <th rowspan="1" colspan="1">Image</th>
+                                        <th rowspan="1" colspan="1">Slug</th>
                                         <th rowspan="1" colspan="1">Description</th>
                                         <th rowspan="1" colspan="1">Status</th>
-                                        <th rowspan="1" colspan="2">Action</th>
+                                        <th rowspan="1" colspan="1">Action</th>
                                     </tr>
                                     </tfoot>
                                 </table>

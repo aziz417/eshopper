@@ -16,7 +16,7 @@ class ProductController extends Controller
 {
     public function AllProducts(){
         $AllProducts = DB::table('tbl_products')
-            ->join('tbl_category','tbl_products.category_id', '=', 'tbl_category.Cid')
+            ->join('categories','tbl_products.category_id', '=', 'categories.id')
             ->join('tbl_brands','tbl_products.brand_id', '=', 'tbl_brands.Bid')
             ->get();
         return view('admin.products.index',compact('AllProducts'));
@@ -24,7 +24,7 @@ class ProductController extends Controller
 
     public function AddProduct(){
         $data = array();
-        $data['category'] = DB::table('tbl_category')->where('Cstatus',1)->get();
+        $data['category'] = DB::table('categories')->where('status',1)->get();
         $data['brands'] = DB::table('tbl_brands')->where('Bstatus',1)->get();
         return view('admin.products.create',compact('data'));
     }
@@ -83,7 +83,7 @@ class ProductController extends Controller
 
     public function ProductEdit($Pid){
         $data = array();
-        $data['category'] = DB::table('tbl_category')->where('Cstatus',1)->get();
+        $data['category'] = DB::table('categories')->where('status',1)->get();
         $data['brands'] = DB::table('tbl_brands')->where('Bstatus',1)->get();
         $data['product'] = DB::table('tbl_products')->where('product_id',$Pid)->first();
         return view('admin.products.edit',compact('data'));
@@ -105,6 +105,7 @@ class ProductController extends Controller
 
         $newImage = $request->file('image');
         $oldImage = $request->oldImage;
+
         if($newImage){
             if ($oldImage != ''){
                 file_exists('images/products/'.$oldImage);

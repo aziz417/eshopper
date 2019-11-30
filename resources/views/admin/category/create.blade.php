@@ -30,7 +30,7 @@
                     <h5>Create category</h5>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal" action="{{ Route('category.store') }}" method="post">
+                    <form class="form-horizontal" action="{{ Route('category.store') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @include('admin.category.element')
                         <div class="form-group">
