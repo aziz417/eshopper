@@ -24,8 +24,18 @@ class categoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'description' => 'required',
+            'name' => 'bail|unique:categories|required|min:3|max:50',
+            'description' => 'bail|required|min:5|max:500',
         ];
     }
+
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The name field is required',
+            'name.min' => 'The name must be at least 3 characters.',
+        ];
+    }
+
 }

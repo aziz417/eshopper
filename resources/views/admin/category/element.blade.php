@@ -2,7 +2,8 @@
 <div class="form-group">
     <label class="col-lg-2 control-label">Name<span class="required-star"> *</span></label>
     <div class="col-lg-10">
-        <input value="{{isset($category->name) ? $category->name:''}}" id="slug-source"  name="name" type="text" class="form-control">
+        <input value="{{isset($category->name) ? $category->name:old('name')}}"
+               id="slug-source"   name="name" type="text" class="form-control">
         @error('name')
             <span class="text-danger" role="alert">
                 <strong>{{ $message }}</strong>
@@ -13,7 +14,7 @@
 
 <div class="form-group"><label class="col-lg-2 control-label">Description</label>
     <div class="col-lg-10">
-        <textarea name="description" id="textarea2" class="form-control" rows="5">{{isset($category->description) ? $category->description:''}}</textarea>
+        <textarea name="description" id="textarea2" class="form-control" rows="5">{{isset($category->description) ? $category->description:old('description')}} </textarea>
         @error('description')
         <span class="text-danger" role="alert">
                 <strong>{{ $message }}</strong>

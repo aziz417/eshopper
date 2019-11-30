@@ -42,8 +42,11 @@ class CategoriesController extends Controller
      */
     public function store(categoryRequest $request)
     {
+       // $validated = $request->validated();
+
 
         $category = new Category;
+
         $category->name        = $request->name;
         $category->description = $request->description;
         $category->status      = $request->status;
