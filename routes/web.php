@@ -130,5 +130,7 @@ Route::get('slider/status/active/{id}','Admin\ExtraController@StatusActive')->na
 
 
 Route::get('site.name/','Admin\ExtraController@SiteName')->name('site.name');
+Route::get('test','Component\CommonController@CurrentController')->name('test1');
+Route::get('test','Admin\CategoriesController@test')->name('test');
 
 

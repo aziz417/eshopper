@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Component\CommonController;
 use App\Http\Requests\backend\categoryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -14,6 +15,14 @@ use DB;
 
 class CategoriesController extends Controller
 {
+    public $storeName = 'category';
+    public $test;
+    function __construct()
+    {
+        $storeName = 'category';
+        $this->test = new CommonController();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,16 +53,10 @@ class CategoriesController extends Controller
     public function store(categoryRequest $request)
     {
        // $validated = $request->validated();
-        $image = $request->file('img');
+       $image = $this->test->fileUploadedBackend($request->file('img'),$this->storeName);
 
         if ($image){
-            $real_image = $image;
-            $imgNameWithExtention = "Fictionsoft".rand().time().
-                '.'.$image->getClientOriginalExtension();
-                Image::make($real_image)->resize(400,450)
-                ->save( base_path('public/backend/uploads_images/category/'
-                .$imgNameWithExtention),'100');
-            $request['image'] = $imgNameWithExtention;
+            $request['image'] = $image;
         }
 
         $category = new Category($request->all());
@@ -94,20 +97,14 @@ class CategoriesController extends Controller
     public function update(categoryRequest $request, Category $category)
     {
         $image = $request->file('img');
-        $oldImage = $request->oldImg;
+        //$oldImage = $request->oldImg;
 
         if ($image){
-            if($oldImage != ''){
-                file_exists('backend/uploads_images/category/'.$oldImage);
-                unlink('backend/uploads_images/category/'.$oldImage);
+            $dltImg = $this->test->imageDelete($request->oldImg,$this->storeName);
+            if($dltImg){
+                $image = $this->test->fileUploadedBackend($request->file('img'),$this->storeName);
+                $request['image'] = $image;
             }
-
-            $real_image = $image;
-            $imgNameWithExtention = "Fictionsoft".rand().time().'.'.$image->getClientOriginalExtension();
-            Image::make($real_image)->resize(400,450)
-                ->save( base_path('public/backend/uploads_images/category/'
-                .$imgNameWithExtention),'100');
-            $request['image'] = $imgNameWithExtention;
         }
 
         $update = $category->update($request->all());
@@ -126,7 +123,7 @@ class CategoriesController extends Controller
     public function destroy(Category $category)
     {
         if($category->delete()){
-            if($category->image !== ''){
+            if($category->image != ''){
                 file_exists('backend/uploads_images/category/'.$category->image);
                 unlink('backend/uploads_images/category/'.$category->image);
             }
@@ -146,5 +143,10 @@ class CategoriesController extends Controller
             ->update(['status' => 1 ]);
         Session::put('massage','Your status change');
         return Redirect::back();
+    }
+
+    public function test(){
+       $test = $this->test->CurrentController();
+       dd($test);
     }
 }

@@ -16,7 +16,12 @@
     <label class="col-lg-2 control-label">Slug<span class="required-star"> *</span></label>
     <div class="col-lg-10">
         <input value="{{isset($category->slug) ? $category->slug:old('slug')}}"
-               id="slug-source"   name="slug" type="text" class="form-control">
+               id="slug-source" name="slug" type="text" class="form-control">
+        @error('slug')
+        <span class="text-danger" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
 </div>
 
@@ -24,6 +29,11 @@
     <div class="col-lg-10">
         <input  class="form-control" id="fileInput" name="img" type="file"><br>
         <input  class="form-control" id="fileInput" value="{{ isset($category->image) ? $category->image:'' }}" name="oldImg" type="hidden"><br>
+        @error('img')
+        <span class="text-danger" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
         @if(!empty($category->image))
             <img src="{{asset('backend/uploads_images/category/'.$category->image) }}" width="80" height="100">
         @endif

@@ -53,6 +53,9 @@
                 <li>
                     <a href="{{ Route('slider') }}"><i class="fa fa-laptop"></i> <span class="nav-label">Sliders</span></a>
                 </li>
+                <li>
+                    <a href="{{ Route('test') }}"><i class="fa fa-laptop"></i> <span class="nav-label">test</span></a>
+                </li>
             </ul>
 
         </div>
