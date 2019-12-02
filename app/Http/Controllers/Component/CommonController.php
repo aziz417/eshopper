@@ -15,24 +15,32 @@ class CommonController extends Controller
         return $current_Controller;
     }
 
-    public function fileUploadedBackend($image, $storeName){
+    public function fileUploadedBackend($image, $storeName,$fildName){
+        if($fildName){
+            request()->validate([
+                $fildName => 'mimes:jpg,jpeg,bmp,png',
+            ],[
+                $fildName.'.mimes' => 'Invalid file try to upload!'
+            ]);
+        }
+
         if ($image){
             $real_image = $image;
-            $imgNameWithExtention = "Fictionsoft".rand(8).time().
-                '.'.$image->getClientOriginalExtension();
+            $imgNameWithExtention = "Fictionsoft".rand(8,8).time().
+            '.'.$image->getClientOriginalExtension();
             Image::make($real_image)->resize(400,450)
-                ->save( base_path('public/backend/uploads_images/'.$storeName.'/'
-                    .$imgNameWithExtention),'100');
+            ->save( base_path('public/backend/uploads_images/'.$storeName.'/'
+            .$imgNameWithExtention),'100');
 
             return $imgNameWithExtention;
         }
     }
 
-    public function imageDelete($oldImage,$storeName){
+    public function imageDeleteBackend($oldImage,$storeName){
         if($oldImage != ''){
             file_exists('backend/uploads_images/'.$storeName.'/'.$oldImage);
-            unlink('backend/uploads_images/'.$storeName.'/'/$oldImage);
+            unlink('backend/uploads_images/'.$storeName.'/'.$oldImage);
         }
-    //return korbo kivabe ki return korbo
+        return 0;
     }
 }

@@ -16,11 +16,10 @@ use DB;
 class CategoriesController extends Controller
 {
     public $storeName = 'category';
-    public $test;
+    public $fileHandler;
     function __construct()
     {
-        $storeName = 'category';
-        $this->test = new CommonController();
+        $this->fileHandler = new CommonController();
     }
 
     /**
@@ -53,7 +52,8 @@ class CategoriesController extends Controller
     public function store(categoryRequest $request)
     {
        // $validated = $request->validated();
-       $image = $this->test->fileUploadedBackend($request->file('img'),$this->storeName);
+        //image upload and validation here
+       $image = $this->fileHandler->fileUploadedBackend($request->file('img'),$this->storeName,'img');
 
         if ($image){
             $request['image'] = $image;
@@ -81,9 +81,8 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = DB::table('categories')->where('id',$id)->first();
         return view('admin.category.edit',compact('category'));
     }
 
@@ -97,18 +96,15 @@ class CategoriesController extends Controller
     public function update(categoryRequest $request, Category $category)
     {
         $image = $request->file('img');
-        //$oldImage = $request->oldImg;
-
         if ($image){
-            $dltImg = $this->test->imageDelete($request->oldImg,$this->storeName);
-            if($dltImg){
-                $image = $this->test->fileUploadedBackend($request->file('img'),$this->storeName);
-                $request['image'] = $image;
-            }
+            //new image upload
+            $image = $this->fileHandler->fileUploadedBackend($request->file('img'),$this->storeName,'img');
+            $request['image'] = $image;
+            //image unlink
+            $this->fileHandler->imageDeleteBackend($request->oldImg,$this->storeName);
         }
 
         $update = $category->update($request->all());
-
         if($update){
             return Redirect::route('category.index');
         }
@@ -123,10 +119,7 @@ class CategoriesController extends Controller
     public function destroy(Category $category)
     {
         if($category->delete()){
-            if($category->image != ''){
-                file_exists('backend/uploads_images/category/'.$category->image);
-                unlink('backend/uploads_images/category/'.$category->image);
-            }
+            $this->fileHandler->imageDeleteBackend($category->image,$this->storeName);
         }
         return Redirect::back()->with('message','Category delete Success!');
     }
@@ -143,10 +136,5 @@ class CategoriesController extends Controller
             ->update(['status' => 1 ]);
         Session::put('massage','Your status change');
         return Redirect::back();
-    }
-
-    public function test(){
-       $test = $this->test->CurrentController();
-       dd($test);
     }
 }
