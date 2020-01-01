@@ -66,6 +66,4 @@ class LoginController extends Controller
 
         return $this->loggedOut($request) ?: redirect(route('admin.login'));
     }
-
-
 }

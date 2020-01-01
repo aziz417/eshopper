@@ -38,9 +38,10 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Category $category)
     {
-        return view('admin.category.create');
+        $parent_categories = $category->where('parent_id',NULL)->get();
+        return view('admin.category.create',compact('parent_categories'));
     }
 
     /**
@@ -53,6 +54,8 @@ class CategoriesController extends Controller
     {
        // $validated = $request->validated();
         //image upload and validation here
+
+
        $image = $this->fileHandler->fileUploadedBackend($request->file('img'),$this->storeName,'img');
 
         if ($image){
@@ -83,7 +86,7 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.category.edit',compact('category'));
+        return view('admin.category.edit', compact('category'));
     }
 
     /**

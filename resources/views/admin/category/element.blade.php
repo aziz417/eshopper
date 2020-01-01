@@ -25,6 +25,23 @@
     </div>
 </div>
 
+<div class="form-group">
+    <label class="col-lg-2 control-label">Parent Categories<span class="required-star"> *</span></label>
+    <div class="col-lg-10">
+        <select class="form-control" name="parent_id">
+            <option>Select</option>
+            @foreach($parent_categories as $parent_category)
+                <option value="{{ $parent_category->id }}">{{ $parent_category->name }}</option>
+            @endforeach
+        </select>
+        @error('parent-id')
+        <span class="text-danger" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+
 <div class="form-group"><label class="col-lg-2 control-label">Image</label>
     <div class="col-lg-10">
         <input  class="form-control" id="fileInput" name="img" type="file"><br>
