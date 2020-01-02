@@ -9,7 +9,7 @@ use App\Http\Requests;
 use PhpParser\Node\Stmt\Return_;
 use Session;
 use Illuminate\support\Facades\Redirect;
-session_start();
+
 
 class BrandController extends Controller
 {

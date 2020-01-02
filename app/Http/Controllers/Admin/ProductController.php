@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image;
 use PhpParser\Node\Stmt\Return_;
 use Session;
 use Illuminate\support\Facades\Redirect;
-session_start();
+
 
 class ProductController extends Controller
 {

@@ -80,15 +80,12 @@ Route::post('admin-password/reset','Admin\Auth\ResetPasswordController@reset')->
 Route::get('order/manage','Admin\OrderController@OrderManage')->name('order.manage');
 Route::get('order/details/{orderId}','Admin\OrderController@OrderDetails')->name('order.details');
 
-
-
 //// categories, brands, products, controller here/////////////////////////////////////////
 
 /// category route resource here
 Route::resource('category','Admin\CategoriesController');
 //category status here
-Route::get('category/status/unactive/{id}','Admin\CategoriesController@StatusUnActive')->name('category.status.unactive');
-Route::get('category/status/active/{id}','Admin\CategoriesController@StatusActive')->name('category.status.active');
+Route::get('category/status/{category}','Admin\CategoriesController@changeStatus')->name('category.status');
 
 ///// brand
 Route::get('all/brands','Admin\BrandController@AllBrands')->name('all.brands');

@@ -6,11 +6,12 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Component\CommonController;
 use App\Http\Requests\backend\categoryRequest;
+use App\Http\Resources\categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Intervention\Image\Facades\Image;
 use Session;
-session_start();
+
 use DB;
 
 class CategoriesController extends Controller
@@ -61,7 +62,7 @@ class CategoriesController extends Controller
         if ($image){
             $request['image'] = $image;
         }
-
+        $request['status'] = ($request->status)?1:0;
         $category = new Category($request->all());
         if($category->save()){
             return redirect(route('category.index'))->with('success','Category Save Success');
@@ -140,15 +141,14 @@ class CategoriesController extends Controller
         }
     }
 
-    public function StatusUnActive($id){
-        DB::table('categories')->where('id',$id)
-            ->update(['status' => NULL ]);
-        return Redirect::back()->with('success','Status Change');
-    }
+    public function changeStatus(Category $category){
 
-    public function StatusActive($id){
-        DB::table('categories')->where('id',$id)
-            ->update(['status' => 1 ]);
-        return Redirect::back()->with('success','Status Change');
+        $category['status'] = $category->status == 1 ? 0 : 1;
+
+        if ($category->update()){
+            return back()->with('success','Category status change successfully.');
+        }else{
+            return back()->with('error','Category status could not be change.');
+        }
     }
 }

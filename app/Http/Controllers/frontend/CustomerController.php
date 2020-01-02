@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
-session_start();
+
 
 class CustomerController extends Controller
 {

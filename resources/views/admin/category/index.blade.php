@@ -84,19 +84,17 @@
                                             <td class="center">{{ Str::limit($category->description, 40) }}</td>
                                             <td class="center">Count product</td>
                                             <td class="center">
-                                                @if($category->status == 1)
-                                                    <a class=" " href="{{Route('category.status.unactive',$category->id)}}">
+                                                <a class="" href="{{ Route('category.status', $category->id) }}">
+                                                    @if($category->status)
                                                         <span class="btn-xs btn-primary btn-rounded ">Active</span>
-                                                    </a>
-                                                @else
-                                                    <a class=" " href="{{Route('category.status.active',$category->id)}}">
-                                                        <span class=" btn-xs btn-danger btn-rounded " >Unactive</span>
-                                                    </a>
-                                                @endif
+                                                    @else
+                                                        <span class="btn-xs btn-danger btn-rounded ">Disable</span>
+                                                    @endif
+                                                </a>
                                             </td>
                                             <td class="center">
                                                 <div class="fsEdit">
-                                                    <a title="Edit" href="{{ Route('category.edit',$category->id) }}" class="cus_mini_icon color-success">
+                                                    <a title="Edit" href="{{ Route('category.edit', $category->id) }}" class="cus_mini_icon color-success">
                                                         <i class="fa fa-pencil-square-o "></i></a>
 
                                                 </div>

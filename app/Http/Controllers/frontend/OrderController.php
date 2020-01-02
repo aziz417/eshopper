@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Session;
-session_start();
 
 class OrderController extends Controller
 {
