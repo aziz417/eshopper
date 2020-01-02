@@ -29,12 +29,13 @@
     <label class="col-lg-2 control-label">Parent Categories<span class="required-star"> *</span></label>
     <div class="col-lg-10">
         <select class="form-control" name="parent_id">
-            <option>Select</option>
+            <option value="" >Select</option>
             @foreach($parent_categories as $parent_category)
-                <option value="{{ $parent_category->id }}">{{ $parent_category->name }}</option>
+                <option @if( isset($category) and $parent_category->id == $category->parent_id) selected @endif
+                value="{{ $parent_category->id }}">{{ $parent_category->name }}</option>
             @endforeach
         </select>
-        @error('parent-id')
+        @error('parent_id')
         <span class="text-danger" role="alert">
                 <strong>{{ $message }}</strong>
             </span>

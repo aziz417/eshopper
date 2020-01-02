@@ -27,10 +27,10 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Category $category)
     {
-        $AllCategory = DB::table('categories')->get();
-        return view('admin.category.index',compact('AllCategory'));
+        $categories = Category::with('parent')->orderBy('id','desc')->get();
+        return view('admin.category.index',compact('categories'));
     }
 
     /**
@@ -40,7 +40,8 @@ class CategoriesController extends Controller
      */
     public function create(Category $category)
     {
-        $parent_categories = $category->where('parent_id',NULL)->get();
+        $parent_categories = $category->with('parent')->
+            orderBy('id', 'desc')->where('parent_id',NULL)->get();
         return view('admin.category.create',compact('parent_categories'));
     }
 
@@ -54,7 +55,6 @@ class CategoriesController extends Controller
     {
        // $validated = $request->validated();
         //image upload and validation here
-
 
        $image = $this->fileHandler->fileUploadedBackend($request->file('img'),$this->storeName,'img');
 
@@ -86,7 +86,8 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.category.edit', compact('category'));
+        $parent_categories = Category::with('parent')->orderBy('id','desc')->where('parent_id', null)->get();
+        return view('admin.category.edit', with(compact('category','parent_categories')));
     }
 
     /**
@@ -121,10 +122,18 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        if($category->delete()){
-            $this->fileHandler->imageDeleteBackend($category->image,$this->storeName);
+        if($category->children->count() == 0 ) {
+            if ($category->delete()) {
+                if ($category->image) {
+                    $this->fileHandler->imageDeleteBackend($category->image, $this->storeName);
+                }
+                return back()->with('success', 'Category delete successfully');
+            }else{
+                return back()->with('error', 'Category could not be delete');
+            }
+        }else{
+            return back()->with('warning', 'You are not allow to delete this category');
         }
-        return Redirect::back()->with('message','Category delete Success!');
     }
 
     public function StatusUnActive($id){
