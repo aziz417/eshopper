@@ -118,7 +118,6 @@ class CategoriesController extends Controller
             return Redirect::route('category.index')->with('warning','Category could not be update.');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
