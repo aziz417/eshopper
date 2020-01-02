@@ -26,12 +26,12 @@ class categoryRequest extends FormRequest
         if ($this->method() == 'POST'){
             return [
                 'name' => 'required|unique:categories',
-                'slug' => 'required|unique:categories',
+                'slug' => 'unique:categories',
             ];
         }elseif ($this->method() == 'PUT' or $this->method() == 'PATCH'){
             return [
                 'name' => 'required|unique:categories,name,'. $this->category->id,
-                'slug' => 'required|unique:categories,slug,'. $this->category->id,
+                'slug' => 'unique:categories,slug,'. $this->category->id,
             ];
         }
     }

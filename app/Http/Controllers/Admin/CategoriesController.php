@@ -54,7 +54,7 @@ class CategoriesController extends Controller
      */
     public function store(categoryRequest $request)
     {
-       // $validated = $request->validated();
+
         //image upload and validation here
 
        $image = $this->fileHandler->fileUploadedBackend($request->file('img'),$this->storeName,'img');
@@ -62,6 +62,8 @@ class CategoriesController extends Controller
         if ($image){
             $request['image'] = $image;
         }
+
+        $request['slug'] = strtolower(str_replace(' ', '-', $request->name));
         $request['status'] = ($request->status)?1:0;
         $category = new Category($request->all());
         if($category->save()){

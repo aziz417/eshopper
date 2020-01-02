@@ -16,7 +16,7 @@
     <label class="col-lg-2 control-label">Slug<span class="required-star"> *</span></label>
     <div class="col-lg-10">
         <input value="{{isset($category->slug) ? $category->slug:old('slug')}}"
-               id="slug-source" name="slug" type="text" class="form-control">
+               id="slug-source" name="slug" readonly type="text" class="form-control">
         @error('slug')
         <span class="text-danger" role="alert">
                 <strong>{{ $message }}</strong>
