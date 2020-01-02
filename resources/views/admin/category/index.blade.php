@@ -24,26 +24,13 @@
         </div>
     </div>
     <div class="wrapper wrapper-content animated fadeInRight">
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox ">
                     <div class="ibox-title">
                         <h5>All Categories</h5>
-                        @if(session('message'))
-                            <span class="text-success float-right" role="alert">
-                                <strong>{{session('message')}}</strong>
-                            </span>
-                        @endif
-                        @if(session('error'))
-                            <span class="text-success float-right" role="alert">
-                                <strong>{{session('error')}}</strong>
-                            </span>
-                        @endif
-                        @if(session('warning'))
-                            <span class="text-success float-right" role="alert">
-                                <strong>{{session('warning')}}</strong>
-                            </span>
-                        @endif
+                        @include('partials.flash_messages.flashMessages')
                     </div>
                     <div class="ibox-content">
                         <div class="table-responsive">

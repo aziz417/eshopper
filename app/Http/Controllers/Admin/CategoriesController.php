@@ -63,8 +63,11 @@ class CategoriesController extends Controller
         }
 
         $category = new Category($request->all());
-        $category->save();
-        return redirect(route('category.index'));
+        if($category->save()){
+            return redirect(route('category.index'))->with('success','Category Save Success');
+        }else{
+            return redirect(route('category.index'))->with('warning','Category Could not be Save');
+        }
     }
 
     /**
@@ -110,7 +113,9 @@ class CategoriesController extends Controller
 
         $update = $category->update($request->all());
         if($update){
-            return Redirect::route('category.index');
+            return Redirect::route('category.index')->with('success','Category Updated Successfully.');
+        }else{
+            return Redirect::route('category.index')->with('warning','Category could not be update.');
         }
     }
 
@@ -139,14 +144,12 @@ class CategoriesController extends Controller
     public function StatusUnActive($id){
         DB::table('categories')->where('id',$id)
             ->update(['status' => NULL ]);
-        Session::put('massage','Your status change');
-        return Redirect::back();
+        return Redirect::back()->with('success','Status Change');
     }
 
     public function StatusActive($id){
         DB::table('categories')->where('id',$id)
             ->update(['status' => 1 ]);
-        Session::put('massage','Your status change');
-        return Redirect::back();
+        return Redirect::back()->with('success','Status Change');
     }
 }
