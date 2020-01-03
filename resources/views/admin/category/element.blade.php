@@ -75,11 +75,7 @@
         <div class="icheckbox_square-green">
             <input type="hidden" name="id" value="{{isset($category->id) ? $category->id:''}}">
             <label class="col-lg-1 control-label" for="status">Status</label>
-            @if(isset($category->status))
-                <input class="i-checks fs-check-box" id="fileInput" name="status" type="checkbox" checked value="{{isset($category->status) ? $category->status:''}} ">
-            @else
-                <input class="i-checks" id="fileInput" name="status" type="checkbox" value="1">
-            @endif
+            <input {{ (isset($category->status) AND $category->status == 1) ? 'checked':'' }} name="status" value="1" type="checkbox" class="i-checks" id="status">
         </div>
     </div>
 </div>
