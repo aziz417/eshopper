@@ -100,6 +100,7 @@ Route::get('brand/status/active/{id}','Admin\BrandController@StatusActive')->nam
 
 ///// product
 Route::resource('product','Admin\ProductsController');
+Route::POST('get-category-brand-data','Admin\ProductsController@getCategoryBrandData')->name('get.CategoryBrand.data');
 
 ////Extra control here example slider,menus,site name
 Route::get('menus/','Admin\ExtraController@Menu')->name('menu');

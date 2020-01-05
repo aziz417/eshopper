@@ -143,7 +143,36 @@
             $('#action').html('Add Product');
             $('#myModal5').modal('show');
             $('#productForm')[0].reset();
-        })
+        });
+
+        // show all category into the input field.
+        $(document).ready(function () {
+            var categoryName = $('#category').attr('name');
+            $.ajax({                    // it is one way another way apply brand data get
+                url: "{{ route('get.CategoryBrand.data') }}",
+                method:"POST",
+                data:{categoryName:categoryName},
+                dataType:"JSON",
+                success:function (feedBackResult) {
+                    $("#category").html(feedBackResult.data);
+                },
+            });
+        });
+
+        $(document).ready(function () {
+            var brandName = $('#brand').attr('name');
+                $.ajax({                            //comment out another way just method change
+                    url: "{{ route('get.CategoryBrand.data') }}",
+                    method:"POST",
+                    data:{brandName:brandName},
+                    dataType:"JSON",
+                    success:function (feedBackResult) {
+                        $("#brand").html(feedBackResult.data);
+                    },
+                });
+        });
+
+        // show all brand into the input field.
 
         //modal form input data save
 

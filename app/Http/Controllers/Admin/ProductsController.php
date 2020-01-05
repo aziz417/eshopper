@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Component\CommonController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\backend\productCreateRequest;
 use App\Model\product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -37,6 +39,29 @@ class ProductsController extends Controller
         //
     }
 
+    //This function return all category and brand that show into create form input field
+    public function getCategoryBrandData(Request $request){
+       $categoryName = $request->categoryName;
+       $brandName = $request->brandName;
+
+       if($categoryName == "category_id"){
+            $data = Category::all()->where('status',1);
+            $output = '<option value="">Choose '.ucfirst(' Category').'</option>';
+            foreach ($data as $row){
+                $output .= '<option value="' .$row->id. '">' .$row->name. '</option>';
+            }
+       }
+
+        if($brandName == "brand_id"){
+            $data = DB::table('tbl_brands')->where('Bstatus',1)->get();
+            $output = '<option value="">Choose '.ucfirst(' Brand').'</option>';
+            foreach ($data as $row){
+                $output .= '<option value="' .$row->Bid. '">' .$row->Bname. '</option>';
+            }
+        }
+        return response()->json(['data' => $output]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -60,9 +85,9 @@ class ProductsController extends Controller
 
         $product = new Product($request->all());
         if($product->save()){
-            return response('khalek');
+            return response('Success');
         }else{
-            return response('khalek2');
+            return response('Error');
         }
     }
 

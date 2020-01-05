@@ -41,18 +41,7 @@
                         <div class="form-group">
                             <label>Category<span class="required-star"> *</span></label>
                             <select class="form-control" id="category" name="category_id" required="required">
-                                <option value="">select</option>
-                                <option value="12">fhgfg</option>
-                                <option value="11">fdgdhg</option>
-                                <option value="9">eknojor</option>
-                                <option value="8">test2</option>
-                                <option value="7">Test</option>
-                                <option value="6">Phone</option>
-                                <option value="5">Mouse</option>
-                                <option value="4">Basin</option>
-                                <option value="3">Bathtub</option>
-                                <option value="2">Fan</option>
-                                <option value="1">fsfs</option>
+                                <option value="selectedCategoryValue" selected>Choose... </option>
                             </select>
                         </div>
                     </div>
@@ -61,12 +50,7 @@
                         <div class="form-group">
                             <label>Brand<span class="required-star"> *</span></label>
                             <select class="form-control" id="brand" name="brand_id" required="required">
-                                <option value="">select</option>
-                                <option value="5">Xioami</option>
-                                <option value="4">Baravat</option>
-                                <option value="3">Shine</option>
-                                <option value="2">Apple</option>
-                                <option value="1">Walton</option>
+                                <option value="selectedBrandValue" selected>Choose...</option>
                             </select>
                         </div>
                     </div>
