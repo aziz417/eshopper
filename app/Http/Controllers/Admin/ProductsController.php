@@ -41,6 +41,7 @@ class ProductsController extends Controller
 
     //This function return all category and brand that show into create form input field
     public function getCategoryBrandData(Request $request){
+
        $categoryName = $request->categoryName;
        $brandName = $request->brandName;
 
