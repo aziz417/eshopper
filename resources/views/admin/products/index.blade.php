@@ -164,13 +164,33 @@
                     processData: false,
                     cache: false,
                     success: function (data) {
+                        $('#productForm')[0].reset();
+                        ///$('#user_table').DataTable().ajax.reload();
                         $('#myModal5').modal('hide');
-                        $('#success').show();
-                        $('#success').html("Inserted Successfully");
-                        console.log(data);
+                        if(data){
+                            swal({
+                                title: 'Product Save',
+                                text: 'Thank-You',
+                                icon: 'success',
+                                timer: 1200,
+                                buttons: false,
+                            })
+                                .then(() => {
+                                    dispatch(redirect('/'));
+                                })
+                        }
                     },
                     error: function (data) {
-                        console.log(data);
+                        swal({
+                            title: 'Product Save Fail',
+                            text: 'Sorry',
+                            icon: 'Error',
+                            timer: 3000,
+                            buttons: false,
+                        })
+                            .then(() => {
+                                dispatch(redirect('/'));
+                            })
                     }
                 });
             }

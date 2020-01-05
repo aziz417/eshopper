@@ -74,6 +74,8 @@
 <script src="{{asset('backend/js/plugins/chartJs/Chart.min.js')}}"></script>
 <!-- Toastr -->
 <script src="{{asset('backend/js/plugins/toastr/toastr.min.js')}}"></script>
+<script src="{{asset('backend/js/plugins/sweetalert/sweetalert.min.js')}}"></script>
+
 
 
 @stack('custom-js')
