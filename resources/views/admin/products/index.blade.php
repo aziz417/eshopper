@@ -1,9 +1,11 @@
 
 @extends('admin.layouts.master')
 @section('mainContent')
+
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
             <h2>All Products</h2>
+            <span class="text-success" id="success"></span>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="index.html">Home</a>
@@ -17,9 +19,16 @@
             </ol>
         </div>
         <div class="col-lg-2">
+
+            @include('admin.products.modal')
             <div class="ibox-tools">
-                <a href="{{ route('add.product') }}" class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit">
-                    <i class="fa fa-plus"></i> <strong>Create</strong></a>
+                {{--<a href="{{ route('add.product') }}" class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit">
+                    <i class="fa fa-plus"></i> <strong>Create</strong></a>--}}
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" id="modalShow">
+                        <i class="fa fa-plus"></i>  Create
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -56,48 +65,28 @@
                                 <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 25 of 57 entries</div>
                                 <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
                                     <thead>
-                                    <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 166px;">SI No</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Name</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Brand</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 187px;">Category</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 187px;">Image</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 187px;">Price</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 187px;">Status</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 141px;">Action</th>
-                                    </tr>
+                                        <tr role="row">
+                                            <th class="sorting_asc" style="width: 60px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 166px;">SI No</th>
+                                            <th class="sorting_asc" style="width: 130px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Name</th>
+                                            <th class="sorting_asc" style="width: 130px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Brand</th>
+                                            <th class="sorting_asc" style="width: 170px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Category</th>
+                                            <th class="sorting_asc" style="width: 100px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Image</th>
+                                            <th class="sorting_asc" style="width: 290px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 208px;">Price</th>
+                                            <th class="sorting_asc" style="width: 105px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 187px;">Status</th>
+                                            <th class="sorting_asc" style="width: 110px" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 141px;">Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $count=1?></php>
-                                    @foreach($AllProducts as $product)
-                                        <tr class="gradeA odd" role="row">
-                                            <td><?php echo $count++ ?></td>
-                                            <td class="center">{{ $product->Pname }}</td>
-                                            <td class="center">{{$product->Bname }}</td>
-                                            <td class="center">{{ $product->name }}</td>
-                                            <td class="center"><img src="{{asset('images/products/'.$product->Pimage)}}" width="50" height="60"></td>
-                                            <td class="center">{{ $product->price }} Tk</td>
-                                            <td class="center">
-                                                @if($product->Pstatus == 1)
-                                                    <a class=" " href="{{Route('product.status.unactive',$product->product_id)}}">
-                                                        <span class="btn-xs btn-primary btn-rounded ">Active</span>
-                                                    </a>
-                                                @else
-                                                    <a class=" " href="{{Route('product.status.active',$product->product_id)}}">
-                                                        <span class=" btn-xs btn-danger btn-rounded " >Unactive</span>
-                                                    </a>
-                                                @endif
-                                            </td>
-                                            <td class="center">
-                                                <a title="Edit" href="{{ Route('product.edit',$product->product_id) }}" class="cus_mini_icon color-success">
-                                                    <i class="fa fa-pencil-square-o "></i></a>
-                                                <a title="Delete" href="{{ Route('product.delete',$product->product_id) }}" data-toggle="modal" data-target="#myModal6" type="button" class="cus_mini_icon color-danger">
-                                                    <i class="fa fa-trash "></i></a>
-                                            </td>
+                                        <tr>
+                                            <td class="center">Name</td>
+                                            <td class="center">Name</td>
+                                            <td class="center">Name</td>
+                                            <td class="center">Name</td>
+                                            <td class="center">Name</td>
+                                            <td class="center">Name</td>
+                                            <td class="center">Name</td>
                                         </tr>
-                                    @endforeach
                                     </tbody>
-
                                     <tfoot>
                                     <tr>
                                         <th rowspan="1" colspan="1">SI No</th>
@@ -111,6 +100,7 @@
                                     </tr>
                                     </tfoot>
                                 </table>
+
                                 <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
                                     <ul class="pagination">
                                         <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous">
@@ -131,11 +121,62 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+@push('custom-js')
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+            //  Modal form show
+        $('#modalShow').on('click', function () {
+            $('#modalTitle').html('');
+            $('#modalTitle').html('Add Product');
+            $('#action').html('');
+            $('#action').html('Add Product');
+            $('#myModal5').modal('show');
+            $('#productForm')[0].reset();
+        })
+
+        //modal form input data save
+
+        $('#productForm').on('submit', function (e) {
+            e.preventDefault();
+            if ($('#action').val() == "Add Product") {
+
+                var formData = new FormData($('#productForm')[0]);
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ route("product.store") }}",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    success: function (data) {
+                        $('#myModal5').modal('hide');
+                        $('#success').show();
+                        $('#success').html("Inserted Successfully");
+                        console.log(data);
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+
+        });
+    </script>
+@endpush
+
 

@@ -15,7 +15,6 @@ class categoryRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -35,8 +34,6 @@ class categoryRequest extends FormRequest
             ];
         }
     }
-
-
     public function messages()
     {
         return [

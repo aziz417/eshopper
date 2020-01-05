@@ -246,7 +246,7 @@ $(document).ready(function () {
         }
 
         if (boxedlayout == 'on') {
-            body.addClass('boxed-layout');
+            body.addClass('boxed-layouts');
         }
 
         if (fixedfooter == 'on') {

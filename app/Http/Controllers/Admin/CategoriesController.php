@@ -16,6 +16,7 @@ use DB;
 
 class CategoriesController extends Controller
 {
+    // file handler. file validation, file store, store name all here
     public $storeName = 'category';
     public $fileHandler;
     function __construct()
@@ -56,12 +57,15 @@ class CategoriesController extends Controller
     {
 
         //image upload and validation here
+        if($request->img != null){
+            $image = $this->fileHandler->fileUploadedBackend($request->file('img'),$this->storeName,'img');
+        }
 
-       $image = $this->fileHandler->fileUploadedBackend($request->file('img'),$this->storeName,'img');
-
-        if ($image){
+        if (isset($image) != false ){
             $request['image'] = $image;
         }
+
+
 
         $request['slug'] = strtolower(str_replace(' ', '-', $request->name));
         $request['status'] = ($request->status)?1:0;
@@ -106,7 +110,8 @@ class CategoriesController extends Controller
     public function update(categoryRequest $request, Category $category)
     {
         $image = $request->file('img');
-        if ($image){
+
+        if ( $image != null ){
             //new image upload
             $image = $this->fileHandler->fileUploadedBackend($request->file('img'),$this->storeName,'img');
             $request['image'] = $image;

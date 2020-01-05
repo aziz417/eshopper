@@ -1,0 +1,58 @@
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.color-success {
+    color: #18A689;
+}
+.color-danger {
+    color: #EC4758;
+}
+.cus_mini_icon {
+    font-size: 20px;
+    padding: 0px 3px;
+}
+.ibox-tools {
+    margin-top: 35px;
+}
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: none!important;
+}
+.form-horizontal .form-group {
+    margin-right: 0;
+    margin-left: 0;
+}
+.control-label {
+    padding-top: 0px!important;
+}
+.required-star {
+    color: red;
+}
+.fs-check-box {
+    width: 30px;
+    height: 22px;
+}
+.fsEdit{
+    width: 50%;
+    float: left;
+    text-align: right;
+}
+.fsDelete{
+    width: 28%;
+    float: left;
+}
+.fsDltButton{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.padding-right-remove {
+    padding-right: 0!important;
+}
+html, body {
+    background-color: #233646!important;
+}
+
+
+

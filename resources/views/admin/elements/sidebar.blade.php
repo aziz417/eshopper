@@ -1,22 +1,32 @@
-<div id="sidebar-left" class="span2">
-    <div class="nav-collapse sidebar-nav">
-        <ul class="nav nav-tabs nav-stacked main-menu">
-            <li><a href="{{url('/dashboard')}}"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>
-            <li><a href=" {{Route('all.categories')}}"><i class="icon-envelope"></i><span class="hidden-tablet">All Categories</span></a></li>
-            <li><a href="{{Route('add.category')}}"><i class="icon-tasks"></i><span class="hidden-tablet"> Add Category</span></a></li>
-            <li><a href="{{Route('all.brands')}}"><i class="icon-eye-open"></i><span class="hidden-tablet"> All Brands</span></a></li>
-            <li><a href="{{Route('add.brand')}}"><i class="icon-dashboard"></i><span class="hidden-tablet"> Add Brand</span></a></li>
-            <li>
-                <a href="#" class="dropmenu"><i class="icon-dashboard"></i><span class="hidden-tablet"> Product<span class="label label-important"> New </span></span></a>
-                <ul>
-                    <li><a class="submenu" href="{{ Route('all.products') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> All Products</span></a></li>
-                    <li><a class="submenu" href="{{ Route('add.product') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add Product</span></a></li>
-                </ul>
-            </li>
-            <li><a href="{{Route('menu')}}"><i class="icon-list-alt"></i><span class="hidden-tablet"> Menus</span></a></li>
-            <li><a href="{{Route('slider')}}"><i class="icon-font"></i><span class="hidden-tablet"> Slider</span></a></li>
-            <li><a href="{{Route('test.dashboard')}}"><i class="icon-picture"></i><span class="hidden-tablet"> Test Dashboard</span></a></li>
-            <li><a href="{{URL::to('admincss')}}"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
-        </ul>
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+        <div class="sidebar-collapse" style="overflow: hidden; width: auto; height: 100%;">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <img alt="image" class="rounded-circle" src="{{ url('backend/img/profile_small.jpg')}}">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="block m-t-xs font-bold">David Williams</span>
+                            <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
+                            <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+                <li><a href="#"><i class="fa fa-pie-chart"></i> <span class="hidden-tablet"> Dashboard</span></a></li>
+                <li><a href="{{Route('all.brands')}}"><i class="fa fa-flask"></i><span class="hidden-tablet">Brands</span></a></li>
+                <li><a class="submenu" href="{{ Route('product.index') }}"><i class="fa fa-flask"></i><span class="hidden-tablet">Products</span></a></li>
+                <li><a class="submenu" href="{{ Route('category.index') }}"><i class="fa fa-flask"></i><span class="hidden-tablet">Category</span></a></li>
+                <li><a href="{{Route('slider')}}"><i class="fa fa-flask"></i><span class="hidden-tablet"> Slider</span></a></li>
+            </ul>
+        </div>
     </div>
-</div>
+</nav>
