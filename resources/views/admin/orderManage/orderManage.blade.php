@@ -75,7 +75,7 @@
                                             <td class="center">
                                                 <a title="Edit" href="{{ Route('order.details',$order->orderId) }}" class="cus_mini_icon color-success">
                                                     <i class="fa fa-eye "></i></a>
-                                                <a title="Delete" href="{{ Route('product.delete',$order->orderId) }}" data-toggle="modal" data-target="#myModal6" type="button" class="cus_mini_icon color-danger">
+                                                <a title="Delete" href="" data-toggle="modal" data-target="#myModal6" type="button" class="cus_mini_icon color-danger">
                                                     <i class="fa fa-trash "></i></a>
                                             </td>
                                         </tr>

@@ -26,6 +26,7 @@
                 <li><a class="submenu" href="{{ Route('product.index') }}"><i class="fa fa-flask"></i><span class="hidden-tablet">Products</span></a></li>
                 <li><a class="submenu" href="{{ Route('category.index') }}"><i class="fa fa-flask"></i><span class="hidden-tablet">Category</span></a></li>
                 <li><a href="{{Route('slider')}}"><i class="fa fa-flask"></i><span class="hidden-tablet"> Slider</span></a></li>
+                <!-- <li><a href="{{Route('order.manage')}}"><i class="fa fa-flask"></i><span class="hidden-tablet"> Order</span></a></li> -->
             </ul>
         </div>
     </div>

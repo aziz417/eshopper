@@ -50,7 +50,7 @@ Route::post('payment','frontend\OrderController@Payment');
 
 
 /////customer login,singing controller here....................................
-Route::post('customer/singing','frontend\CustomerController@CustomerSinging')->name('customer.singing');
+Route::post('customer/sing-in','frontend\CustomerController@CustomerSinging')->name('customer.singing');
 Route::post('customer/login','frontend\CustomerController@Customerlogin')->name('customer.login');
 Route::get('customer/login','frontend\CustomerController@LoginIndex');
 Route::get('customer/logout','frontend\CustomerController@logout');

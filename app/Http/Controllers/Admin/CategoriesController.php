@@ -115,9 +115,13 @@ class CategoriesController extends Controller
             //new image upload
             $image = $this->fileHandler->fileUploadedBackend($request->file('img'),$this->storeName,'img');
             $request['image'] = $image;
-            //image unlink
-            $this->fileHandler->imageDeleteBackend($request->oldImg,$this->storeName);
+            // old image unlink
+            if($request->oldImg = null){
+                $this->fileHandler->imageDeleteBackend($request->oldImg,$this->storeName);
+            }
+            
         }
+
         $request['slug'] = strtolower(str_replace(' ', '-', $request->name));
         $request['status'] = ($request->status)?1:0;
         $update = $category->update($request->all());

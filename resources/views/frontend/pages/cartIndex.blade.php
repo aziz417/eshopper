@@ -21,14 +21,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php $contents = Cart::content() ?>
-                @foreach($contents as $data )
+
+
+                @foreach($AllData as $data )
+
                 <tr>
                     <td class="cart_product">
-                        <a href=""><img src="{{asset('images/products/'.$data->options->Pimage)}}" alt="" width="70" height="100"></a>
+                        <a href=""><img src="{{asset('backend/uploads_images/product/'.$data->options->image) }}" alt="" width="70" height="100px" /></a>
+
                     </td>
                     <td class="cart_description">
-                        <h4><a href="">{{$data->name}}</a></h4>
+                        <p><a href="">{{ucfirst($data->name)}}</a></p>
                     </td>
                     <td class="cart_price">
                         <p>{{$data->price}}</p>

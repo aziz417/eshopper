@@ -14,13 +14,13 @@ class WishlistController extends Controller
     }
 
     public function addWishlist($productId){
-        $product = DB::table('tbl_products')->where('product_id',$productId)->first();
+        $product = DB::table('products')->where('id',$productId)->first();
         $data['qty'] = 1;
         $data['id'] = $productId;
-        $data['name'] = $product->Pname;
+        $data['name'] = $product->name;
         $data['weight'] = 0;
         $data['price'] = $product->price;
-        $data['options']['Pimage'] = $product->Pimage;
+        $data['options']['image'] = $product->image;
         Cart::instance('wishlist')->add($data);
 
         return redirect(route('show.wishlist'));
@@ -32,13 +32,13 @@ class WishlistController extends Controller
     }
 
     public function moveToWishList($productId){
-        $product = DB::table('tbl_products')->where('product_id',$productId)->first();
+        $product = DB::table('products')->where('id',$productId)->first();
         $data['qty'] = 1;
         $data['id'] = $productId;
-        $data['name'] = $product->Pname;
+        $data['name'] = $product->name;
         $data['weight'] = 0;
         $data['price'] = $product->price;
-        $data['options']['Pimage'] = $product->Pimage;
+        $data['options']['image'] = $product->image;
         Cart::add($data);
 
         return redirect(route('cart.index'));

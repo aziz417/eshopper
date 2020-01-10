@@ -12,20 +12,24 @@ use DB;
 class CartController extends Controller
 {
     public function addToCart(Request $request,$Pid){
-        $product = DB::table('tbl_products')->where('product_id',$Pid)->first();
+        $product = DB::table('products')->where('id',$Pid)->first();
+
+
         $data['qty'] = $request->quantity;
         $data['id'] = $Pid;
-        $data['name'] =$product->Pname;
+        $data['name'] =$product->name;
         $data['weight'] =0;
         $data['price'] =$product->price;
-        $data['options']['Pimage'] =$product->Pimage;
+        $data['options']['image'] =$product->image;
         Cart::add($data);
+
+
         return redirect(route('cart.index'));
     }
 
     public function CartIndex(){
-        //$category = DB::table('tbl_category')->where('Cstatus',1)->get();
-        return view('frontend.pages.cartIndex'/*,compact('category')*/);
+        $AllData = Cart::content();
+        return view('frontend.pages.cartIndex',compact('AllData'));
     }
 
     public function CartDeleteSingle($rowId){

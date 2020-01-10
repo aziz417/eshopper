@@ -27,8 +27,7 @@ class BrandController extends Controller
         $data['Bstatus'] = $request->status;
 
         $result = DB::table('tbl_brands')->insert($data);
-            Session::put('massage','Brand Store Successfully');
-            return Redirect()->back();
+            return Redirect()->back()->with('massage','Brand Store Successfully');
     }
 
     public function AllBrands(){

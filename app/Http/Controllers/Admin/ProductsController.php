@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Component\CommonController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\backend\productCreateRequest;
+use App\Http\Requests\backend\productUpdateeRequest;
 use App\Model\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -144,21 +145,51 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateeRequest $request, Product $product)
     {
-        //
+
+    		return $request;
+         if($request->img != null){
+
+         	// old image delete here
+         	 $oldImage = $request->file('productHiddenImageName');
+            if ($oldImage != ''){
+                $this->fileHandler->imageDeleteBackend($oldImage,$this->storeName);
+            }
+
+            $image = $this->fileHandler->fileUploadedBackend($request->file('img'),$this->storeName,'img');  
+            if($image != false ){
+                $request['image'] = $image;
+            }
+        }
+
+        $request['status'] = ($request->status)?1:0;
+        $request['featured'] = ($request->featured)?1:0;
+        $request['slug'] = strtolower(str_replace(' ', '-', $request->name));
+
+        $update = $product->update($request->all());
+
+
+        if($update){
+            return response()->json('Success');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
+
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        if($product->delete()){
+        	if($product->image){
+        		$this->fileHandler->imageDeleteBackend($product->image, $this->storeName);
+        	}
+            return response()->json(['success' => 'Delete successfully']);
+        }else{
+            return response()->json(['error' => 'Delete Unsuccess']);
+        }
     }
+
 
     //status change here
     public function changeStatus(Product $product){

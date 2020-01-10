@@ -80,9 +80,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group" >
+                    <div class="form-group" id="editImageshow" style="display: none">
+                        
+                    </style> >
                             <h2 class="">Preview</h2>
-                            <div style="border: groove; width: 243px; height: 183px;">
+                            <div style="border: groove; width: 243px; height: 183px;>
                                 <img style="width: 243px; height: 183px;" src="" id="output_image" alt="">
                             </div>
 

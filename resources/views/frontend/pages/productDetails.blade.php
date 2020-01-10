@@ -4,7 +4,8 @@
     <div class="product-details"><!--product-details-->
         <div class="col-sm-5">
             <div class="view-product">
-                <img src="{{asset('images/products/'.$productDetails->Pimage)}}" alt="" />
+               
+                <img src="{{asset('backend/uploads_images/product/'.$productDetails->image) }}" alt="" height="260px" />
                 <h3>ZOOM</h3>
             </div>
             <div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -41,16 +42,16 @@
         </div>
         <div class="col-sm-7">
             <div class="product-information"><!--/product-information-->
-                <h2>{{$productDetails->Pname}}</h2>
+                <h2>{{$productDetails->name}}</h2>
                 <p>Web ID: 1089772</p>
                 <img src="{{URL::to('frontend/images/product-details/rating.png')}}" alt="" /><br>
                 <span>
                     <span>{{$productDetails->price }} Tk</span>
-                    <form action="{{route('add.ToCart',$productDetails->product_id)}}" method="post">
+                    <form action="{{route('add.ToCart',$productDetails->id)}}" method="post">
                         @csrf
                         <label>Quantity:</label>
                         <input type="text" name="quantity" value="1" />
-                        <input type="hidden" name="product_id" value="{{$productDetails->product_id}}" />
+                        <input type="hidden" name="id" value="{{$productDetails->id}}" />
                         <button type="submit" class="btn btn-fefault cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                     </form>
                 </span>

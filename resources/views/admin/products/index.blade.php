@@ -148,8 +148,11 @@
         });
 
 
+
+        
             //  Modal form show
         $('#modalShow').on('click', function () {
+            
             $('#modalTitle').html('');
             $('#modalTitle').html('Add Product');
             $('#action').html('');
@@ -192,6 +195,7 @@
         $('#productForm').on('submit', function (e) {
             e.preventDefault();
             if ($('#action').val() == "Add Product") {
+
                 var formData = new FormData($('#productForm')[0]);
                 $.ajax({
                     headers: {
@@ -240,6 +244,7 @@
         // edit modal form show
         $(document).on('click', '.edit', function(){
             var id = $(this).attr('id');
+
             $.ajax({
                 url:"product/"+id+"/edit",
                 method: "GET",
@@ -247,9 +252,11 @@
                 dataType:"JSON",
 
                 success: function(feedBackResult){
+                   
+
                     $('#productForm')[0].reset();
                     $('#row_id').val(feedBackResult.data.id); // for row id hidden field
-                    $('#productHiddenImageName').val(feedBackResult.data.id); // for image hidden name
+                    $('#productHiddenImageName').val(feedBackResult.data.image); // for image hidden name
 
                     $('#name').val(feedBackResult.data.name); // for product name
                     $('#price').val(feedBackResult.data.price); // for product price
@@ -275,13 +282,59 @@
                     $('#output_image').attr('src', '{{asset('backend/uploads_images/product/')}}/' + feedBackResult.data.image + '');
                     $("#modalTitle").text('Edit Product');
                     $("#action").text('Update');
-                    $("#action").val('update');
+                    $("#action").val('Update');
+                    $('#editImageshow').css('display','show');
                     $("#myModal5").modal('show');
                 }
             });
         });
 
-        //
+        //edit data upadate here 
+          $('#productForm').on('submit', function (e) {
+            e.preventDefault();
+            if ($('#action').val() == "Update") {
+                var id = $('#row_id').val();
+                var formData = new FormData($('#productForm')[0]);
+                 formData.append('_method', 'put')
+                 $.ajax({
+
+                    url: "{{ route('product.update', '') }}/"+id,
+                    method:"POST",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                         success: function (data) {
+                           
+                        $('#productForm')[0].reset();
+                        $('#DataTables_Table_0').DataTable().ajax.reload();
+                        $('#myModal5').modal('hide');
+                        if(data){
+                            swal({
+                                title: 'Product has been updated',
+                                text: 'Thank-You',
+                                icon: 'success',
+                                timer: 1200,
+                                buttons: false,
+                            })
+                                
+                        }
+                    },
+                    error: function (data) {
+                        swal({
+                            title: 'Product update Fail',
+                            text: 'Sorry',
+                            icon: 'Error',
+                            timer: 3000,
+                            buttons: false,
+                        })
+                           
+                    }
+
+                 });
+            }
+        });
 
          // product status change here
         $(document).on('click', '.status', function () {
@@ -296,6 +349,41 @@
                     $('#DataTables_Table_0').DataTable().ajax.reload();
                 }
             });
+        });
+
+        //item delete here 
+
+        $(document).on('click', '.delete', function(){
+            var id = $(this).attr('id');
+            if(confirm('Are you sure this product deleted!')){
+                $.ajax({
+                url: "{{ route('product.destroy', '') }}/"+id,
+                method: "DELETE",
+                data:{id:id},
+                success:function(data){
+                    $('#DataTables_Table_0').DataTable().ajax.reload();
+                    swal({
+                        title: "Good Job!",
+                        text: "Product deleted successfully!",
+                        icon: "success",
+                        button: "Great",
+                        timer: 3000,
+                        
+                    });
+                },
+
+                 error:function (data) {
+                    swal({
+                        title: "Ooop..",
+                        text: "Product deleted Fail!",
+                        icon: "error",
+                        timer: 3000,
+                        buttons: false,
+                    });
+                }
+             });
+            }   
+        
         });
     </script>
 @endpush

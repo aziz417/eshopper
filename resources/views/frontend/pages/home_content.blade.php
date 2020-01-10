@@ -7,23 +7,23 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{asset('images/products/'.$product->Pimage)}}" alt="" height="260px" />
+                        <img src="{{asset('backend/uploads_images/product/'.$product->image) }}" alt="" height="260px" />
                         <h2>{{$product->price}}Tk</h2>
-                        <p>{{ ucfirst($product->Pname)}}</p>
+                        <p>{{ ucfirst($product->name)}}</p>
                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
                             <h2>{{$product->price}}Tk</h2>
-                            <p>{{ ucfirst($product->Pname)}}</p>
-                            <a href="{{route('product.details',$product->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+                            <p>{{ ucfirst($product->name)}}</p>
+                            <a href="{{route('product.details',$product->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
                         </div>
                     </div>
                 </div>
                 <div class="choose">
                     <ul class="nav nav-pills nav-justified">
-                        <li><a href="{{ route('add.wishlist',$product->product_id) }}"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="{{route('product.details',$product->product_id)}}"><i class="fa fa-plus-square"></i>Details</a></li>
+                        <li><a href="{{ route('add.wishlist',$product->id) }}"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        <li><a href="{{route('product.details',$product->id)}}"><i class="fa fa-plus-square"></i>Details</a></li>
                     </ul>
                 </div>
             </div>
