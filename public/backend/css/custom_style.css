@@ -53,6 +53,19 @@
 html, body {
     background-color: #233646!important;
 }
+.dataTables-example,tr,td{
+    font-size: 13px !important;
+}
+.container-fluid {
+    width: 100%;
+    padding-right: 0px !important;
+     padding-left: 0px !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+.dataTables-example{
+    width: 1034px !important;
+}
 
 
 

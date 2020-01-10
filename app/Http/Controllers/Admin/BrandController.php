@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\Brand;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;

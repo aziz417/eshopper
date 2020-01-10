@@ -9,6 +9,7 @@ use App\Http\Requests\backend\productCreateRequest;
 use App\Model\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class ProductsController extends Controller
 {
@@ -24,8 +25,27 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        /*return view('admin.products.index');*/
+        if($request->ajax()){
+            $data = Product::latest()->get();
+            return DataTables::of($data)->addcolumn('action', function ($data){
+                $button = '<button type="button" name="edit" id="'.$data->id.'"
+                class="btn btn-primary btn-sm edit">Edit</button>';
+                $button .= ' ';
+                $button .= '<button type="button" name="delete" id="'.$data->id.'" class="
+                delete btn btn-danger btn-sm">Delete</button>';
+                return $button;
+            })->addcolumn('status', function($data){
+                if($data->status){
+                    $status = '<button type="button" id="'.$data->id.'" value="'.$data->status.'" class="status btn btn-xs btn-primary btn-rounded ">Active</button>';
+                }else{
+                    $status = '<button type="button" id="'.$data->id.'"  value="'.$data->status.'"  class="status btn btn-xs btn-danger btn-rounded ">Disable</button>';
+                }
+                return $status;
+            })->rawColumns(['action','status'])->make(true);
+        }
         return view('admin.products.index');
     }
 
@@ -111,7 +131,10 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (request()->ajax()){
+            $data =  Product::findOrFail($id);
+            return response()->json(['data'=>$data]);
+        }
     }
 
     /**
@@ -135,5 +158,15 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //status change here
+    public function changeStatus(Product $product){
+        $product['status'] = $product->status == 1 ? 0 :1;
+        if($product->update()){
+            return response()->json(['success','Status Change Successfully']);
+        }else{
+            return response()->json(['error','Status could not be Change']);
+        }
     }
 }

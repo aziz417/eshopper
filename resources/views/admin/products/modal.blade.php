@@ -9,6 +9,9 @@
 
                 <form id="productForm" enctype="multipart/form-data" class="form-horizontal">
                     @csrf
+
+                    <input type="hidden" name="row_id" id="row_id"> {{--// this row id--}}
+                    <input type="hidden" id="productHiddenImageName" name="productHiddenImageName"> {{--// this image name from database  --}}
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label>Name<span class="required-star"> *</span></label>
@@ -76,6 +79,14 @@
                             <input  id="image" name="img" type="file" class="form-control">
                         </div>
                     </div>
+
+                    <div class="form-group" >
+                            <h2 class="">Preview</h2>
+                            <div style="border: groove; width: 243px; height: 183px;">
+                                <img style="width: 243px; height: 183px;" src="" id="output_image" alt="">
+                            </div>
+
+                        </div>
 
                     <div class="form-group">
                         <div class="col-sm-12">
