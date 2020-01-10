@@ -13,19 +13,19 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <a href=""><img src="{{URL::to('frontend/images/product-details/similar1.jpg')}}" alt=""></a>
-                        <a href=""><img src="{{URL::to('frontend/images/product-details/similar2.jpg')}}" alt=""></a>
-                        <a href=""><img src="{{URL::to('frontend/images/product-details/similar3.jpg')}}" alt=""></a>
+                        <a href=""><img src="{{ asset('frontend/images/product-details/similar1.jpg')}}" alt=""></a>
+                        <a href=""><img src="{{ asset('frontend/images/product-details/similar2.jpg')}}" alt=""></a>
+                        <a href=""><img src="{{ asset('frontend/images/product-details/similar3.jpg')}}" alt=""></a>
                     </div>
                     <div class="item">
-                        <a href=""><img src="{{URL::to('frontend/images/product-details/similar1.jpg')}}" alt=""></a>
-                        <a href=""><img src="{{URL::to('frontend/images/product-details/similar2.jpg')}}" alt=""></a>
-                        <a href=""><img src="{{URL::to('frontend/images/product-details/similar3.jpg')}}" alt=""></a>
+                        <a href=""><img src="{{ asset('frontend/images/product-details/similar1.jpg')}}" alt=""></a>
+                        <a href=""><img src="{{ asset('frontend/images/product-details/similar2.jpg')}}" alt=""></a>
+                        <a href=""><img src="{{ asset('frontend/images/product-details/similar3.jpg')}}" alt=""></a>
                     </div>
                     <div class="item">
-                        <a href=""><img src="{{URL::to('frontend/images/product-details/similar1.jpg')}}" alt=""></a>
-                        <a href=""><img src="{{URL::to('frontend/images/product-details/similar2.jpg')}}" alt=""></a>
-                        <a href=""><img src="{{URL::to('frontend/images/product-details/similar3.jpg')}}" alt=""></a>
+                        <a href=""><img src="{{ asset('frontend/images/product-details/similar1.jpg')}}" alt=""></a>
+                        <a href=""><img src="{{ asset('frontend/images/product-details/similar2.jpg')}}" alt=""></a>
+                        <a href=""><img src="{{ asset('frontend/images/product-details/similar3.jpg')}}" alt=""></a>
                     </div>
 
                 </div>
@@ -44,7 +44,7 @@
             <div class="product-information"><!--/product-information-->
                 <h2>{{$productDetails->name}}</h2>
                 <p>Web ID: 1089772</p>
-                <img src="{{URL::to('frontend/images/product-details/rating.png')}}" alt="" /><br>
+                <img src="{{ asset('frontend/images/product-details/rating.png')}}" alt="" /><br>
                 <span>
                     <span>{{$productDetails->price }} Tk</span>
                     <form action="{{route('add.ToCart',$productDetails->id)}}" method="post">
@@ -78,7 +78,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="{{URL::to('frontend/images/home/gallery1.jpg')}}" alt="" />
+                                <img src="{{asset('frontend/images/home/gallery1.jpg')}}" alt="" />
                                 <h2></h2>
                                 <p>Easy Polo Black Edition</p>
                                 <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -93,7 +93,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="images/home/gallery1.jpg" alt="" />
+                                <img src=" {{asset('frontend/images/home/gallery1.jpg') }}" alt="" />
                                 <h2>$56</h2>
                                 <p>Easy Polo Black Edition</p>
                                 <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -105,7 +105,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="images/home/gallery3.jpg" alt="" />
+                                <img src=" {{asset('frontend/images/home/gallery3.jpg') }}" alt="" />
                                 <h2>$56</h2>
                                 <p>Easy Polo Black Edition</p>
                                 <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -117,7 +117,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="images/home/gallery2.jpg" alt="" />
+                                <img src="{{ asset('frontend/images/home/gallery2.jpg') }}" alt="" />
                                 <h2>$56</h2>
                                 <p>Easy Polo Black Edition</p>
                                 <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -129,7 +129,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="images/home/gallery4.jpg" alt="" />
+                                <img src="{{ asset('frontend/images/home/gallery4.jpg') }}" alt="" />
                                 <h2>$56</h2>
                                 <p>Easy Polo Black Edition</p>
                                 <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -144,7 +144,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="images/home/gallery1.jpg" alt="" />
+                                <img src="{{ asset('frontend/images/home/gallery1.jpg') }}" alt="" />
                                 <h2>$56</h2>
                                 <p>Easy Polo Black Edition</p>
                                 <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -156,7 +156,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="images/home/gallery2.jpg" alt="" />
+                                <img src="{{ asset('frontend/images/home/gallery2.jpg') }}" alt="" />
                                 <h2>$56</h2>
                                 <p>Easy Polo Black Edition</p>
                                 <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -168,7 +168,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="images/home/gallery3.jpg" alt="" />
+                                <img src="{{ asset('frontend/images/home/gallery3.jpg') }}" alt="" />
                                 <h2>$56</h2>
                                 <p>Easy Polo Black Edition</p>
                                 <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -180,7 +180,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="images/home/gallery4.jpg" alt="" />
+                                <img src="{{ asset('frontend/images/home/gallery4.jpg') }}" alt="" />
                                 <h2>$56</h2>
                                 <p>Easy Polo Black Edition</p>
                                 <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -206,7 +206,7 @@
 											<input type="email" placeholder="Email Address"/>
 										</span>
                         <textarea name="" ></textarea>
-                        <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
+                        <b>Rating: </b> <img src="{{ asset('images/product-details/rating.png')}}" alt="" />
                         <button type="button" class="btn btn-default pull-right">
                             Submit
                         </button>
@@ -227,7 +227,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="images/home/recommend1.jpg" alt="" />
+                                    <img src="{{ asset('frontend/images/home/recommend1.jpg') }}" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
                                     <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -239,7 +239,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="images/home/recommend2.jpg" alt="" />
+                                    <img src="{{ asset('frontend/images/home/recommend2.jpg') }}" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
                                     <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -251,7 +251,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="images/home/recommend3.jpg" alt="" />
+                                    <img src="{{ asset('frontend/images/home/recommend3.jpg') }}" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
                                     <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -265,7 +265,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="images/home/recommend1.jpg" alt="" />
+                                    <img src="{{ asset('frontend/images/home/recommend1.jpg') }}" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
                                     <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -277,7 +277,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="images/home/recommend2.jpg" alt="" />
+                                    <img src="{{ asset('frontend/images/home/recommend2.jpg') }}" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
                                     <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
@@ -289,7 +289,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="images/home/recommend3.jpg" alt="" />
+                                    <img src="{{ asset('frontend/images/home/recommend3.jpg') }}" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
                                     <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>

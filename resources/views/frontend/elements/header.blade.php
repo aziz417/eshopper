@@ -6,13 +6,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | E-Shopper</title>
-    <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/prettyPhoto.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/price-range.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/animate.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/main.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/prettyPhoto.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/price-range.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/responsive.css') }}" rel="stylesheet">
 
   {{--  fs Style --}}
     <link href="{{asset('custom_style.css')}}" rel="stylesheet">
@@ -32,7 +32,7 @@
     <div class="header_top"><!--header_top-->
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
                             <li><a href="#"><i class="fa fa-phone"></i> 01797-506292</a></li>
@@ -40,7 +40,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4"><h4>This site not complite, working on</h4></div>
+                <div class="col-sm-4">
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -60,7 +61,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="{{url('/')}}"><img src="{{url('frontend/images/home/logo.png')}}" alt="" /></a>
+                        <a href="{{url('/')}}"><img src="{{asset('frontend/images/home/logo.png')}}" alt="" /></a>
                     </div>
                     <div class="btn-group pull-right">
                         
@@ -126,7 +127,7 @@
                                 </ul>
                             </li>
                             <li><a href="404.html">404</a></li>
-                            <li><a href="contact-us.html">Contact</a></li>
+                            <li><a href="#">Contact</a></li>
                         </ul>
                     </div>
                 </div>
